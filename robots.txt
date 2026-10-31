@@ -1,2 +1,3 @@
 User-agent: *
 Allow: /
+Sitemap: https://yoga-lizza.pages.dev/sitemap.xml
