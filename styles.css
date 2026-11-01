@@ -90,3 +90,4 @@ h2{font-weight:500;letter-spacing:-.055em}
 .highlight-cta .button{min-height:48px;padding-left:20px;padding-right:20px}
 .round-arrow:hover{transform:none}
 @media(max-width:760px){.button{min-height:54px;padding-left:23px;padding-right:23px}.button-small{min-height:46px}.hero-actions .button{min-height:54px}.highlight-cta .button{min-height:48px}}
+.booking h2 em{color:var(--paper)}
