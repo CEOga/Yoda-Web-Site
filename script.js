@@ -38,11 +38,36 @@ document.querySelectorAll('[data-service]').forEach((link) => {
   link.addEventListener('click', () => setService(link.dataset.service));
 });
 
-form?.addEventListener('submit', (event) => {
+form?.addEventListener('submit', async (event) => {
   event.preventDefault();
   if (status) status.textContent = '';
   if (!form.reportValidity()) return;
-  if (status) status.textContent = 'Форма пока не подключена. Заявка не отправлена. [УТОЧНИТЬ контакт для связи и подключить серверную отправку.]';
+
+  const submitButton = form.querySelector('.submit-button');
+  if (submitButton) submitButton.disabled = true;
+  if (status) status.textContent = 'Отправляем заявку…';
+
+  try {
+    const payload = Object.fromEntries(new FormData(form).entries());
+    const response = await fetch('/api/booking', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    const result = await response.json();
+
+    if (!response.ok || !result.ok) {
+      throw new Error('Заявка не отправлена');
+    }
+
+    form.reset();
+    if (groupField) groupField.hidden = true;
+    if (status) status.textContent = 'Спасибо! Заявка отправлена.';
+  } catch {
+    if (status) status.textContent = 'Не удалось отправить заявку. Попробуйте ещё раз.';
+  } finally {
+    if (submitButton) submitButton.disabled = false;
+  }
 });
 
 document.querySelector('#year')?.replaceChildren(String(new Date().getFullYear()));
