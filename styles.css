@@ -242,3 +242,9 @@ h2{font-weight:500;letter-spacing:-.055em}
 .booking-copy .booking-mark span{font-size:34px}
 .booking-copy h2{margin-bottom:22px}
 .booking-description{max-width:44ch}
+
+/* Light text on the subscription action; FAQ returns to the page background. */
+#online .online-copy>.button,#online .online-copy>.button span{color:var(--paper)}
+#online .online-copy>.button:hover,#online .online-copy>.button:hover span{color:var(--paper)}
+.faq{background:transparent}
+.faq.section-wrap{border-radius:0}
