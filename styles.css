@@ -640,3 +640,21 @@ h1 *,h2 *,h3 *{font-size:inherit!important}
  padding-inline:18px!important;gap:8px!important;justify-content:center!important;
  white-space:normal!important;line-height:1.1!important
 }
+
+/* Remove marked separators and unify the schedule CTA controls. */
+.group-row{grid-template-columns:minmax(0,1fr) minmax(0,var(--action-width))!important;min-height:var(--action-height)!important;border-bottom:0!important}
+.group-row .round-arrow{
+ grid-column:2!important;grid-row:1!important;justify-self:end;
+ display:inline-flex!important;align-items:center;justify-content:center;
+ width:min(var(--action-width),100%)!important;min-width:min(var(--action-width),100%)!important;max-width:100%!important;
+ height:var(--action-height)!important;min-height:var(--action-height)!important;max-height:var(--action-height)!important;
+ padding:0 18px!important;gap:8px!important;border-radius:999px!important;
+ background:var(--rose)!important;color:var(--paper)!important;border:1px solid var(--rose)!important;
+ font-size:var(--type-body)!important;line-height:1.1!important;white-space:nowrap;box-sizing:border-box
+}
+.button,.button.button-dark,.button.button-light,.button.button-outline,.round-arrow{
+ background:var(--rose)!important;color:var(--paper)!important;border-color:var(--rose)!important
+}
+.button:hover,.button.button-dark:hover,.button.button-light:hover,.button.button-outline:hover,.round-arrow:hover{
+ background:var(--rose)!important;color:var(--paper)!important;border-color:var(--rose)!important;transform:none!important
+}
