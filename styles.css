@@ -374,3 +374,28 @@ h2{font-weight:500;letter-spacing:-.055em}
 @media(max-width:420px){
   .info-card,.club-info-grid article{grid-column:1/-1}
 }
+
+/* Snap headings, schedule labels, and card edges to the shared grid. */
+.groups .section-heading,.info-section .section-heading{padding-left:0;padding-right:0}
+.groups-topline{margin-left:0;margin-right:0}
+.faq.section-wrap{padding-left:0;padding-right:0}
+.faq-layout{padding-left:0;padding-right:0}
+.footer-top .wordmark{grid-column:1/span 2}
+.footer-top>p{grid-column:4/span 5}
+.footer-top>.button{grid-column:9/span 4}
+@media(min-width:900px){
+  .site-header{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--layout-gap);justify-content:normal}
+  .site-header>.wordmark{grid-column:1/span 2}
+  .site-header>.primary-nav{grid-column:4/span 5;justify-content:center}
+  .site-header>.button{grid-column:9/span 4;justify-self:end}
+}
+@media(min-width:1200px){
+  .site-header>.primary-nav{grid-column:4/span 6}
+  .site-header>.button{grid-column:10/span 3}
+  .hero{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--layout-gap);justify-items:center}
+  .hero-copy{grid-column:3/span 8;width:100%;max-width:780px}
+  .footer-top>p{grid-column:4/span 6}
+  .footer-top>.button{grid-column:10/span 3}
+}
+@media(max-width:1050px){.site-footer{padding-left:32px;padding-right:32px}}
+@media(max-width:760px){.site-footer{padding-left:20px;padding-right:20px}}
