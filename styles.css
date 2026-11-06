@@ -361,3 +361,46 @@ h1 em,h2 em,h3 em{font-size:inherit!important;font-style:normal;line-height:inhe
 .footer-top>.wordmark{grid-column:1/span 3}
 .footer-top>p{grid-column:4/-1;justify-self:end;text-align:right}
 @media(max-width:760px){.footer-top>p{grid-column:1/-1;justify-self:start;text-align:left}}
+
+
+/* Warm, calm review area with rose circular expand arrows. */
+.reviews{
+  background:
+    radial-gradient(ellipse at 10% 12%,rgba(215,142,136,.12),transparent 42%),
+    radial-gradient(ellipse at 92% 88%,rgba(215,142,136,.09),transparent 40%),
+    var(--paper);
+}
+.review-list{max-width:980px;margin-inline:auto;display:grid;gap:10px}
+.review-item{
+  border:1px solid rgba(215,142,136,.24);
+  border-radius:10px;
+  background:rgba(255,255,255,.72);
+  overflow:hidden;
+  transition:background .2s,border-color .2s;
+}
+.review-item:first-child{border-top:1px solid rgba(215,142,136,.24)}
+.review-item:last-child{border-bottom:1px solid rgba(215,142,136,.24)}
+.review-item:hover,.review-item[open]{background:rgba(255,255,255,.92);border-color:rgba(215,142,136,.48)}
+.review-item summary{padding:13px 16px;min-height:68px}
+.review-arrow{
+  display:grid;
+  place-items:center;
+  flex:0 0 38px;
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  background:var(--rose);
+  color:var(--paper);
+  font-size:17px;
+  line-height:1;
+  transition:transform .2s,background .2s;
+}
+.review-item[open] .review-arrow{transform:rotate(90deg)}
+.review-item>p{padding:0 70px 20px 16px}
+@media(max-width:760px){
+  .reviews{padding-block:64px}
+  .review-heading{margin-top:34px}
+  .review-item summary{min-height:62px;padding:11px 12px}
+  .review-arrow{flex-basis:34px;width:34px;height:34px;font-size:15px}
+  .review-item>p{padding:0 54px 17px 12px}
+}
