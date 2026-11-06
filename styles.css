@@ -135,3 +135,11 @@ h2{font-weight:500;letter-spacing:-.055em}
 
 /* Align the information heading with the first photo. */
 @media(min-width:761px){.info-section .section-heading{padding-left:0;padding-right:0}.info-section .section-heading .section-lead{margin-right:0}}
+
+/* Use the new studio photos in the hero and About section. */
+.hero-visual .hero-photo{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;object-position:50% 58%;filter:brightness(.72)}
+.about-image{height:520px;overflow:hidden}
+.about-image img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 48%;border-radius:2px}
+.extra-photos{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media(max-width:1050px){.extra-photos{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:760px){.about-image{height:410px;width:86%;margin:auto 7% auto 0}.extra-photos{grid-template-columns:repeat(2,minmax(0,1fr))}}
