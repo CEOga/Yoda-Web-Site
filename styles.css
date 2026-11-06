@@ -337,3 +337,12 @@ small,.eyebrow,.section-kicker,.groups-topline,.group-no,.micro-note,.tiny-note,
 /* Prevent source photo dimensions from widening the page. */
 img{max-width:100%}
 .hero-photo{display:block;width:100%;height:100%;object-fit:cover}
+
+/* Keep the hero copy and image aligned on one shared grid row. */
+@media(min-width:951px){.hero-visual,.hero-copy{grid-row:1}}
+@media(min-width:761px) and (max-width:950px){
+  :root{--size-display:46px}
+  .hero{min-height:600px}
+  .hero-copy{grid-column:1/span 6;grid-row:1;max-width:none}
+  .hero-visual{grid-column:7/span 6;grid-row:1;min-height:360px;height:420px}
+}
