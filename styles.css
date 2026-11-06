@@ -492,3 +492,5 @@ h1 em,h2 em,h3 em{font-size:inherit!important;font-style:normal;line-height:inhe
   .sample-video h3{margin-top:10px}
   .sample-video-grid{row-gap:24px}
 }
+
+.sample-video{grid-column:span 6}
