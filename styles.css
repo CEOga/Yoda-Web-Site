@@ -404,3 +404,15 @@ h1 em,h2 em,h3 em{font-size:inherit!important;font-style:normal;line-height:inhe
   .review-arrow{flex-basis:34px;width:34px;height:34px;font-size:15px}
   .review-item>p{padding:0 54px 17px 12px}
 }
+
+
+/* Align the format link with the full-width credentials control. */
+.about-actions>.text-link{
+  width:100%;
+  min-height:48px;
+  justify-content:space-between;
+  padding:8px 0;
+  border-bottom:1px solid var(--ink);
+  font-size:var(--size-body);
+}
+.about-actions>.text-link span{font-size:var(--size-body)}
