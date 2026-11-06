@@ -352,3 +352,7 @@ img{max-width:100%}
   :root{--action-width:200px}
   .group-row{grid-template-columns:minmax(0,1fr) var(--action-width)}
 }
+
+/* Let accent words keep the exact heading scale. */
+h1 em,h2 em,h3 em{font-size:inherit!important;font-style:normal;line-height:inherit}
+.eyebrow,.section-kicker{display:none!important}
