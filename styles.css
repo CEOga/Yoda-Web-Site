@@ -106,3 +106,19 @@ h2{font-weight:500;letter-spacing:-.055em}
 .review-item[open] summary .review-arrow{transform:rotate(90deg)}
 .review-item p{margin:0;padding:0 46px 22px 4px;font-size:12px;line-height:1.8;color:#514b46}
 @media(max-width:760px){.review-item summary{gap:14px;padding:16px 2px;font-size:12px}.review-item summary .review-arrow{flex-basis:20px}.review-item p{padding:0 30px 19px 2px;font-size:11px}}
+
+/* Quiet information cards built from Lizza's practice photos. */
+.info-section{padding-top:80px;padding-bottom:94px}
+.info-section .section-heading{align-items:end;padding-bottom:34px}
+.info-section .section-heading h2{font-size:clamp(42px,4.6vw,62px)}
+.info-card-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.info-card{min-width:0}
+.info-card img{display:block;width:100%;aspect-ratio:4/4.6;object-fit:cover;border-radius:4px;background:#e6dfd7}
+.info-card:nth-child(2) img{object-position:50% 35%}
+.info-card:nth-child(4) img{object-position:50% 28%}
+.info-card>div{padding:16px 2px 0}
+.info-card h3{margin:0 0 7px;font-size:17px;line-height:1.35;font-weight:600;letter-spacing:-.035em}
+.info-card p{margin:0;max-width:33ch;color:#625b55;font-size:11px;line-height:1.75}
+@media(max-width:1050px){.info-card-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:26px 16px}.info-card img{aspect-ratio:1.08}}
+@media(max-width:760px){.info-section{padding-top:64px;padding-bottom:72px}.info-section .section-heading{padding:35px 0 24px}.info-section .section-heading h2{font-size:45px}.info-card-grid{gap:22px 12px}.info-card img{aspect-ratio:1/1.18}.info-card>div{padding-top:11px}.info-card h3{font-size:14px}.info-card p{font-size:10px;line-height:1.65}}
+@media(max-width:370px){.info-card-grid{grid-template-columns:1fr}.info-card img{aspect-ratio:1.18}}
