@@ -428,6 +428,10 @@ h1,h2,.hero h1,.about-copy h2,.section-heading h2,.individual h2,.online h2,
   font-size:var(--type-display)!important;line-height:.98!important;
 }
 h3,.group-row h3{font-size:var(--type-large)!important}
+h1 *,h2 *,h3 *{font-size:inherit!important}
+.hero-text,.section-lead,.review-heading>p:last-child,.intro-strip{
+  font-size:var(--type-medium)!important
+}
 .placeholder-caption,.online-art>span,.review-placeholder p,.footer-top>p{
   font-size:var(--type-large)!important;
 }
