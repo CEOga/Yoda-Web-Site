@@ -551,3 +551,8 @@ h1 *,h2 *,h3 *{font-size:inherit!important}
  #home .hero-actions .button{min-width:min(200px,100%)!important}
  #faq .faq-layout>div:first-child .text-link{align-self:center}
 }
+#home .hero-copy>.hero-text{color:#fff!important}
+#faq h2 em{color:#d78e88!important}
+#booking{background:#fff!important}
+#booking .booking-copy h2 em{color:#d78e88!important}
+.site-footer .footer-bottom,.site-footer .footer-reminder,.site-footer .footer-links a{color:#fff!important}
