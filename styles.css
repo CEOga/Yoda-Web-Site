@@ -231,3 +231,14 @@ h2{font-weight:500;letter-spacing:-.055em}
 @media(max-width:1050px){.group-list{grid-template-columns:1fr 1fr}.personal-practice{gap:5%}}
 @media(max-width:760px){.button,.site-header>.button.button-small,.footer-top>.button,.booking-form .submit-button,.hero-actions .button,.highlight-cta .button{width:260px;min-width:260px;height:56px;min-height:56px;padding-inline:18px;gap:12px;font-size:14px}.site-header>.button.button-small{display:none}.footer-top{grid-template-columns:1fr;gap:20px}.footer-top .wordmark{grid-column:1;grid-row:1}.footer-top>.button{grid-column:1;grid-row:2}.footer-top>p{grid-column:1;grid-row:3}.group-list{grid-template-columns:1fr}.groups-topline{gap:15px;align-items:flex-start}.groups-topline span+span{display:block;text-align:right}.group-row{grid-template-columns:minmax(0,1fr) 42px;min-height:104px}.group-row .round-arrow{grid-column:2;grid-row:1}.personal-practice{grid-template-columns:1fr;gap:24px;margin-top:34px;padding-top:24px}.personal-practice-meta{grid-template-columns:1fr auto}.personal-practice-meta .button{grid-column:1/-1}.text-link,.more-photos{font-size:13px;min-height:40px}.more-photos{margin-top:22px}}
 @media(max-width:370px){.button,.footer-top>.button,.booking-form .submit-button,.hero-actions .button,.highlight-cta .button{width:min(260px,100%);min-width:0}.group-pricing>div{gap:10px}.group-pricing span{font-size:11px}.group-pricing strong{font-size:19px}.groups-topline{font-size:9px}}
+
+/* Keep the FAQ panel within the same page width as the other content sections. */
+.faq.section-wrap{width:var(--page);margin-inline:auto;border-radius:2px}
+/* Tighten the merged practice heading after removing its secondary copy. */
+.groups .section-heading{grid-template-columns:minmax(0,1fr);padding-bottom:30px}
+.groups .section-heading>div{max-width:720px}
+/* Place the studio mark before the booking headline and its supporting copy. */
+.booking-copy .booking-mark{margin:0 0 32px;font-size:30px;line-height:1}
+.booking-copy .booking-mark span{font-size:34px}
+.booking-copy h2{margin-bottom:22px}
+.booking-description{max-width:44ch}
