@@ -556,3 +556,16 @@ h1 *,h2 *,h3 *{font-size:inherit!important}
 #booking{background:#fff!important}
 #booking .booking-copy h2 em{color:#d78e88!important}
 .site-footer .footer-bottom,.site-footer .footer-reminder,.site-footer .footer-links a{color:#fff!important}
+
+/* About section: full-height portrait and paired actions. */
+.about-layout{align-items:stretch!important}
+.about-image{height:auto!important;min-height:100%;align-self:stretch}
+.about-image img{height:100%;width:100%;object-fit:cover}
+.about-actions{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px;align-items:start;margin-top:22px}
+.about-actions .credentials{margin:0!important;min-width:0}
+.about-actions>.text-link{width:100%!important;min-width:0!important;min-height:48px;align-self:start;justify-content:space-between;padding:0 14px!important;border:1px solid var(--line);border-radius:999px}
+@media(max-width:760px){
+ .about-layout{align-items:start!important}
+ .about-image{height:410px!important;min-height:0;width:86%;margin:auto 7% auto 0;align-self:start}
+ .about-actions{grid-template-columns:1fr;gap:10px}
+}
