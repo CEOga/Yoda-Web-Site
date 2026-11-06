@@ -248,3 +248,129 @@ h2{font-weight:500;letter-spacing:-.055em}
 #online .online-copy>.button:hover,#online .online-copy>.button:hover span{color:var(--paper)}
 .faq{background:transparent}
 .faq.section-wrap{border-radius:0}
+
+/* Shared 12-column composition grid. */
+:root{--layout-gap:clamp(16px,1.65vw,26px)}
+.section-wrap{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--layout-gap);align-items:start}
+.section-wrap>*{grid-column:1/-1;min-width:0}
+.highlights{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--layout-gap)}
+.highlight-stats{grid-column:1/span 5}
+.highlight-cta{grid-column:7/span 6}
+.about-layout{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--layout-gap);padding-inline:0}
+.about-image{grid-column:1/span 5}
+.about-copy{grid-column:7/span 6;max-width:none}
+.groups .section-heading{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--layout-gap);padding-bottom:30px}
+.groups .section-heading>div{grid-column:1/span 5;max-width:none}
+.group-pricing{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--layout-gap);margin:0 0 26px}
+.group-pricing>div{grid-column:span 6}
+.groups-topline{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--layout-gap);align-items:center}
+.groups-topline span:first-child{grid-column:1/span 6}
+.groups-topline span+span{grid-column:8/span 5;text-align:right}
+.group-list{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--layout-gap);row-gap:0;margin:0}
+.group-list .group-row:nth-child(odd){grid-column:1/span 6}
+.group-list .group-row:nth-child(even){grid-column:7/span 6}
+.personal-practice{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--layout-gap);align-items:center}
+.personal-practice>div:first-child{grid-column:1/span 7}
+.personal-practice-meta{grid-column:9/span 4;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px var(--layout-gap)}
+.personal-practice-meta>span{grid-column:1/span 2}
+.personal-practice-meta>strong{grid-column:3/span 2;justify-self:end}
+.personal-practice-meta>.button{grid-column:1/-1}
+.online-card{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:0}
+.online-art{grid-column:1/span 6}
+.online-copy{grid-column:7/span 6}
+.club-info-heading{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--layout-gap)}
+.club-info-heading>div{grid-column:1/span 5}
+.club-info-heading>p{grid-column:8/span 5}
+.club-info-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--layout-gap);row-gap:24px}
+.club-info-grid article{grid-column:span 3}
+.info-section .section-heading{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--layout-gap)}
+.info-section .section-heading>div{grid-column:1/span 5}
+.info-section .section-heading>.section-lead{grid-column:8/span 5}
+.info-card-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--layout-gap);row-gap:26px}
+.info-card{grid-column:span 3;min-width:0}
+.extra-photos{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--layout-gap);row-gap:var(--layout-gap)}
+.extra-photos img{grid-column:span 3}
+.review-heading,.review-list{grid-column:3/span 8;max-width:none;width:100%}
+.faq-layout{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--layout-gap)}
+.faq-layout>div:first-child{grid-column:1/span 4}
+.faq-layout>.faq-list{grid-column:6/span 7}
+.booking-inner{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--layout-gap);align-items:center}
+.booking-copy{grid-column:1/span 5}
+.booking-form{grid-column:7/span 6}
+.footer-top{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--layout-gap);align-items:center}
+.footer-top .wordmark{grid-column:1/span 2}
+.footer-top>p{grid-column:4/span 6}
+.footer-top>.button{grid-column:10/span 3}
+.footer-bottom{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--layout-gap);align-items:center}
+.footer-bottom>span{grid-column:1/span 3;width:auto}
+.footer-links{grid-column:5/span 6}
+.footer-bottom>.back-top{grid-column:11/span 2;justify-self:end;margin-left:0}
+.footer-reminder{grid-column:1/-1}
+/* Align the wider desktop header and hero to the same twelve tracks. */
+@media(min-width:1200px){
+  .site-header{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--layout-gap);justify-content:normal}
+  .site-header>.wordmark{grid-column:1/span 2}
+  .site-header>.primary-nav{grid-column:4/span 6;justify-content:center}
+  .site-header>.button{grid-column:10/span 3;justify-self:end}
+  .hero{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--layout-gap);justify-items:center}
+  .hero-copy{grid-column:3/span 8;width:100%;max-width:780px}
+}
+@media(max-width:1050px){
+  .about-image{grid-column:1/span 5}
+  .about-copy{grid-column:7/span 6}
+  .group-pricing>div{grid-column:span 6}
+  .group-list .group-row:nth-child(odd){grid-column:1/span 6}
+  .group-list .group-row:nth-child(even){grid-column:7/span 6}
+  .personal-practice>div:first-child{grid-column:1/span 7}
+  .personal-practice-meta{grid-column:9/span 4}
+  .club-info-heading>div{grid-column:1/span 5}
+  .club-info-heading>p{grid-column:8/span 5}
+  .club-info-grid article{grid-column:span 6}
+  .info-card{grid-column:span 6}
+  .extra-photos img{grid-column:span 4}
+  .faq-layout>div:first-child{grid-column:1/span 4}
+  .faq-layout>.faq-list{grid-column:6/span 7}
+  .booking-copy{grid-column:1/span 5}
+  .booking-form{grid-column:7/span 6}
+}
+@media(max-width:760px){
+  .section-wrap{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:12px}
+  .highlights{grid-template-columns:repeat(12,minmax(0,1fr));row-gap:22px}
+  .highlight-stats,.highlight-cta{grid-column:1/-1}
+  .about-layout{grid-template-columns:repeat(12,minmax(0,1fr));row-gap:28px}
+  .about-image,.about-copy{grid-column:1/-1}
+  .groups .section-heading>div{grid-column:1/-1}
+  .group-pricing{grid-template-columns:repeat(12,minmax(0,1fr));row-gap:9px}
+  .group-pricing>div{grid-column:1/-1}
+  .groups-topline{grid-template-columns:repeat(12,minmax(0,1fr));row-gap:8px}
+  .groups-topline span:first-child{grid-column:1/span 7}
+  .groups-topline span+span{grid-column:8/span 5;text-align:right}
+  .group-list{grid-template-columns:repeat(12,minmax(0,1fr));row-gap:0}
+  .group-list .group-row:nth-child(n){grid-column:1/-1}
+  .personal-practice{grid-template-columns:repeat(12,minmax(0,1fr));row-gap:22px}
+  .personal-practice>div:first-child,.personal-practice-meta{grid-column:1/-1}
+  .online-card{grid-template-columns:repeat(12,minmax(0,1fr))}
+  .online-art,.online-copy{grid-column:1/-1}
+  .club-info-heading{grid-template-columns:repeat(12,minmax(0,1fr));row-gap:18px}
+  .club-info-heading>div,.club-info-heading>p{grid-column:1/-1}
+  .club-info-grid{grid-template-columns:repeat(12,minmax(0,1fr));row-gap:20px}
+  .club-info-grid article{grid-column:span 6}
+  .info-section .section-heading{grid-template-columns:repeat(12,minmax(0,1fr));row-gap:16px}
+  .info-section .section-heading>div,.info-section .section-heading>.section-lead{grid-column:1/-1}
+  .info-card-grid{grid-template-columns:repeat(12,minmax(0,1fr));row-gap:20px}
+  .info-card{grid-column:span 6}
+  .extra-photos{grid-template-columns:repeat(12,minmax(0,1fr));row-gap:12px}
+  .extra-photos img{grid-column:span 6}
+  .review-heading,.review-list{grid-column:1/-1}
+  .faq-layout{grid-template-columns:repeat(12,minmax(0,1fr));row-gap:24px}
+  .faq-layout>div:first-child,.faq-layout>.faq-list{grid-column:1/-1}
+  .booking-inner{grid-template-columns:repeat(12,minmax(0,1fr));row-gap:26px}
+  .booking-copy,.booking-form{grid-column:1/-1}
+  .footer-top{grid-template-columns:repeat(12,minmax(0,1fr));row-gap:20px}
+  .footer-top .wordmark,.footer-top>p,.footer-top>.button{grid-column:1/-1}
+  .footer-bottom{grid-template-columns:repeat(12,minmax(0,1fr));row-gap:14px}
+  .footer-bottom>span,.footer-links,.footer-bottom>.back-top,.footer-reminder{grid-column:1/-1}
+}
+@media(max-width:420px){
+  .info-card,.club-info-grid article{grid-column:1/-1}
+}
