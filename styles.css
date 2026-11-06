@@ -346,3 +346,9 @@ img{max-width:100%}
   .hero-copy{grid-column:1/span 6;grid-row:1;max-width:none}
   .hero-visual{grid-column:7/span 6;grid-row:1;min-height:360px;height:420px}
 }
+
+/* Keep the same compact CTA width on small screens. */
+@media(max-width:420px){
+  :root{--action-width:200px}
+  .group-row{grid-template-columns:minmax(0,1fr) var(--action-width)}
+}
