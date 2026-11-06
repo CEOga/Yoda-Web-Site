@@ -569,3 +569,38 @@ h1 *,h2 *,h3 *{font-size:inherit!important}
  .about-image{height:410px!important;min-height:0;width:86%;margin:auto 7% auto 0;align-self:start}
  .about-actions{grid-template-columns:1fr;gap:10px}
 }
+/* Unified CTA spacing, price scale, and individual lesson card. */
+:root{--action-inline-space:18px;--action-arrow-gap:8px;--price-size:24px}
+.site-header>.button,
+#highlights .button,
+#individual .button,
+#online .online-copy>.button,
+#booking .submit-button,
+.site-footer .button{
+ width:var(--action-width)!important;min-width:var(--action-width)!important;max-width:100%!important;
+ height:var(--action-height)!important;min-height:var(--action-height)!important;max-height:var(--action-height)!important;
+ padding-inline:var(--action-inline-space)!important;gap:var(--action-arrow-gap)!important;
+ justify-content:center!important;border-radius:999px!important;font-size:var(--type-body)!important;
+ white-space:nowrap;box-sizing:border-box
+}
+#home .hero-actions .button{
+ padding-inline:var(--action-inline-space)!important;gap:var(--action-arrow-gap)!important;
+ justify-content:center!important;border-radius:999px!important;font-size:var(--type-body)!important;
+}
+.group-pricing strong,.personal-practice-meta>strong,.online-price strong{
+ font-size:var(--price-size)!important;line-height:1.1!important;font-weight:700!important
+}
+.group-pricing strong small,.online-price strong small{font-size:var(--type-caption)!important}
+.personal-practice-meta{
+ grid-column:9/span 4;display:grid;grid-template-columns:minmax(0,1fr) auto!important;
+ align-items:center;gap:14px 18px!important;padding:20px!important;
+ border:1px solid var(--line);border-radius:12px;background:var(--paper)
+}
+.personal-practice-meta>span{grid-column:1!important;justify-self:start}
+.personal-practice-meta>strong{grid-column:2!important;justify-self:end}
+.personal-practice-meta>.button{grid-column:1/-1!important;justify-self:start}
+@media(max-width:1050px){.personal-practice-meta{grid-column:9/span 4}}
+@media(max-width:760px){
+ .personal-practice-meta{grid-column:1/-1!important;padding:18px!important;grid-template-columns:minmax(0,1fr) auto!important}
+ .personal-practice-meta>.button{justify-self:start}
+}
