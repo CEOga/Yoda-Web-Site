@@ -604,3 +604,6 @@ h1 *,h2 *,h3 *{font-size:inherit!important}
  .personal-practice-meta{grid-column:1/-1!important;padding:18px!important;grid-template-columns:minmax(0,1fr) auto!important}
  .personal-practice-meta>.button{justify-self:start}
 }
+
+/* Subscription details now sit between the price and action. */
+.online-copy>.club-info-accordion{width:100%;margin:20px 0 14px!important;align-self:stretch}
