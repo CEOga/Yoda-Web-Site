@@ -626,3 +626,10 @@ h1 *,h2 *,h3 *{font-size:inherit!important}
 .about-actions .credentials{width:100%!important}
 .about-actions .credentials summary{width:100%!important;min-height:48px}
 .about-actions>.text-link{margin-top:0!important}
+
+.about-actions>.text-link{
+ width:max-content!important;min-width:0!important;max-width:100%!important;
+ height:auto!important;min-height:0!important;max-height:none!important;
+ padding:8px 0!important;gap:8px!important;justify-content:flex-start!important;
+ border:0!important;border-bottom:1px solid var(--ink)!important;border-radius:0!important;
+}
