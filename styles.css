@@ -132,3 +132,6 @@ h2{font-weight:500;letter-spacing:-.055em}
 .more-photos[aria-expanded=true] .more-photos-arrow{transform:rotate(90deg)}
 .more-photos:focus-visible{outline:2px solid #a86560;outline-offset:4px}
 @media(max-width:760px){.extra-photos{gap:12px;margin-top:16px}.more-photos{margin-top:22px}}
+
+/* Align the information heading with the first photo. */
+@media(min-width:761px){.info-section .section-heading{padding-left:0;padding-right:0}.info-section .section-heading .section-lead{margin-right:0}}
