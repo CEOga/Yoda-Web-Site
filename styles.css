@@ -449,3 +449,46 @@ h1 em,h2 em,h3 em{font-size:inherit!important;font-style:normal;line-height:inhe
   .groups .section-heading h2{font-size:clamp(28px,8.8vw,36px)}
   .online-copy>.button{padding-inline:14px;gap:8px}
 }
+
+
+/* Free practice videos */
+.sample-videos{padding-block:80px}
+.sample-videos-heading{
+  display:grid;
+  grid-template-columns:repeat(12,minmax(0,1fr));
+  gap:var(--grid-gap);
+  align-items:end;
+  padding:0 0 32px;
+}
+.sample-videos-heading>div{grid-column:1/span 6}
+.sample-videos-heading h2{margin:0;font-size:var(--size-display);line-height:.98}
+.sample-videos-heading>p{
+  grid-column:8/span 5;
+  max-width:42ch;
+  margin:0 0 4px;
+  font-size:var(--size-lead);
+  line-height:1.55;
+}
+.sample-video-grid{
+  display:grid;
+  grid-template-columns:repeat(12,minmax(0,1fr));
+  gap:var(--grid-gap);
+}
+.sample-video{grid-column:span 4;min-width:0}
+.sample-video-frame{
+  aspect-ratio:16/9;
+  overflow:hidden;
+  border-radius:8px;
+  background:var(--ink);
+}
+.sample-video-frame iframe{display:block;width:100%;height:100%;border:0}
+.sample-video h3{margin:14px 0 0;font-size:var(--size-body);font-weight:600;line-height:1.35}
+@media(max-width:760px){
+  .sample-videos{padding-block:60px}
+  .sample-videos-heading{row-gap:16px;padding-bottom:24px}
+  .sample-videos-heading>div,.sample-videos-heading>p{grid-column:1/-1}
+  .sample-videos-heading h2{font-size:var(--size-display)}
+  .sample-video{grid-column:1/-1}
+  .sample-video h3{margin-top:10px}
+  .sample-video-grid{row-gap:24px}
+}
