@@ -607,3 +607,22 @@ h1 *,h2 *,h3 *{font-size:inherit!important}
 
 /* Subscription details now sit between the price and action. */
 .online-copy>.club-info-accordion{width:100%;margin:20px 0 14px!important;align-self:stretch}
+
+/* One shared pill button and full-width credentials disclosure. */
+.button,.button-small,.submit-button,.site-header>.button,.hero-actions>.button,.footer-top>.button,#highlights .button,#individual .button,#online .online-copy>.button{
+ width:min(var(--action-width),100%)!important;min-width:min(var(--action-width),100%)!important;max-width:100%!important;
+ height:var(--action-height)!important;min-height:var(--action-height)!important;max-height:var(--action-height)!important;
+ box-sizing:border-box!important;padding-inline:18px!important;gap:8px!important;
+ justify-content:center!important;border-radius:999px!important;
+ font-size:var(--type-body)!important;line-height:1.1!important;white-space:nowrap
+}
+.text-link{
+ width:max-content!important;min-width:0!important;max-width:100%!important;
+ height:auto!important;min-height:0!important;max-height:none!important;
+ padding:8px 0!important;gap:8px!important;justify-content:flex-start!important;
+ border:0!important;border-bottom:1px solid var(--ink)!important;border-radius:0!important;
+}
+.about-actions{grid-template-columns:minmax(0,1fr)!important;gap:8px!important}
+.about-actions .credentials{width:100%!important}
+.about-actions .credentials summary{width:100%!important;min-height:48px}
+.about-actions>.text-link{margin-top:0!important}
