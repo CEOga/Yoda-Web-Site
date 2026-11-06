@@ -633,3 +633,10 @@ h1 *,h2 *,h3 *{font-size:inherit!important}
  padding:8px 0!important;gap:8px!important;justify-content:flex-start!important;
  border:0!important;border-bottom:1px solid var(--ink)!important;border-radius:0!important;
 }
+/* Keep both hero CTAs on the shared button dimensions. */
+#home .hero-actions .button{
+ width:min(var(--action-width),100%)!important;min-width:min(var(--action-width),100%)!important;max-width:100%!important;
+ height:var(--action-height)!important;min-height:var(--action-height)!important;max-height:var(--action-height)!important;
+ padding-inline:18px!important;gap:8px!important;justify-content:center!important;
+ white-space:normal!important;line-height:1.1!important
+}
