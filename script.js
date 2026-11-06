@@ -71,3 +71,13 @@ form?.addEventListener('submit', async (event) => {
 });
 
 document.querySelector('#year')?.replaceChildren(String(new Date().getFullYear()));
+
+const morePhotosButton = document.querySelector('.more-photos');
+const extraPhotos = document.querySelector('#extra-practice-photos');
+
+morePhotosButton?.addEventListener('click', () => {
+  const expanded = morePhotosButton.getAttribute('aria-expanded') === 'true';
+  morePhotosButton.setAttribute('aria-expanded', String(!expanded));
+  morePhotosButton.querySelector('.more-photos-label').textContent = expanded ? 'Ещё фото' : 'Скрыть фото';
+  if (extraPhotos) extraPhotos.hidden = expanded;
+});
