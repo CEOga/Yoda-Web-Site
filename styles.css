@@ -143,3 +143,17 @@ h2{font-weight:500;letter-spacing:-.055em}
 .extra-photos{grid-template-columns:repeat(4,minmax(0,1fr))}
 @media(max-width:1050px){.extra-photos{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:760px){.about-image{height:410px;width:86%;margin:auto 7% auto 0}.extra-photos{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* Photography in the online and booking sections; rose background for FAQ. */
+.online-art-photo:before,.online-art-photo:after{content:none;display:none}
+.online-art-photo{background:#302c2b;color:white}
+.online-art-photo img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;object-position:50% 55%;filter:saturate(.72) brightness(.78)}
+.online-art-photo .online-photo-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(25,22,22,.12),rgba(25,22,22,.34))}
+.online-art-photo span{position:relative;z-index:1;color:white;text-shadow:0 1px 14px rgba(0,0,0,.2)}
+.booking{position:relative;isolation:isolate;background:var(--rose)}
+.booking:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(100deg,rgba(215,142,136,.84),rgba(215,142,136,.88)),url("images/IMG_4022.jpg") center 54%/cover no-repeat}
+.booking-inner{position:relative}
+.faq{width:100%;background:var(--rose);padding-left:max(48px,calc((100vw - 1320px)/2));padding-right:max(48px,calc((100vw - 1320px)/2))}
+.faq h2 em{color:var(--paper)}
+@media(max-width:1050px){.faq{padding-left:32px;padding-right:32px}}
+@media(max-width:760px){.booking:before{background-image:linear-gradient(rgba(215,142,136,.88),rgba(215,142,136,.9)),url("images/IMG_4022.jpg");background-position:center 56%}.faq{padding-left:20px;padding-right:20px}}
