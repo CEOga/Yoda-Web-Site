@@ -531,3 +531,5 @@ h1 *,h2 *,h3 *{font-size:inherit!important}
  .club-info-heading>div,.club-info-accordion{width:100%;margin:0!important}
  .club-info-accordion{margin-top:24px!important}
 }
+.online-copy .button{padding-inline:8px!important;gap:4px!important;flex-wrap:nowrap}
+.online-copy .button>span{flex:0 0 auto;white-space:nowrap}
