@@ -533,3 +533,21 @@ h1 *,h2 *,h3 *{font-size:inherit!important}
 }
 .online-copy .button{padding-inline:8px!important;gap:4px!important;flex-wrap:nowrap}
 .online-copy .button>span{flex:0 0 auto;white-space:nowrap}
+
+/* Latest content refinements. */
+#home .hero-text{color:var(--paper)!important;max-width:48ch;line-height:1.55}
+#home .hero-actions{gap:16px;flex-wrap:wrap}
+#home .hero-actions .button{
+ width:max-content!important;min-width:200px!important;max-width:100%!important;
+ padding-inline:18px!important;gap:8px!important;white-space:nowrap;
+ flex:0 0 auto
+}
+#home .hero-actions .button span{flex:0 0 auto;white-space:nowrap}
+#faq .faq-layout>div:first-child{display:flex;flex-direction:column;align-items:flex-start}
+#faq .faq-layout>div:first-child .text-link{align-self:center;margin-top:10px}
+#booking{background:var(--paper)!important}
+#booking h2 em{color:var(--rose)!important}
+@media(max-width:760px){
+ #home .hero-actions .button{min-width:min(200px,100%)!important}
+ #faq .faq-layout>div:first-child .text-link{align-self:center}
+}
