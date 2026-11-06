@@ -510,3 +510,24 @@ h1 *,h2 *,h3 *{font-size:inherit!important}
  .club-info-expanded p{font-size:var(--type-body)}
  .online-art-photo>span{top:16%}
 }
+/* Keep the subscription disclosure aligned to the same 12-column grid. */
+.club-info-heading{
+ display:grid!important;
+ grid-template-columns:repeat(12,minmax(0,1fr))!important;
+ column-gap:24px!important;
+ align-items:start!important;
+}
+.club-info-heading>div{grid-column:1 / span 5;min-width:0}
+.club-info-accordion{grid-column:6 / -1;width:100%;min-width:0;margin:0!important}
+.club-info-expanded{max-width:none}
+.button,.button-small,.submit-button,.site-header>.button,.text-link,.hero-actions>.button,.footer-top>.button{
+ white-space:nowrap;
+ padding-inline:12px!important;
+ gap:6px!important
+}
+.text-link{padding-inline:2px!important}
+@media(max-width:760px){
+ .club-info-heading{display:block!important}
+ .club-info-heading>div,.club-info-accordion{width:100%;margin:0!important}
+ .club-info-accordion{margin-top:24px!important}
+}
