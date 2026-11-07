@@ -1198,3 +1198,13 @@ h1 em,h2 em,h3 em{font-size:inherit!important;font-style:normal;line-height:inhe
 .highlight-cta>div{width:100%;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));justify-content:stretch;gap:10px}
 .highlight-cta .button{min-width:0;justify-content:space-between}
 .groups .personal-practice-copy{background:var(--greige)}
+
+@media(max-width:760px){
+  .highlight-cta{align-items:flex-start;flex-direction:column}
+  .highlight-cta>div{display:flex;width:100%;flex-wrap:wrap;justify-content:flex-start}
+  .highlight-cta .button{flex:1 1 200px}
+}
+@media(max-width:380px){
+  .highlight-cta>div{display:grid;grid-template-columns:1fr}
+  .highlight-cta .button{width:100%}
+}
