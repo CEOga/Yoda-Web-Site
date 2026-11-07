@@ -1090,3 +1090,9 @@ h1 em,h2 em,h3 em{font-size:inherit!important;font-style:normal;line-height:inhe
 
 /* Cover the last hairline seam between the personal-practice photo and copy. */
 .groups .personal-practice-photo{width:calc(100% + 6px);max-width:none;margin-right:-6px;z-index:2}
+
+
+/* Let the copy panel cover any baked-in white edge on the source photo. */
+@media(min-width:761px){
+  .groups .personal-practice-copy{position:relative;z-index:3;margin-left:-6px}
+}
