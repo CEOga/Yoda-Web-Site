@@ -81,3 +81,33 @@ morePhotosButton?.addEventListener('click', () => {
   morePhotosButton.querySelector('.more-photos-label').textContent = expanded ? 'Ещё фото' : 'Скрыть фото';
   if (extraPhotos) extraPhotos.hidden = expanded;
 });
+
+
+const reviewTrack = document.querySelector('#review-list');
+const reviewCards = reviewTrack ? [...reviewTrack.querySelectorAll('.review-item')] : [];
+const reviewControls = [...document.querySelectorAll('.review-scroll')];
+
+function updateReviewControls() {
+  if (!reviewTrack || reviewCards.length === 0) return;
+  const maxScroll = reviewTrack.scrollWidth - reviewTrack.clientWidth;
+  reviewControls.forEach((button) => {
+    const direction = Number(button.dataset.reviewDirection);
+    button.disabled = direction < 0
+      ? reviewTrack.scrollLeft <= 2
+      : reviewTrack.scrollLeft >= maxScroll - 2;
+  });
+}
+
+reviewControls.forEach((button) => {
+  button.addEventListener('click', () => {
+    if (!reviewTrack || reviewCards.length === 0) return;
+    const direction = Number(button.dataset.reviewDirection);
+    const gap = parseFloat(getComputedStyle(reviewTrack).columnGap) || 0;
+    const distance = (reviewCards[0].getBoundingClientRect().width + gap) * 3;
+    reviewTrack.scrollBy({ left: direction * distance, behavior: 'smooth' });
+  });
+});
+
+reviewTrack?.addEventListener('scroll', updateReviewControls, { passive: true });
+window.addEventListener('resize', updateReviewControls);
+updateReviewControls();
