@@ -1062,3 +1062,10 @@ h1 em,h2 em,h3 em{font-size:inherit!important;font-style:normal;line-height:inhe
   .groups .group-row .round-arrow{right:12px;bottom:12px}
   .groups .group-row .group-info{padding-bottom:58px}
 }
+
+
+/* Reduce the blank transition into the schedule on narrow screens. */
+@media(max-width:760px){
+  .groups{padding-top:24px}
+  .groups .section-heading{padding-top:18px;padding-bottom:18px}
+}
