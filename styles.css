@@ -667,5 +667,48 @@ h1 em,h2 em,h3 em{font-size:inherit!important;font-style:normal;line-height:inhe
 }
 
 
-/* Highlight the callout and use the approved warm neutral palette. */
-.highlight-cta>p em{color:var(--rose);font-style:normal}
+
+
+/* FAQ opens a category first, then a question inside it. */
+.faq-list>.faq-category{
+  margin:0 0 10px;
+  padding:0 18px;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:var(--greige);
+}
+.faq-list>.faq-category>summary.faq-category-summary{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  min-height:62px;
+  padding:14px 30px 14px 0;
+  font-size:var(--size-lead);
+  font-weight:600;
+}
+.faq-list>.faq-category>summary.faq-category-summary span{
+  right:2px;
+}
+.faq-list>.faq-category[open]{
+  padding-bottom:10px;
+  background:var(--paper);
+}
+.faq-list>.faq-category[open]>summary.faq-category-summary{
+  margin-bottom:4px;
+  border-bottom:1px solid var(--line);
+}
+.faq-list>.faq-category>details{
+  margin:0;
+  border-top:0;
+}
+.faq-list>.faq-category>details>summary{
+  padding-block:13px;
+}
+.faq-list>.faq-category>details>p{
+  padding-bottom:14px;
+}
+.faq-list>.faq-category:first-child{border-top:1px solid var(--line)}
+@media(max-width:760px){
+  .faq-list>.faq-category{padding-inline:14px}
+  .faq-list>.faq-category>summary.faq-category-summary{min-height:56px;font-size:var(--size-body)}
+}
