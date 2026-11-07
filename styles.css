@@ -1096,3 +1096,97 @@ h1 em,h2 em,h3 em{font-size:inherit!important;font-style:normal;line-height:inhe
 @media(min-width:761px){
   .groups .personal-practice-copy{position:relative;z-index:3;margin-left:-6px}
 }
+
+
+/* Highlights: a compact, high-contrast introduction to the practice. */
+.highlights{padding-block:40px}
+.highlights-panel{
+  display:grid;
+  grid-template-columns:repeat(12,minmax(0,1fr));
+  align-items:center;
+  gap:20px var(--grid-gap);
+  padding:clamp(26px,4vw,54px);
+  border-radius:16px;
+  background:var(--ink);
+  color:var(--paper);
+}
+.highlight-intro{grid-column:1/span 5;grid-row:1/span 2}
+.highlight-intro .eyebrow{margin:0 0 16px;color:var(--rose);font-weight:700;letter-spacing:.08em}
+.highlight-intro h2{max-width:10ch;margin:0;font-size:clamp(32px,4vw,52px);line-height:1.04;letter-spacing:-.045em}
+.highlight-stats{grid-column:7/span 6;grid-row:1;gap:12px}
+.highlight-stat{min-height:108px;padding:16px 10px;border:1px solid rgba(247,246,242,.48);background:transparent;color:var(--paper);border-radius:10px}
+.highlight-stat strong{color:var(--rose);font-size:clamp(36px,4vw,50px)!important}
+.highlight-stat span{font-size:var(--size-body)!important}
+.highlight-cta{grid-column:7/span 6;grid-row:2;flex-direction:row;align-items:center;justify-content:space-between;gap:16px}
+.highlight-cta p{flex:0 0 auto;margin:0;color:var(--paper);font-size:var(--size-body)!important;font-weight:600}
+.highlight-cta>div{display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap}
+.highlight-cta .button{min-height:48px;padding:11px 16px;gap:10px;white-space:nowrap;font-size:var(--size-body)}
+.highlight-cta .button-primary{background:var(--rose);border:1px solid var(--rose);color:var(--paper)}
+.highlight-cta .button-light-outline{background:transparent;border:1px solid var(--paper);color:var(--paper)}
+.highlight-cta .button:hover{transform:translateY(-1px)}
+
+/* Reviews: horizontal, keyboard and button navigable card rail. */
+.review-carousel-controls{display:flex;justify-content:flex-end;gap:10px;margin:0 0 14px}
+.review-scroll{
+  display:grid;
+  place-items:center;
+  width:42px;
+  height:42px;
+  padding:0;
+  border:0;
+  border-radius:50%;
+  background:var(--rose);
+  color:var(--paper);
+  font:600 20px/1 Manrope,sans-serif;
+  cursor:pointer;
+  transition:opacity .2s,transform .2s;
+}
+.review-scroll:hover:not(:disabled){transform:translateY(-2px)}
+.review-scroll:disabled{opacity:.38;cursor:default}
+.review-scroll:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.review-list{
+  max-width:none;
+  display:flex;
+  align-items:flex-start;
+  gap:14px;
+  overflow-x:auto;
+  padding:2px 2px 16px;
+  scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;
+  scrollbar-width:thin;
+  scrollbar-color:var(--rose) transparent;
+}
+.review-item{
+  flex:0 0 clamp(190px,calc((100% - 70px)/6),250px);
+  min-height:168px;
+  scroll-snap-align:start;
+}
+.review-item summary{
+  align-items:flex-start;
+  min-height:110px;
+  padding:16px;
+  font-size:var(--size-body);
+  line-height:1.35;
+}
+.review-arrow{flex-basis:34px;width:34px;height:34px}
+.review-item>p{padding:0 16px 18px;font-size:var(--size-caption);line-height:1.55}
+@media(max-width:760px){
+  .highlights{padding-block:28px}
+  .highlights-panel{grid-template-columns:repeat(6,minmax(0,1fr));gap:20px 12px;padding:24px 18px}
+  .highlight-intro{grid-column:1/-1;grid-row:auto}
+  .highlight-intro h2{max-width:14ch;font-size:clamp(30px,8vw,42px)}
+  .highlight-stats{grid-column:1/-1;grid-row:auto;gap:10px}
+  .highlight-stat{min-height:88px;padding:12px 6px}
+  .highlight-stat span{font-size:var(--size-caption)!important}
+  .highlight-cta{grid-column:1/-1;grid-row:auto;align-items:flex-start;flex-direction:column;gap:12px}
+  .highlight-cta>div{justify-content:flex-start}
+  .highlight-cta .button{font-size:var(--size-caption);padding:10px 13px}
+  .review-carousel-controls{margin-bottom:10px}
+  .review-list{gap:10px}
+  .review-item{flex-basis:clamp(220px,72vw,300px);min-height:158px}
+  .review-item summary{min-height:96px;padding:13px}
+}
+@media(max-width:380px){
+  .highlight-cta>div{width:100%;flex-direction:column}
+  .highlight-cta .button{width:100%;justify-content:space-between}
+}
