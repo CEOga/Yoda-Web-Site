@@ -1086,3 +1086,7 @@ h1 em,h2 em,h3 em{font-size:inherit!important;font-style:normal;line-height:inhe
   margin:0;font-size:var(--size-heading);font-weight:600;line-height:1.2;
 }
 @media(max-width:760px){.groups .group-row .group-info{transform:translateY(-6px)}}
+
+
+/* Cover the last hairline seam between the personal-practice photo and copy. */
+.groups .personal-practice-photo{width:calc(100% + 6px);max-width:none;margin-right:-6px;z-index:2}
