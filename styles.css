@@ -712,3 +712,162 @@ h1 em,h2 em,h3 em{font-size:inherit!important;font-style:normal;line-height:inhe
   .faq-list>.faq-category{padding-inline:14px}
   .faq-list>.faq-category>summary.faq-category-summary{min-height:56px;font-size:var(--size-body)}
 }
+
+
+/* Group and personal schedules as photo cards. */
+.groups .group-pricing{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:16px;
+  margin:0 0 34px;
+}
+.groups .group-pricing>div{
+  min-height:82px;
+  padding:18px 24px;
+  border-radius:10px;
+  background:var(--greige);
+}
+.groups .group-pricing>div>span{font-size:var(--size-body)}
+.groups .group-pricing>div>strong{font-size:var(--size-heading)}
+.groups .group-pricing small{font-size:var(--size-caption)}
+.groups .groups-topline{margin:0;padding:12px 0;border-bottom:1px solid var(--line)}
+.groups .group-list{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:18px;
+  margin:18px 0 0;
+}
+.groups .group-row{
+  display:grid;
+  grid-template-columns:minmax(0,.82fr) minmax(0,1fr);
+  grid-template-rows:1fr auto;
+  align-items:stretch;
+  gap:0;
+  min-height:280px;
+  overflow:hidden;
+  border:0;
+  border-radius:12px;
+  background:var(--greige);
+}
+.group-photo{
+  grid-column:1;
+  grid-row:1 / span 2;
+  display:block;
+  width:100%;
+  height:100%;
+  min-height:280px;
+  object-fit:cover;
+  object-position:center;
+}
+.group-info{
+  grid-column:2;
+  grid-row:1;
+  align-self:end;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  gap:8px;
+  min-width:0;
+  padding:22px 20px 12px;
+}
+.group-info h3{margin:0;font-size:var(--size-heading);line-height:1.08}
+.group-info .group-schedule{font-size:var(--size-body);line-height:1.45;margin:0}
+.group-info .group-location{font-size:var(--size-caption);line-height:1.4}
+.groups .group-row .round-arrow{
+  grid-column:2;
+  grid-row:2;
+  justify-self:start;
+  display:inline-flex;
+  width:auto;
+  height:var(--action-height);
+  min-height:var(--action-height);
+  align-items:center;
+  gap:12px;
+  margin:0 20px 20px;
+  padding:0 18px;
+  border:0;
+  border-radius:999px;
+  background:var(--rose);
+  color:var(--paper);
+  font-size:var(--size-caption);
+  font-weight:700;
+  transform:none;
+}
+.groups .group-row .round-arrow:hover{background:var(--rose);transform:translateY(-2px)}
+.groups .group-row .round-arrow span{font-size:var(--size-caption)}
+.groups .personal-practice{
+  display:grid;
+  grid-template-columns:repeat(12,minmax(0,1fr));
+  gap:0;
+  align-items:stretch;
+  margin-top:20px;
+  padding:0;
+  overflow:hidden;
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:var(--greige);
+}
+.personal-practice-photo{
+  grid-column:1/span 4;
+  grid-row:1;
+  display:block;
+  width:100%;
+  height:100%;
+  min-height:280px;
+  object-fit:cover;
+}
+.personal-practice-copy{
+  grid-column:5/span 4;
+  align-self:center;
+  padding:30px;
+}
+.personal-practice-copy h3{margin:0 0 12px;font-size:var(--size-heading);line-height:1.1}
+.personal-practice-copy p{margin:0;line-height:1.55}
+.groups .personal-practice-meta{
+  grid-column:9/span 4;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  justify-content:center;
+  gap:12px;
+  min-width:0;
+  padding:28px;
+  border-left:1px solid var(--line);
+}
+.personal-practice-meta>span{font-size:var(--size-body)}
+.personal-practice-meta>strong{font-size:var(--size-heading)}
+.personal-practice-meta>.button{width:100%;justify-content:space-between}
+@media(max-width:760px){
+  .groups .group-pricing{grid-template-columns:1fr;gap:10px;margin-bottom:26px}
+  .groups .group-pricing>div{min-height:68px;padding:14px 16px}
+  .groups .group-list{grid-template-columns:1fr;gap:12px;margin-top:14px}
+  .groups .group-row{grid-template-columns:38% minmax(0,1fr);grid-template-rows:1fr auto;min-height:230px}
+  .group-photo{min-height:230px}
+  .group-info{padding:17px 15px 10px}
+  .group-info h3{font-size:var(--size-body);line-height:1.2}
+  .group-info .group-schedule{font-size:var(--size-caption)}
+  .groups .group-row .round-arrow{margin:0 15px 15px;padding:0 14px}
+  .groups .personal-practice{grid-template-columns:repeat(6,minmax(0,1fr))}
+  .personal-practice-photo{grid-column:1/span 2;min-height:200px}
+  .personal-practice-copy{grid-column:3/span 4;padding:20px}
+  .personal-practice-copy h3{font-size:var(--size-body)}
+  .groups .personal-practice-meta{
+    grid-column:1/-1;
+    padding:16px 20px;
+    border-left:0;
+    border-top:1px solid var(--line);
+    display:grid;
+    grid-template-columns:1fr auto;
+    align-items:center;
+  }
+  .personal-practice-meta>.button{grid-column:1/-1}
+}
+@media(max-width:420px){
+  .groups .group-row{grid-template-columns:34% minmax(0,1fr);min-height:210px}
+  .group-photo{min-height:210px}
+  .group-info{padding:14px 12px 8px}
+  .groups .group-row .round-arrow{margin:0 12px 12px;padding-inline:12px}
+  .personal-practice-photo{grid-column:1/-1;grid-row:1;height:210px;min-height:210px}
+  .personal-practice-copy{grid-column:1/-1;grid-row:2;padding:20px 18px 8px}
+  .groups .personal-practice-meta{grid-row:3}
+}
