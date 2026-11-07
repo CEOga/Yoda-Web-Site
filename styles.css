@@ -1192,3 +1192,9 @@ h1 em,h2 em,h3 em{font-size:inherit!important;font-style:normal;line-height:inhe
 }
 
 .highlights-panel{grid-column:1/-1;width:100%;}
+
+.highlight-intro h2{color:var(--paper)}
+.highlight-cta{align-items:flex-start;flex-direction:column;justify-content:flex-start}
+.highlight-cta>div{width:100%;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));justify-content:stretch;gap:10px}
+.highlight-cta .button{min-width:0;justify-content:space-between}
+.groups .personal-practice-copy{background:var(--greige)}
