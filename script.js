@@ -111,3 +111,14 @@ reviewControls.forEach((button) => {
 reviewTrack?.addEventListener('scroll', updateReviewControls, { passive: true });
 window.addEventListener('resize', updateReviewControls);
 updateReviewControls();
+
+
+const heroVideo = document.querySelector('.hero-video');
+if (heroVideo) {
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reducedMotion) {
+    heroVideo.pause();
+  } else {
+    heroVideo.play().catch(() => {});
+  }
+}
