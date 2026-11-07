@@ -1069,3 +1069,20 @@ h1 em,h2 em,h3 em{font-size:inherit!important;font-style:normal;line-height:inhe
   .groups{padding-top:24px}
   .groups .section-heading{padding-top:18px;padding-bottom:18px}
 }
+
+
+/* Polish schedule hierarchy, image seam, and the group card text position. */
+.groups .group-row .group-info{transform:translateY(-10px)}
+.groups .personal-practice-photo{
+  border:0!important;outline:0!important;box-shadow:none!important;
+  width:calc(100% + 2px);max-width:none;margin-right:-2px;
+  position:relative;z-index:1;
+}
+.groups .groups-topline{
+  display:block;margin-top:10px;padding:12px 0 10px;
+  border-top:0;border-bottom:1px solid var(--line);
+}
+.groups .groups-topline h3{
+  margin:0;font-size:var(--size-heading);font-weight:600;line-height:1.2;
+}
+@media(max-width:760px){.groups .group-row .group-info{transform:translateY(-6px)}}
