@@ -1208,3 +1208,10 @@ h1 em,h2 em,h3 em{font-size:inherit!important;font-style:normal;line-height:inhe
   .highlight-cta>div{display:grid;grid-template-columns:1fr}
   .highlight-cta .button{width:100%}
 }
+
+.review-item summary{position:relative;display:block;min-height:152px;padding:16px 16px 54px;line-height:1.38}
+.review-item summary>span:first-child{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:4;overflow:hidden}
+.review-item .review-arrow{position:absolute;right:12px;bottom:12px}
+@media(max-width:760px){
+  .review-item summary{min-height:140px;padding:14px 14px 50px}
+}
