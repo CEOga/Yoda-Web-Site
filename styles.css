@@ -1037,3 +1037,9 @@ h1 em,h2 em,h3 em{font-size:inherit!important;font-style:normal;line-height:inhe
     padding:14px 16px;
   }
 }
+
+
+/* The legacy row selector pins every direct div to column one; explicitly place the group copy beside its photo. */
+@media(max-width:760px){
+  .groups .group-row .group-info{grid-column:2;grid-row:1;align-self:center;min-width:0}
+}
