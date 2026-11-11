@@ -1683,7 +1683,8 @@ main > #highlights { margin-block-start: 48px; }
   padding: 48px;
   border-radius: var(--radius);
   background-image: linear-gradient(105deg, rgba(24,24,24,.94) 0%, rgba(24,24,24,.82) 58%, rgba(24,24,24,.45) 100%),
-    url("images/IMG_3152.JPG");
+    url("images/IMG_4022.jpg");
+  background-position: center, center 60%;
 }
 #highlights .highlight-intro { grid-column: 1; }
 #highlights .highlight-cta { grid-column: 2; align-items: flex-start; }
