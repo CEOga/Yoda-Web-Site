@@ -1397,3 +1397,11 @@ h1 em,h2 em,h3 em{font-size:inherit!important;font-style:normal;line-height:inhe
 }
 
 .groups .section-heading h2 .accent{color:var(--rose)}
+
+
+/* Final sizing for the rounded class composition. */
+.groups .section-heading h2 .accent{font-size:inherit!important;font-weight:inherit;line-height:inherit;letter-spacing:inherit}
+@media(min-width:761px){
+  .groups .personal-practice{height:440px;min-height:440px;max-height:440px;grid-template-rows:minmax(0,1fr) auto}
+  .groups .personal-practice-photo{height:440px;min-height:440px;max-height:440px}
+}
