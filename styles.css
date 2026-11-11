@@ -1395,3 +1395,5 @@ h1 em,h2 em,h3 em{font-size:inherit!important;font-style:normal;line-height:inhe
   .groups .group-row .group-info{padding:12px 11px 5px}
   .groups .group-row .round-arrow{margin:0 11px 11px}
 }
+
+.groups .section-heading h2 .accent{color:var(--rose)}
