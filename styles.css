@@ -1408,7 +1408,7 @@ h1 em,h2 em,h3 em{font-size:inherit!important;font-style:normal;line-height:inhe
 
 /* Serif accents and balanced class card content. */
 h1 em, h2 em, h3 em, .groups .section-heading h2 .accent {
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: Georgia, "Times New Roman", serif !important;
   font-style: italic;
   font-weight: 400;
   letter-spacing: -.02em;
