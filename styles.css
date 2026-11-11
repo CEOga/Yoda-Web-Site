@@ -1852,3 +1852,24 @@ main > .section-wrap + .section-wrap, main > #booking {
   min-height: 44px;
 }
 body :is(.review-scroll, .more-photos, summary, .text-link) { min-width: 44px; }
+
+/* Light labels for the selected actions. */
+#individual .personal-practice-meta > .button,
+#highlights .highlight-cta .button-primary,
+#online .online-copy > .button {
+  color: var(--paper);
+}
+
+#booking-form .submit-button {
+  width: max-content;
+  min-width: 0;
+  max-width: 100%;
+  white-space: nowrap !important;
+}
+@media (max-width: 480px) {
+  #booking-form .submit-button {
+    width: 100%;
+    padding-inline: 8px !important;
+    gap: 8px !important;
+  }
+}
