@@ -1573,3 +1573,16 @@ body :is(button, .button, .round-arrow, .text-link, .more-photos, summary, .prim
     margin: 0 16px 16px;
   }
 }
+
+/* Give long labels room within their containers. */
+.hero-actions .button {
+  width: auto;
+  min-width: min(220px, 100%);
+}
+.review-item > p { overflow-wrap: anywhere; }
+@media (min-width: 761px) {
+  .hero .hero-copy h1 { max-width: 30ch; }
+}
+@media (max-width: 480px) {
+  .hero-actions .button { width: 100%; }
+}
