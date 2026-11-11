@@ -1603,8 +1603,7 @@ body h3 { font-weight: 700; }
 
 .groups .group-pricing > div > strong,
 .online .online-price > strong,
-.personal-practice-price > strong,
-.faq .price-amount {
+.personal-practice-price > strong {
   font-size: var(--type-price) !important;
   font-weight: 700;
   line-height: 1.2;
