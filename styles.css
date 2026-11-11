@@ -1405,3 +1405,36 @@ h1 em,h2 em,h3 em{font-size:inherit!important;font-style:normal;line-height:inhe
   .groups .personal-practice{height:440px;min-height:440px;max-height:440px;grid-template-rows:minmax(0,1fr) auto}
   .groups .personal-practice-photo{height:440px;min-height:440px;max-height:440px}
 }
+
+/* Serif accents and balanced class card content. */
+h1 em, h2 em, h3 em, .groups .section-heading h2 .accent {
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -.02em;
+}
+.about-copy h2 + p { font-weight: 700; }
+.groups .group-row {
+  grid-template-rows: minmax(0, 1fr) auto auto minmax(0, 1fr);
+}
+.groups .group-row > .group-photo,
+.groups .group-row:nth-child(2) > .group-photo {
+  grid-row: 1 / -1;
+  border-radius: 0 clamp(38px, 6vw, 70px) clamp(38px, 6vw, 70px) 0;
+}
+.groups .group-row .group-info {
+  grid-row: 2;
+  padding-block: 0 8px;
+}
+.groups .group-row .round-arrow {
+  grid-row: 3;
+  margin-block: 0;
+}
+@media (min-width: 761px) {
+  .groups .personal-practice {
+    grid-template-rows: minmax(0, 1fr) auto auto minmax(0, 1fr);
+  }
+  .groups .personal-practice-photo { grid-row: 1 / -1; }
+  .groups .personal-practice-copy { grid-row: 2; padding-block-start: 0; }
+  .groups .personal-practice-meta { grid-row: 3; padding-block-end: 0; }
+}
