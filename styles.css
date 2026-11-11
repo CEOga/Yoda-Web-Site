@@ -1228,3 +1228,170 @@ h1 em,h2 em,h3 em{font-size:inherit!important;font-style:normal;line-height:inhe
 @media(prefers-reduced-motion:reduce){
   .hero-video{visibility:hidden}
 }
+
+
+/* Rounded photo composition for the introduction and class choices. */
+.about-layout{align-items:center}
+.about-image{height:clamp(580px,57vw,760px);min-height:0;align-self:center;overflow:hidden;border-radius:44% 18px 34% 18px / 30% 18px 28% 18px}
+.about-image img{height:100%;min-height:0;object-position:center 45%}
+
+.groups{padding-top:58px;padding-bottom:84px}
+.groups .section-heading{padding:32px 0 26px}
+.groups .section-heading>div{grid-column:1/span 12}
+.groups .section-heading h2{margin:0 0 12px}
+.groups .section-heading .groups-intro{margin:0;max-width:54ch;font-size:var(--size-body);line-height:1.5}
+.groups .group-pricing{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-bottom:18px}
+.groups .group-pricing>div{grid-column:auto;min-height:66px;padding:14px 20px;border-radius:14px;background:var(--greige)}
+.groups .personal-practice{
+  display:grid;
+  grid-template-columns:repeat(12,minmax(0,1fr));
+  grid-template-rows:1fr auto;
+  gap:0;
+  min-height:420px;
+  max-height:none;
+  margin:0;
+  padding:0;
+  border:0;
+  border-radius:22px;
+  overflow:hidden;
+  background:var(--greige);
+}
+.groups .personal-practice-photo{
+  grid-column:7/-1;
+  grid-row:1/span 2;
+  width:100%;
+  height:100%;
+  min-height:420px;
+  max-height:none;
+  margin:0;
+  z-index:1;
+  object-fit:cover;
+  object-position:center 46%;
+  border-radius:48% 18px 18px 28% / 67% 18px 18px 28%;
+}
+.groups .personal-practice-copy{
+  grid-column:1/span 6;
+  grid-row:1;
+  align-self:end;
+  margin:0;
+  padding:42px 42px 14px;
+  background:transparent;
+  z-index:0;
+}
+.groups .personal-practice-copy h3{max-width:14ch;font-size:var(--size-heading);line-height:1.08}
+.groups .personal-practice-copy p{max-width:43ch}
+.groups .personal-practice-meta{
+  grid-column:1/span 6;
+  grid-row:2;
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:12px;
+  align-self:start;
+  justify-content:start;
+  margin:0;
+  padding:8px 42px 42px;
+  border:0;
+  background:transparent;
+}
+.groups .personal-practice-meta>strong{justify-self:end}
+.groups .personal-practice-meta>.button{grid-column:1/-1;width:max-content;min-width:190px;justify-content:space-between}
+.groups .groups-topline{margin:30px 0 0;padding:0 0 15px;border:0;border-bottom:1px solid var(--line)}
+.groups .groups-topline h3{font-size:var(--size-heading);font-weight:500}
+.groups .group-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:18px}
+.groups .group-row{
+  grid-column:auto;
+  display:grid!important;
+  grid-template-columns:47% minmax(0,1fr);
+  grid-template-rows:1fr auto;
+  gap:0;
+  height:258px;
+  min-height:258px;
+  max-height:none;
+  padding:0!important;
+  border:0;
+  border-radius:20px;
+  overflow:hidden;
+  background:var(--greige);
+}
+.groups .group-row>.group-photo{
+  grid-column:1;
+  grid-row:1/span 2;
+  width:100%;
+  height:100%;
+  min-height:0;
+  max-height:none;
+  align-self:stretch;
+  flex:none;
+  object-fit:cover;
+  object-position:center;
+  border-radius:18px 70px 70px 18px;
+}
+.groups .group-row:nth-child(2)>.group-photo{border-radius:70px 18px 18px 70px}
+.groups .group-row .group-info{
+  grid-column:2;
+  grid-row:1;
+  display:flex;
+  flex-direction:column;
+  justify-content:end;
+  align-items:flex-start;
+  align-self:stretch;
+  transform:none;
+  min-width:0;
+  margin:0;
+  padding:20px 20px 8px;
+  gap:6px;
+}
+.groups .group-row .group-info h3{font-size:var(--size-lead)!important;line-height:1.12}
+.groups .group-row .group-info .group-schedule,
+.groups .group-row .group-info .group-location{font-size:var(--size-caption)!important;line-height:1.4}
+.groups .group-row .round-arrow{
+  grid-column:2;
+  grid-row:2;
+  position:static;
+  justify-self:start;
+  width:auto;
+  min-width:165px;
+  height:var(--action-height);
+  min-height:var(--action-height);
+  margin:0 20px 20px;
+  padding:0 18px;
+  z-index:2;
+  gap:12px;
+}
+@media(max-width:900px){
+  .about-image{height:600px}
+  .groups .personal-practice-photo{grid-column:7/-1}
+  .groups .personal-practice-copy{padding:30px 28px 12px}
+  .groups .personal-practice-meta{padding:8px 28px 30px}
+  .groups .group-row{grid-template-columns:42% minmax(0,1fr)}
+  .groups .group-row .group-info{padding:16px 14px 8px}
+  .groups .group-row .round-arrow{margin:0 14px 16px}
+}
+@media(max-width:760px){
+  .about-image{width:100%;height:clamp(360px,90vw,540px);margin:0;border-radius:38% 16px 33% 16px / 26% 16px 23% 16px}
+  .groups{padding-top:36px;padding-bottom:56px}
+  .groups .section-heading{padding:20px 0 24px}
+  .groups .group-pricing{grid-template-columns:1fr;gap:9px;margin-bottom:12px}
+  .groups .group-pricing>div{min-height:62px;padding:12px 16px}
+  .groups .personal-practice{display:grid;grid-template-columns:1fr;grid-template-rows:auto auto auto;min-height:0;max-height:none;border-radius:18px}
+  .groups .personal-practice-photo{
+    grid-column:1;grid-row:1;width:100%;height:300px;min-height:300px;max-height:300px;
+    object-position:center 40%;border-radius:18px 18px 42% 18px / 18px 18px 28% 18px;
+  }
+  .groups .personal-practice-copy{grid-column:1;grid-row:2;padding:22px 20px 8px}
+  .groups .personal-practice-meta{grid-column:1;grid-row:3;padding:8px 20px 22px;grid-template-columns:1fr auto}
+  .groups .groups-topline{margin-top:28px}
+  .groups .group-list{grid-template-columns:1fr;gap:12px;margin-top:12px}
+  .groups .group-row{grid-template-columns:38% minmax(0,1fr);height:218px;min-height:218px;max-height:none}
+  .groups .group-row>.group-photo{grid-column:1;grid-row:1/span 2;width:100%;height:100%;min-height:0;max-height:none;border-radius:16px 48px 48px 16px}
+  .groups .group-row:nth-child(2)>.group-photo{border-radius:48px 16px 16px 48px}
+  .groups .group-row .group-info{grid-column:2;grid-row:1;transform:none;padding:14px 14px 6px}
+  .groups .group-row .group-info h3{font-size:var(--size-body)!important}
+  .groups .group-row .round-arrow{grid-column:2;grid-row:2;position:static;justify-self:start;min-width:0;margin:0 14px 14px;padding:0 14px}
+}
+@media(max-width:420px){
+  .groups .group-row{grid-template-columns:34% minmax(0,1fr);height:205px;min-height:205px}
+  .groups .group-row>.group-photo{height:100%;min-height:0;max-height:none}
+  .groups .group-row .group-info{padding:12px 11px 5px}
+  .groups .group-row .round-arrow{margin:0 11px 11px}
+}
