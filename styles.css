@@ -1597,3 +1597,34 @@ body h3 { font-weight: 700; }
     line-height: 1.08;
   }
 }
+
+/* Pricing amounts and the personal-session price row. */
+:root { --type-price: 24px; }
+
+.groups .group-pricing > div > strong,
+.online .online-price > strong,
+.personal-practice-price > strong,
+.faq .price-amount {
+  font-size: var(--type-price) !important;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.groups .group-pricing small,
+.online .online-price small {
+  font-size: var(--type-button) !important;
+  font-weight: 500;
+}
+
+.personal-practice-price {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px 16px;
+  padding-block: 8px;
+  border-block: 1px solid var(--line);
+}
+
+.personal-practice-price > strong { white-space: nowrap; }
