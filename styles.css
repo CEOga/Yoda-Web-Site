@@ -1875,9 +1875,9 @@ body :is(.review-scroll, .more-photos, summary, .text-link) { min-width: 44px; }
   }
 }
 
-/* Keep focus visible without a heavy halo around form fields. */
-#booking-form :is(input, select, textarea):focus-visible {
-  outline: 2px solid var(--ink);
-  outline-offset: 0;
+/* Use the existing bottom border to show focus in booking fields. */
+#booking-form :is(input:not([type="checkbox"]), select, textarea):focus {
+  outline: none;
   box-shadow: none;
+  border-bottom: 2px solid var(--ink);
 }
