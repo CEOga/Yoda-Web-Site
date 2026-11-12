@@ -1874,3 +1874,10 @@ body :is(.review-scroll, .more-photos, summary, .text-link) { min-width: 44px; }
     gap: 8px !important;
   }
 }
+
+/* Keep focus visible without a heavy halo around form fields. */
+#booking-form :is(input, select, textarea):focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 0;
+  box-shadow: none;
+}
