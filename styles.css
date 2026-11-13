@@ -1665,7 +1665,7 @@ main > #highlights { margin-block-start: 48px; }
 #home .hero-visual::after {
   background:
     linear-gradient(180deg, color-mix(in srgb, var(--front-ink) 72%, transparent), transparent 26%, transparent 76%, color-mix(in srgb, var(--front-ink) 2%, transparent)),
-    linear-gradient(90deg, color-mix(in srgb, var(--front-ink) 88%, transparent), color-mix(in srgb, var(--front-ink) 76%, transparent) 44%, color-mix(in srgb, transparent 78%);
+    linear-gradient(90deg, color-mix(in srgb, var(--front-ink) 88%, transparent), color-mix(in srgb, var(--front-ink) 76%, transparent) 44%, transparent 78%);
 }
 #home .hero-copy {
   grid-column: 1 / span 7;
