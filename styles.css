@@ -1749,9 +1749,8 @@ body :is(a, button, summary, input, select, textarea):focus-visible {
   outline-offset: 2px;
   box-shadow: 0 0 0 6px var(--ink);
 }
-body :is(.button, .round-arrow):not(.button-light, .button-light-outline, .submit-button) { color: var(--ink); }
-#highlights .highlight-cta .button-primary,
-#individual .personal-practice-meta > .button { color: var(--ink); }
+
+
 body :is(.review-scroll, .menu-toggle, .more-photos, summary, .text-link, .primary-nav a) { min-height: 44px; }
 .site-header { padding-inline: max(var(--gutter), calc((100% - 1200px) / 2)); }
 .site-header > .primary-nav { gap: 16px; }
@@ -1873,12 +1872,6 @@ main > .section-wrap + .section-wrap, main > #booking {
 }
 body :is(.review-scroll, .more-photos, summary, .text-link) { min-width: 44px; }
 
-/* Light labels for the selected actions. */
-#individual .personal-practice-meta > .button,
-#highlights .highlight-cta .button-primary,
-#online .online-copy > .button {
-  color: var(--paper);
-}
 
 #booking-form .submit-button {
   width: max-content;
@@ -2034,14 +2027,14 @@ body :is(.review-scroll, .more-photos, summary, .text-link) { min-width: 44px; }
   margin: 0;
   padding: 8px 24px !important;
   gap: 8px !important;
-  color: var(--front-ink);
+  color: var(--paper);
   background: var(--rose);
   border-color: var(--rose);
   font-weight: 600;
   white-space: nowrap !important;
 }
 #online .online-copy > .button:hover { border-color: currentColor; }
-#online .online-copy > .button:active { background: var(--paper); }
+#online .online-copy > .button:active { background: var(--rose); }
 
 @media (max-width: 900px) {
   #online .online-card > * { grid-column: 1 / -1; }
@@ -2128,7 +2121,7 @@ body :is(.review-scroll, .more-photos, summary, .text-link) { min-width: 44px; }
   gap: 8px !important;
   font-weight: 600;
 }
-#highlights .highlight-cta .button-primary { color: var(--front-ink); }
+#highlights .highlight-cta .button-primary { color: var(--paper); }
 #highlights .highlight-cta .button-light-outline {
   color: var(--paper);
   border-color: var(--paper);
