@@ -2366,3 +2366,20 @@ body :is(.review-scroll, .more-photos, summary, .text-link) { min-width: 44px; }
   display: block;
   height: auto;
 }
+
+#sample-videos .sample-video { grid-column: span 4; }
+#sample-videos .sample-video-frame { border-radius: var(--card-radius); }
+#sample-videos h2 {
+  font-size: var(--section-title-size) !important;
+  line-height: 1.1;
+}
+#sample-videos h3 {
+  font-size: var(--type-price) !important;
+  line-height: 1.2;
+}
+@media (max-width: 900px) {
+  #sample-videos .sample-video { grid-column: span 6; }
+}
+@media (max-width: 600px) {
+  #sample-videos .sample-video { grid-column: 1 / -1; }
+}
