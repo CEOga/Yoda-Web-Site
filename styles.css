@@ -1977,3 +1977,77 @@ body :is(.review-scroll, .more-photos, summary, .text-link) { min-width: 44px; }
   }
   #home .hero-actions .button { width: min(100%, 280px); }
 }
+
+/* Online club */
+:root {
+  --warm-surface: #F5EEE8;
+  --section-title-size: 36px;
+  --card-radius: 20px;
+}
+
+#online {
+  margin-block-start: var(--section-space);
+  color: var(--front-ink);
+}
+#online + #sample-videos { margin-block-start: var(--section-space); }
+#online .online-card {
+  min-height: 0;
+  background: var(--warm-surface);
+  border-radius: var(--card-radius);
+  overflow: hidden;
+}
+#online .online-art { min-height: 0; }
+#online .online-art img { filter: none; }
+#online .online-art::before,
+#online .online-art::after,
+#online .online-photo-shade { display: none; }
+#online .online-copy { padding: 48px; }
+#online h2 {
+  color: var(--front-ink);
+  font-size: var(--section-title-size) !important;
+  line-height: 1.1;
+}
+#online h2 em {
+  font-family: var(--front-heading) !important;
+  font-style: italic;
+  color: inherit;
+}
+#online :is(p, .online-price, summary, .button),
+#online :is(.online-price, summary, .button) * {
+  font-family: var(--front-interface) !important;
+}
+#online .online-copy p,
+#online .online-price > span {
+  color: var(--front-ink);
+  font-size: var(--front-copy);
+  line-height: 1.55;
+}
+#online .online-price {
+  gap: 8px 16px;
+  flex-wrap: wrap;
+  padding-block: 16px;
+}
+#online .online-price > strong { font-weight: 600; white-space: nowrap; }
+#online .club-info-accordion { margin: 24px 0 16px; }
+#online .online-copy > .button {
+  min-width: 44px;
+  margin: 0;
+  padding: 8px 24px !important;
+  gap: 8px !important;
+  color: var(--front-ink);
+  background: var(--rose);
+  border-color: var(--rose);
+  font-weight: 600;
+  white-space: nowrap !important;
+}
+#online .online-copy > .button:hover { border-color: currentColor; }
+#online .online-copy > .button:active { background: var(--paper); }
+
+@media (max-width: 900px) {
+  #online .online-card > * { grid-column: 1 / -1; }
+  #online .online-art { height: clamp(280px, 65vw, 480px); }
+  #online .online-copy { padding: 24px; }
+}
+@media (max-width: 380px) {
+  #online .online-copy > .button { padding-inline: 16px !important; }
+}
