@@ -2468,7 +2468,7 @@ main h2 em {
 #online .online-copy > .button,
 #booking-form .submit-button,
 body .review-scroll,
-body .review-arrow { color: var(--ink); }
+body .review-arrow { color: var(--paper); }
 
 :where(.button, .review-scroll):hover:not(:disabled) { text-decoration: underline; }
 :where(.button, .review-scroll):active:not(:disabled) { transform: translateY(1px); }
