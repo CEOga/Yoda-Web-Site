@@ -2356,3 +2356,13 @@ body :is(.review-scroll, .more-photos, summary, .text-link) { min-width: 44px; }
 @media (max-width: 600px) {
   .studio-schedule { grid-template-columns: minmax(0, 1fr); gap: 16px; }
 }
+
+#online .online-art-photo {
+  height: auto;
+  align-self: center;
+}
+#online .online-art-photo img {
+  position: static;
+  display: block;
+  height: auto;
+}
