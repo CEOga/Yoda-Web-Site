@@ -160,8 +160,10 @@ reviewControls.forEach((button) => {
   button.addEventListener('click', () => {
     if (!reviewTrack || reviewCards.length === 0) return;
     const direction = Number(button.dataset.reviewDirection);
-    const gap = parseFloat(getComputedStyle(reviewTrack).columnGap) || 0;
-    const distance = (reviewCards[0].getBoundingClientRect().width + gap) * 3;
+    const trackStyle = getComputedStyle(reviewTrack);
+    const gap = parseFloat(trackStyle.columnGap) || 0;
+    const columns = Number(trackStyle.getPropertyValue('--review-columns')) || 1;
+    const distance = (reviewCards[0].getBoundingClientRect().width + gap) * columns;
     reviewTrack.scrollBy({ left: direction * distance, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
   });
 });
