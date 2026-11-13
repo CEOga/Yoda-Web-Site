@@ -1932,20 +1932,21 @@ body :is(.review-scroll, .more-photos, summary, .text-link) { min-width: 44px; }
   white-space: nowrap !important;
   transform: none;
 }
-.site-header > .button,
+#top.site-header > .button,
 #home .hero-actions .button-primary {
-  color: var(--front-ink);
-  background: var(--rose);
-  border-color: var(--rose);
+  --front-action-fill: color-mix(in srgb, var(--rose) 52%, var(--front-ink));
+  color: var(--paper);
+  background: var(--front-action-fill);
+  border-color: var(--front-action-fill);
 }
-.site-header > .button:hover,
+#top.site-header > .button:hover,
 #home .hero-actions .button-primary:hover {
-  background: color-mix(in srgb, var(--rose) 85%, var(--paper));
+  background: color-mix(in srgb, var(--rose) 55%, var(--front-ink));
   border-color: currentColor;
 }
-.site-header > .button:active,
+#top.site-header > .button:active,
 #home .hero-actions .button-primary:active {
-  background: var(--paper);
+  background: color-mix(in srgb, var(--rose) 44%, var(--front-ink));
 }
 #home .hero-actions .button-light {
   background: transparent;
