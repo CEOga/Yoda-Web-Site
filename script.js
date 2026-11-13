@@ -86,7 +86,10 @@ serviceSelect?.addEventListener('change', () => {
 });
 
 document.querySelectorAll('[data-service]').forEach((link) => {
-  link.addEventListener('click', () => setService(link.dataset.service));
+  link.addEventListener('click', () => {
+    setService(link.dataset.service);
+    if (groupSelect && link.dataset.group) groupSelect.value = link.dataset.group;
+  });
 });
 
 form?.addEventListener('submit', async (event) => {

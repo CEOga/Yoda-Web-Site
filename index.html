@@ -13,8 +13,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=lesson-overview">
-  <script src="script.js?v=practice-refresh" defer></script>
+  <link rel="stylesheet" href="styles.css?v=studio-schedule">
+  <script src="script.js?v=studio-schedule" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Перейти к содержанию</a>
@@ -98,10 +98,29 @@
           </div>
         </div>
       </div>
-      <div class="groups-topline"><h3>Расписание офлайн-групп</h3></div>
-      <div class="group-list">
-        <article class="group-row"><img class="group-photo" src="images/IMG_4011.jpg" alt="Групповая практика йоги в студии" loading="lazy"><div class="group-info"><h3>Продолжающие</h3><p class="group-schedule">Понедельник + пятница · 17:30</p><span class="group-location">ул. Покровская, 26</span></div><a class="round-arrow" href="#booking" data-service="group" aria-label="Записаться в группу для продолжающих"><span>Записаться</span><span aria-hidden="true">→</span></a></article>
-        <article class="group-row"><img class="group-photo" src="images/IMG_3686.jpg" alt="Растяжка на коврике в студии йоги" loading="lazy"><div class="group-info"><h3>Начинающие</h3><p class="group-schedule">Понедельник + среда · 19:30</p><span class="group-location">ул. Мира, 15</span></div><a class="round-arrow" href="#booking" data-service="group" aria-label="Записаться в группу для начинающих"><span>Записаться</span><span aria-hidden="true">→</span></a></article>
+      <div class="studio-schedule">
+        <div class="studio-intro">
+          <h2>Занятия <em>в зале</em></h2>
+          <p>Выберите группу и запишитесь на удобное время.</p>
+        </div>
+        <article class="studio-group">
+          <img src="images/studio-continuing.jpg" alt="" width="294" height="525" loading="lazy">
+          <div class="studio-group-copy">
+            <h3>Продолжающие</h3>
+            <p>Понедельник и пятница · 17:30</p>
+            <p>ул. Покровская, 26</p>
+            <a class="button button-primary" href="#booking" data-service="group" data-group="Продолжающие — понедельник и пятница, 17:30" aria-label="Записаться в группу для продолжающих">Записаться <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+        <article class="studio-group">
+          <img src="images/IMG_5166-graded.jpg" alt="" width="1086" height="1448" loading="lazy">
+          <div class="studio-group-copy">
+            <h3>Начинающие</h3>
+            <p>Понедельник и среда · 19:30</p>
+            <p>ул. Мира, 15</p>
+            <a class="button button-primary" href="#booking" data-service="group" data-group="Начинающие — понедельник и среда, 19:30" aria-label="Записаться в группу для начинающих">Записаться <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
       </div>
     </section>
 
