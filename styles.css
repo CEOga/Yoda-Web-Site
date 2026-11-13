@@ -2142,3 +2142,8 @@ body :is(.review-scroll, .more-photos, summary, .text-link) { min-width: 44px; }
       url("images/IMG_3152-graded.jpg");
   }
 }
+
+#about .about-image img {
+  object-position: 35% 50%;
+  filter: none;
+}
