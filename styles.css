@@ -2051,3 +2051,94 @@ body :is(.review-scroll, .more-photos, summary, .text-link) { min-width: 44px; }
 @media (max-width: 380px) {
   #online .online-copy > .button { padding-inline: 16px !important; }
 }
+
+/* Practice formats banner */
+#highlights .highlights-panel {
+  min-height: 0;
+  border-radius: var(--card-radius);
+  color: var(--paper);
+  background-image:
+    linear-gradient(90deg, rgb(24 21 18 / .9), rgb(24 21 18 / .77) 58%, rgb(24 21 18 / .5)),
+    url("images/IMG_3152-graded.jpg");
+  background-position: center, center 54%;
+}
+#highlights .highlight-label {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 0 0 16px;
+  color: var(--paper);
+  font-size: var(--type-button);
+  font-weight: 500;
+}
+#highlights .highlight-label::after {
+  content: "";
+  width: 48px;
+  height: 1px;
+  background: var(--rose);
+}
+#highlights .highlight-intro h2 {
+  max-width: none;
+  color: var(--paper);
+  font-size: var(--section-title-size) !important;
+  line-height: 1.1;
+}
+#highlights .highlight-intro h2 em {
+  display: block;
+  font-family: var(--front-heading) !important;
+  font-style: italic;
+  color: inherit;
+  text-decoration: none;
+}
+#highlights .highlight-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  margin: 24px 0 0;
+  padding: 0;
+  border: 0;
+}
+#highlights .highlight-facts li {
+  align-items: center;
+  gap: 8px;
+}
+#highlights .highlight-facts span {
+  color: var(--paper);
+  font-size: var(--front-copy);
+  line-height: 1.55;
+}
+#highlights .highlight-facts svg {
+  flex: 0 0 24px;
+  width: 24px;
+  height: 24px;
+  color: var(--rose);
+}
+#highlights .highlight-cta { align-self: end; }
+#highlights .highlight-cta h3 {
+  margin: 0;
+  color: var(--paper);
+  font-size: var(--type-price) !important;
+  line-height: 1.2;
+}
+#highlights :is(.highlight-label, .highlight-facts span, .button, .button span) {
+  font-family: var(--front-interface) !important;
+}
+#highlights .highlight-cta .button {
+  padding: 8px 16px !important;
+  gap: 8px !important;
+  font-weight: 600;
+}
+#highlights .highlight-cta .button-primary { color: var(--front-ink); }
+#highlights .highlight-cta .button-light-outline {
+  color: var(--paper);
+  border-color: var(--paper);
+}
+#highlights .highlight-cta .button:hover { border-color: currentColor; }
+
+@media (max-width: 768px) {
+  #highlights .highlights-panel {
+    background-image:
+      linear-gradient(180deg, rgb(24 21 18 / .76), rgb(24 21 18 / .85)),
+      url("images/IMG_3152-graded.jpg");
+  }
+}
