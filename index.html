@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=rose-light-labels">
+  <link rel="stylesheet" href="styles.css?v=lesson-overview">
   <script src="script.js?v=practice-refresh" defer></script>
 </head>
 <body>
@@ -71,13 +71,32 @@
     </section>
 
     <section class="section groups section-wrap" id="groups">
-      <div class="section-kicker"><span>02 — PRACTICE TOGETHER</span><span>Занятия в вашем ритме</span></div>
-      <div class="section-heading"><div><p class="eyebrow">PRACTICE TOGETHER</p><h2>Готовы <span class="accent">начать?</span></h2><p class="groups-intro">Выберите удобный формат занятий и начните практику в своём ритме.</p></div></div>
-      <div class="group-pricing" aria-label="Стоимость занятий"><div><span>Разовое офлайн-занятие</span><strong>70 ₽</strong></div><div><span>Абонемент на месяц</span><strong>60 ₽ <small>за занятие</small></strong></div></div>
-      <div class="personal-practice" id="individual">
-        <img class="personal-practice-photo" src="images/IMG_4022.jpg" alt="Практика йоги на коврике в студии" loading="lazy">
-        <div class="personal-practice-copy"><h3>Персональные занятия</h3><p>Индивидуальная практика с учётом ваших целей, опыта и удобного ритма.</p></div>
-        <div class="personal-practice-meta"><div class="personal-practice-price"><span>Онлайн / офлайн</span><strong>200 ₽</strong></div><a class="button button-dark" href="#booking" data-service="individual">Записаться <span aria-hidden="true">→</span></a></div>
+      <div class="lesson-overview">
+        <div class="lesson-intro">
+          <h2>Готовы <em>начать?</em></h2>
+          <p>Выберите удобный формат занятий и начните практику в своём ритме.</p>
+          <img src="images/IMG_4011-graded.jpg" alt="Групповая практика йоги у окна студии" width="1086" height="1448" loading="lazy">
+        </div>
+        <div class="lesson-options">
+          <div class="lesson-tariffs" aria-label="Стоимость групповых занятий">
+            <a href="#booking" data-service="group">
+              <span>Разовое офлайн-занятие</span><strong>70 ₽</strong><span aria-hidden="true">→</span>
+            </a>
+            <a href="#booking" data-service="group">
+              <span>Абонемент на месяц</span><strong>60 ₽ <small>за занятие</small></strong><span aria-hidden="true">→</span>
+            </a>
+          </div>
+          <div class="lesson-personal" id="individual">
+            <div>
+              <h3>Персональные занятия</h3>
+              <p>Индивидуальная практика с учётом ваших целей, опыта и удобного ритма.</p>
+            </div>
+            <div class="lesson-personal-booking">
+              <div><span>Онлайн / офлайн</span><strong>200 ₽</strong></div>
+              <a class="button button-primary" href="#booking" data-service="individual">Записаться <span aria-hidden="true">→</span></a>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="groups-topline"><h3>Расписание офлайн-групп</h3></div>
       <div class="group-list">
