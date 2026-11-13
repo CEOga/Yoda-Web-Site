@@ -1753,7 +1753,7 @@ body :is(a, button, summary, input, select, textarea):focus-visible {
 
 body :is(.review-scroll, .menu-toggle, .more-photos, summary, .text-link, .primary-nav a) { min-height: 44px; }
 .site-header { padding-inline: max(var(--gutter), calc((100% - 1200px) / 2)); }
-.site-header > .primary-nav { gap: 16px; }
+.site-header > .primary-nav { gap: 24px; }
 .site-header .primary-nav a { display: flex; align-items: center; }
 .groups .section-heading { padding-block: 0 24px; }
 .groups .group-row { height: 272px; min-height: 272px; border-radius: var(--radius); }
@@ -2064,9 +2064,9 @@ body :is(.review-scroll, .more-photos, summary, .text-link) { min-width: 44px; }
 }
 #highlights .highlight-label::after {
   content: "";
-  width: 48px;
+  width: 72px;
   height: 1px;
-  background: var(--rose);
+  background: linear-gradient(to right, var(--rose) 40%, transparent);
 }
 #highlights .highlight-intro h2 {
   max-width: none;
