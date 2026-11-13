@@ -1501,7 +1501,7 @@ body :is(.button, .round-arrow) > span[aria-hidden="true"] { flex-shrink: 0; }
 
 /* Four type roles shared by all sections. */
 :root {
-  --type-hero: 48px;
+  --type-hero: 64px;
   --type-title: 40px;
   --type-subtitle: 20px;
   --type-button: 16px;
@@ -1676,13 +1676,14 @@ main > #highlights { margin-block-start: 48px; }
   text-align: left;
 }
 #home .hero-copy h1 {
-  max-width: 480px;
+  max-width: 576px;
   margin: 0;
   font-family: var(--front-heading) !important;
   font-size: var(--type-hero) !important;
   font-weight: 500;
   line-height: 1.05;
   letter-spacing: -.02em;
+  overflow-wrap: anywhere;
 }
 #home .hero-copy h1 span { display: block; }
 #home .hero-copy h1 :is(span, em) {
