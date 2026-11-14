@@ -242,17 +242,24 @@
   color: var(--paper);
 }
 
-.library-page #club-main .club-title-rule {
-  width: 100%;
+.library-page #club-main h1 {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.library-page #club-main h1::after {
+  content: "";
+  flex: 1;
+  min-width: 24px;
   height: 1px;
-  margin-bottom: 20px;
   background: linear-gradient(90deg, transparent 0%, color-mix(in srgb, var(--rose) 35%, transparent) 8%, var(--rose) 24%, var(--rose) 100%);
   opacity: 0;
 }
-.library-page #club-main:has(#library:not([hidden])) .club-title-rule {
+.library-page #club-main:has(#library:not([hidden])) h1::after {
   animation: library-line-in 900ms ease-out both;
 }
-.library-page #club-main:has(#library[hidden]) .club-title-rule { visibility: hidden; }
+.library-page #club-main:has(#library[hidden]) h1::after { visibility: hidden; }
+.library-page #logout { padding-inline: 18px; }
 @keyframes library-line-in {
   from { opacity: 0; }
   to { opacity: 1; }
