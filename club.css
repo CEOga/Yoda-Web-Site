@@ -253,6 +253,9 @@
   height: 1px;
   background: var(--rose);
   transform-origin: left center;
+  transform: scaleX(0);
+}
+.library-page #club-main:has(#library:not([hidden])) h1::after {
   animation: library-line-in 900ms ease-out both;
 }
 .library-page #club-main:has(#library[hidden]) h1::after { visibility: hidden; }
@@ -267,8 +270,9 @@
   font-size: 16px !important;
 }
 .library-card:has(.library-duration) > span { padding-bottom: 4px; }
-@media (max-width: 900px) {
-}
 @media (prefers-reduced-motion: reduce) {
-  .library-page #club-main h1::after { animation: none; }
+  .library-page #club-main h1::after {
+    animation: none;
+    transform: scaleX(1);
+  }
 }
