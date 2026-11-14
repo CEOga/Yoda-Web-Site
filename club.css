@@ -146,7 +146,8 @@
 }
 
 @media (max-width: 480px) {
-  #club-main h1 { font-size: 36px; }
+  #club-main h1 { font-size: 36px; gap: 10px; }
+  .library-page #club-main .club-title-rule { min-width: 8px; }
   .club-panel, .club-cover-caption { padding: 24px; }
   .club-page #top .button[href$="#booking"] { display: none; }
   .club-page #top .booking-menu-link { display: flex; }
@@ -247,18 +248,18 @@
   align-items: center;
   gap: 24px;
 }
-.library-page #club-main h1::after {
-  content: "";
+.library-page #club-main .club-title-rule {
+  display: block;
   flex: 1;
-  min-width: 24px;
+  min-width: 16px;
   height: 1px;
   background: linear-gradient(90deg, transparent 0%, color-mix(in srgb, var(--rose) 35%, transparent) 8%, var(--rose) 24%, var(--rose) 100%);
   opacity: 0;
 }
-.library-page #club-main:has(#library:not([hidden])) h1::after {
+.library-page #club-main:has(#library:not([hidden])) .club-title-rule {
   animation: library-line-in 900ms ease-out both;
 }
-.library-page #club-main:has(#library[hidden]) h1::after { visibility: hidden; }
+.library-page #club-main:has(#library[hidden]) .club-title-rule { visibility: hidden; }
 .library-page #logout { padding-inline: 18px; }
 @keyframes library-line-in {
   from { opacity: 0; }
@@ -290,7 +291,7 @@
 }
 .library-card:has(.library-duration) > span { padding-bottom: 4px; }
 @media (prefers-reduced-motion: reduce) {
-  .library-page #club-main h1::after {
+  .library-page #club-main .club-title-rule {
     animation: none;
     opacity: 1;
   }
