@@ -19,6 +19,7 @@
       <label>Почта <input name="email" type="email" autocomplete="username" required></label>
       <label>Пароль <input name="password" type="password" autocomplete="current-password" required></label>
       <button type="submit">Войти</button>
+      <button type="button" id="google" class="secondary" hidden>Войти через Google</button>
       <button type="button" id="reset" class="secondary">Восстановить пароль</button>
     </form>
     <form id="password" hidden>
@@ -31,6 +32,7 @@
       <div id="library" hidden>
         <h2>Видеопрактики</h2>
         <button id="play" type="button">Открыть практику</button>
+        <a id="playlist" target="_blank" rel="noopener noreferrer" hidden>Открыть плейлист на YouTube</a>
         <video id="video" controls playsinline preload="metadata" hidden></video>
       </div>
       <button id="logout" type="button" class="secondary">Выйти</button>
