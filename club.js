@@ -27,6 +27,8 @@ function show(screen, message = "", isError = false) {
     library.hidden = true;
     clearVideo();
   }
+  const subscription = element("subscription-panel");
+  if (subscription) subscription.hidden = screen !== account;
   showStatus(message, isError);
 }
 
@@ -89,7 +91,6 @@ async function refreshAccount() {
   if (!result.active) clearVideo();
   practiceVideo.replaceChildren(...(result.videos ?? []).map((title, index) => new Option(title, index)).filter(option => !unavailablePlaylists.has(option.value)));
   element("logout").hidden = false;
-  element("subscription-toggle").hidden = false;
   practiceVideo.disabled = !practiceVideo.options.length;
   element("subscription-check").hidden = !result.active;
   element("expiry").textContent = result.active
@@ -292,11 +293,6 @@ async function start() {
     if (error) throw error;
     clearVideo();
     location.replace(clubUrl);
-  });
-  bind("subscription-toggle", "click", async () => {
-    const panel = element("subscription-panel");
-    panel.hidden = !panel.hidden;
-    element("subscription-toggle").setAttribute("aria-expanded", String(!panel.hidden));
   });
   practiceVideo?.addEventListener("change", async () => {
     const { data: { session } } = await client.auth.getSession();
