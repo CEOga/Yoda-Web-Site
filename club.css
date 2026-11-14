@@ -274,18 +274,16 @@
   to { opacity: 1; }
 }
 .library-card .library-duration {
-  display: inline-flex;
-  width: fit-content;
+  display: flex;
   align-items: center;
   gap: 8px;
-  margin: 0 16px 16px;
-  padding: 9px 15px;
-  border-radius: 999px;
+  padding: 16px;
+
   background: var(--ink);
   color: var(--paper);
-  font-size: 20px !important;
+  font-size: var(--type-subtitle) !important;
   font-weight: 600;
-  line-height: 1.2;
+  line-height: 1.25;
 }
 .library-card .duration-clock {
   width: 20px;
@@ -297,7 +295,7 @@
   stroke-linecap: round;
   stroke-linejoin: round;
 }
-.library-card:has(.library-duration) > span { padding-bottom: 4px; }
+.library-card .library-duration > span { padding: 0; font-size: inherit !important; }
 @media (prefers-reduced-motion: reduce) {
   .library-page #club-main .club-title-rule {
     animation: none;
