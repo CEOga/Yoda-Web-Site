@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="/styles.css?v=club-layout">
   <link rel="stylesheet" href="/club.css?v=aligned-login">
   <script src="/script.js?v=review-cards" defer></script>
-  <script type="module" src="/club.js?v=renew-button"></script>
+  <script type="module" src="/club.js?v=separate-library"></script>
 </head>
 <body class="club-page">
   <a class="skip-link" href="#club-main">Перейти к содержанию</a>
@@ -52,26 +52,12 @@
           <label>Новый пароль <input name="password" type="password" autocomplete="new-password" minlength="8" required></label>
           <button type="submit">Сохранить пароль</button>
         </form>
-        <section id="account" hidden aria-label="Подписка">
-          <p class="club-expiry"><span id="subscription-check" aria-hidden="true" hidden>✓</span><span id="expiry"></span></p>
-          <div class="club-account-actions">
-            <a class="club-renew" href="https://t.me/yogalizza">Продлить подписку <span aria-hidden="true">→</span></a>
-            <button id="logout" type="button" class="secondary">Выйти</button>
-          </div>
-        </section>
         <div class="club-support" id="club-support" hidden>
           <p>Есть вопросы? Напишите или позвоните мне в Telegram.</p>
           <a href="https://t.me/yogalizza" target="_blank" rel="noopener noreferrer">@yogalizza</a>
         </div>
       </section>
     </div>
-      <section id="library" class="club-panel club-library" aria-labelledby="videoteka" hidden>
-        <h2 id="videoteka" tabindex="-1">Видеотека</h2>
-        <label>Выберите плейлист <select id="practice-video"></select></label>
-        <button id="play" type="button">Открыть плейлист</button>
-        <iframe id="playlist-player" title="Плеер плейлиста" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen hidden style="display:block;width:100%;min-height:200px;aspect-ratio:16/9;border:0;margin-top:16px"></iframe>
-        <video id="video" controls controlslist="nodownload noremoteplayback" disablepictureinpicture playsinline preload="metadata" hidden></video>
-      </section>
   </main>
 </body>
 </html>

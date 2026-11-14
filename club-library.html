@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex">
+  <title>Подписка и видеотека · Yoga Lizza</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="/styles.css?v=club-layout">
+  <link rel="stylesheet" href="/club.css?v=aligned-login">
+  <script src="/script.js?v=review-cards" defer></script>
+  <script type="module" src="/club.js?v=separate-library"></script>
+</head>
+<body class="club-page">
+  <a class="skip-link" href="#club-main">Перейти к содержанию</a>
+  <header class="site-header" id="top">
+    <a class="wordmark" href="https://yoga-lizza.pages.dev/" aria-label="Yoga Lizza — на главную"><b class="header-back-arrow" aria-hidden="true">←</b> yoga <span>lizza</span><i>®</i></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Открыть меню"><span></span><span></span></button>
+    <nav class="primary-nav" id="primary-nav" aria-label="Главная навигация">
+      <a href="https://yoga-lizza.pages.dev/#about">Обо мне</a><a href="https://yoga-lizza.pages.dev/#groups">Группы</a><a href="https://yoga-lizza.pages.dev/#individual">Индивидуально</a><a href="https://yoga-lizza.pages.dev/#online">Онлайн</a><a href="https://yoga-lizza.pages.dev/#sample-videos">Примеры</a><a href="https://yoga-lizza.pages.dev/#reviews">Отзывы</a><a href="https://yoga-lizza.pages.dev/#faq">FAQ</a>
+      <a class="booking-menu-link" href="https://yoga-lizza.pages.dev/#booking">Записаться</a>
+    </nav>
+    <a class="button button-small" href="https://yoga-lizza.pages.dev/#booking">Записаться <span aria-hidden="true">→</span></a>
+  </header>
+  <main id="club-main">
+    <h1>Личный кабинет</h1>
+    <section class="club-panel" aria-labelledby="subscription-title">
+      <h2 id="subscription-title">Подписка</h2>
+      <p id="status" role="status">Проверяем доступ…</p>
+      <section id="account" hidden aria-label="Подписка">
+        <p class="club-expiry"><span id="subscription-check" aria-hidden="true" hidden>✓</span><span id="expiry"></span></p>
+        <div class="club-account-actions">
+          <a class="club-renew" href="https://t.me/yogalizza">Продлить подписку <span aria-hidden="true">→</span></a>
+          <button id="logout" type="button" class="secondary">Выйти</button>
+        </div>
+      </section>
+      <div class="club-support" id="club-support" hidden>
+        <p>Есть вопросы? Напишите или позвоните мне в Telegram.</p>
+        <a href="https://t.me/yogalizza" target="_blank" rel="noopener noreferrer">@yogalizza</a>
+      </div>
+    </section>
+    <section id="library" class="club-panel club-library" aria-labelledby="videoteka" hidden>
+      <h2 id="videoteka" tabindex="-1">Видеотека</h2>
+      <label>Выберите плейлист <select id="practice-video"></select></label>
+      <button id="play" type="button">Открыть плейлист</button>
+      <iframe id="playlist-player" title="Плеер плейлиста" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen hidden style="display:block;width:100%;min-height:200px;aspect-ratio:16/9;border:0;margin-top:16px"></iframe>
+      <video id="video" controls controlslist="nodownload noremoteplayback" disablepictureinpicture playsinline preload="metadata" hidden></video>
+    </section>
+  </main>
+</body>
+</html>

@@ -10,6 +10,7 @@ const video = element("video");
 const playlistPlayer = element("playlist-player");
 const library = element("library");
 const practiceVideo = element("practice-video");
+const libraryUrl = "/club-library";
 const clubUrl = location.origin + "/club.html";
 const callback = new URLSearchParams(location.hash.slice(1));
 let settingPassword = false;
@@ -17,12 +18,12 @@ let client;
 
 function showStatus(message, isError = false) {
   status.textContent = message;
-  support.hidden = !isError && account.hidden;
+  support.hidden = !isError && (!account || account.hidden);
 }
 
 function show(screen, message = "", isError = false) {
-  for (const panel of [login, password, account]) panel.hidden = panel !== screen;
-  if (screen !== account) {
+  for (const panel of [login, password, account].filter(Boolean)) panel.hidden = panel !== screen;
+  if (library && screen !== account) {
     library.hidden = true;
     clearVideo();
   }
@@ -49,11 +50,15 @@ async function clubRequest(session, action = "status", videoIndex = "") {
 async function refreshAccount() {
   const { data: { session }, error } = await client.auth.getSession();
   if (error) throw error;
-  if (!session) return show(login);
+  if (!session) {
+    if (account) return location.replace(clubUrl);
+    return show(login);
+  }
+  if (!account) return location.replace(libraryUrl);
   const result = await clubRequest(session);
   if (result.error === "login_required") {
     await client.auth.signOut({ scope: "local" });
-    return show(login, "Сеанс завершён. Войдите снова.", true);
+    return location.replace(clubUrl);
   }
   if (!result.ok) throw new Error("Membership unavailable");
   library.hidden = !result.active;
@@ -69,7 +74,7 @@ async function refreshAccount() {
 }
 
 function bind(id, event, action) {
-  element(id).addEventListener(event, async (e) => {
+  element(id)?.addEventListener(event, async (e) => {
     e.preventDefault();
     const button = e.submitter ?? e.currentTarget;
     button.disabled = true;
@@ -89,7 +94,7 @@ async function start() {
   const { url, key, googleEnabled } = await config.json();
   client = createClient(url, key);
 
-  element("google").hidden = !googleEnabled;
+  if (login) element("google").hidden = !googleEnabled;
   bind("google", "click", async () => {
     const { error } = await client.auth.signInWithOAuth({
       provider: "google",
@@ -129,7 +134,7 @@ async function start() {
     const { error } = await client.auth.signOut({ scope: "local" });
     if (error) throw error;
     clearVideo();
-    show(login, "Вы вышли из клуба.");
+    location.replace(clubUrl);
   });
   bind("play", "click", async () => {
     const { data: { session } } = await client.auth.getSession();
@@ -167,7 +172,7 @@ async function start() {
   await refreshAccount();
   addEventListener("pageshow", (event) => {
     if (event.persisted && !settingPassword) {
-      clearVideo();
+      if (library) clearVideo();
       refreshAccount().catch(() => show(null, "Не удалось проверить доступ. Обновите страницу.", true));
     }
   });
@@ -176,5 +181,5 @@ async function start() {
 start().catch(() => show(null, "Не удалось открыть кабинет. Обновите страницу.", true));
 
 addEventListener("hashchange", () => {
-  if (location.hash === "#videoteka" && !library.hidden) element("videoteka").focus();
+  if (location.hash === "#videoteka" && library && !library.hidden) element("videoteka").focus();
 });
