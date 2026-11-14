@@ -324,3 +324,16 @@
 @media (max-width: 580px) {
   .video-cards { grid-template-columns: minmax(0, 1fr); }
 }
+
+.club-library select {
+  appearance: none;
+  padding-inline-end: 40px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='m3 6 5 5 5-5' fill='none' stroke='%23393530' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 16px;
+}
+
+@media (forced-colors: active) {
+  .club-library select { appearance: auto; background-image: none; }
+}
