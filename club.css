@@ -242,22 +242,23 @@
   color: var(--paper);
 }
 
-.library-page #club-main { position: relative; }
-.library-page #club-main::before {
-  content: "";
-  position: absolute;
-  inset-block: 84px 96px;
-  inset-inline-start: -12px;
-  width: 1px;
-  background: var(--rose);
-  transform-origin: top;
-  animation: library-line-in 900ms ease-out both;
-  pointer-events: none;
+.library-page #club-main h1 {
+  display: flex;
+  align-items: center;
+  gap: 24px;
 }
-.library-page #club-main:has(#library[hidden])::before { display: none; }
+.library-page #club-main h1::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--rose);
+  transform-origin: left center;
+  animation: library-line-in 900ms ease-out both;
+}
+.library-page #club-main:has(#library[hidden]) h1::after { visibility: hidden; }
 @keyframes library-line-in {
-  from { opacity: 0; transform: scaleY(0); }
-  to { opacity: 1; transform: scaleY(1); }
+  from { opacity: 0; transform: scaleX(0); }
+  to { opacity: 1; transform: scaleX(1); }
 }
 .library-card .library-duration {
   display: block;
@@ -267,8 +268,7 @@
 }
 .library-card:has(.library-duration) > span { padding-bottom: 4px; }
 @media (max-width: 900px) {
-  .library-page #club-main::before { inset-block: 52px 64px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .library-page #club-main::before { animation: none; }
+  .library-page #club-main h1::after { animation: none; }
 }
