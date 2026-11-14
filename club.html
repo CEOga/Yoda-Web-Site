@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex">
+  <title>Личный кабинет · Yoga Lizza</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="/club.css">
+  <script type="module" src="/club.js"></script>
+</head>
+<body>
+  <header><a href="/">Yoga Lizza</a></header>
+  <main>
+    <h1>Йога-клуб</h1>
+    <p id="status" role="status">Загрузка…</p>
+    <form id="login" hidden>
+      <label>Почта <input name="email" type="email" autocomplete="username" required></label>
+      <label>Пароль <input name="password" type="password" autocomplete="current-password" required></label>
+      <button type="submit">Войти</button>
+      <button type="button" id="reset" class="secondary">Восстановить пароль</button>
+    </form>
+    <form id="password" hidden>
+      <label>Новый пароль <input name="password" type="password" autocomplete="new-password" minlength="8" required></label>
+      <button type="submit">Сохранить пароль</button>
+    </form>
+    <section id="account" hidden aria-label="Подписка">
+      <p id="expiry"></p>
+      <a id="renew" href="/#online" hidden>Продлить подписку</a>
+      <div id="library" hidden>
+        <h2>Видеопрактики</h2>
+        <button id="play" type="button">Открыть практику</button>
+        <video id="video" controls playsinline preload="metadata" hidden></video>
+      </div>
+      <button id="logout" type="button" class="secondary">Выйти</button>
+    </section>
+  </main>
+</body>
+</html>
