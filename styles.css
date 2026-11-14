@@ -2533,3 +2533,56 @@ body .review-arrow { color: var(--paper); }
   #top .booking-menu-link { display: flex; }
   .site-header > .club-login { flex: 0 1 auto; }
 }
+
+html { overflow-x: clip; }
+#practice .info-card > div { border-top: 0; }
+
+#groups .lesson-tariffs a > span:first-child {
+  font-size: var(--type-subtitle);
+  line-height: 1.2;
+}
+
+#home .hero-copy::before {
+  content: "";
+  display: block;
+  width: 96px;
+  height: 1px;
+  margin-bottom: 16px;
+  background: linear-gradient(to right, var(--rose) 40%, transparent);
+}
+
+#reviews .review-scroll:disabled {
+  opacity: 1;
+  color: color-mix(in srgb, var(--ink) 55%, var(--paper));
+  background: var(--greige);
+  border-color: var(--line);
+}
+
+#groups .studio-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.studio-icon {
+  position: relative;
+  display: inline-block;
+  flex: 0 0 14px;
+  height: 14px;
+  border: 1px solid currentColor;
+}
+
+.studio-icon-clock { border-radius: 50%; }
+.studio-icon-clock::after {
+  content: "";
+  position: absolute;
+  inset: 2px 2px 5px 5px;
+  border-left: 1px solid;
+  border-bottom: 1px solid;
+}
+
+.studio-icon-house {
+  background: currentColor;
+  border: 0;
+  clip-path: polygon(50% 0, 100% 44%, 89% 44%, 89% 100%, 60% 100%, 60% 65%, 40% 65%, 40% 100%, 11% 100%, 11% 44%, 0 44%);
+}

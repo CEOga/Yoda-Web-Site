@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=club-entry">
+  <link rel="stylesheet" href="styles.css?v=detail-polish">
   <script src="script.js?v=review-cards" defer></script>
 </head>
 <body>
@@ -110,8 +110,8 @@
           <img src="images/studio-continuing.jpg" alt="" width="294" height="525" loading="lazy">
           <div class="studio-group-copy">
             <h3>Продолжающие</h3>
-            <p>Понедельник и пятница · 17:30</p>
-            <p>ул. Покровская, 26</p>
+            <p class="studio-detail"><span class="studio-icon studio-icon-clock" aria-hidden="true"></span><span>Понедельник и пятница · 17:30</span></p>
+            <p class="studio-detail"><span class="studio-icon studio-icon-house" aria-hidden="true"></span><span>ул. Покровская, 26</span></p>
             <a class="button button-primary" href="#booking" data-service="group" data-group="Продолжающие — понедельник и пятница, 17:30" aria-label="Записаться в группу для продолжающих">Записаться <span aria-hidden="true">→</span></a>
           </div>
         </article>
@@ -119,8 +119,8 @@
           <img src="images/IMG_5166-graded.jpg" alt="" width="1086" height="1448" loading="lazy">
           <div class="studio-group-copy">
             <h3>Начинающие</h3>
-            <p>Понедельник и среда · 19:30</p>
-            <p>ул. Мира, 15</p>
+            <p class="studio-detail"><span class="studio-icon studio-icon-clock" aria-hidden="true"></span><span>Понедельник и среда · 19:30</span></p>
+            <p class="studio-detail"><span class="studio-icon studio-icon-house" aria-hidden="true"></span><span>ул. Мира, 15</span></p>
             <a class="button button-primary" href="#booking" data-service="group" data-group="Начинающие — понедельник и среда, 19:30" aria-label="Записаться в группу для начинающих">Записаться <span aria-hidden="true">→</span></a>
           </div>
         </article>
@@ -152,21 +152,23 @@
     <section class="section info-section section-wrap" id="practice">
       <div class="section-heading"><div><h2>Практика под<br><em>ваш запрос</em></h2></div></div>
       <div class="info-card-grid">
-        <article class="info-card"><img src="images/IMG_3152.JPG" alt="Практика йоги у воды" loading="lazy"><div><h3>Начать с основ</h3><p>Осваивайте базовые асаны и знакомьтесь с практикой в удобном темпе.</p></div></article>
-        <article class="info-card"><img src="images/IMG_3235.JPG" alt="Практика йоги и работа с подвижностью" loading="lazy"><div><h3>Развивать силу и гибкость</h3><p>Занятия помогают укреплять тело, работать над мобильностью и лучше чувствовать движение.</p></div></article>
-        <article class="info-card"><img src="images/IMG_3157.JPG" alt="Баланс на предплечьях в практике йоги" loading="lazy"><div><h3>Углубить практику</h3><p>Постепенно осваивайте более сложные асаны и балансы с учётом своего опыта.</p></div></article>
-        <article class="info-card"><img src="images/IMG_1327.JPG" alt="Преподавательница йоги Лиза" loading="lazy"><div><h3>Заниматься индивидуально</h3><p>Обсудите цели и опыт, чтобы подобрать подходящий формат личной практики.</p></div></article>
+        <article class="info-card"><img src="images/IMG_3152-graded.jpg" alt="Практика йоги у воды" loading="lazy"><div><h3>Начать с основ</h3><p>Осваивайте базовые асаны и знакомьтесь с практикой в удобном темпе.</p></div></article>
+        <article class="info-card"><img src="images/IMG_3235-graded.jpg" alt="Практика йоги и работа с подвижностью" loading="lazy"><div><h3>Развивать силу и гибкость</h3><p>Занятия помогают укреплять тело, работать над мобильностью и лучше чувствовать движение.</p></div></article>
+        <article class="info-card"><img src="images/IMG_3157-graded.jpg" alt="Баланс на предплечьях в практике йоги" loading="lazy"><div><h3>Углубить практику</h3><p>Постепенно осваивайте более сложные асаны и балансы с учётом своего опыта.</p></div></article>
+        <article class="info-card"><img src="images/IMG_1327-graded.jpg" alt="Преподавательница йоги Лиза" loading="lazy"><div><h3>Заниматься индивидуально</h3><p>Обсудите цели и опыт, чтобы подобрать подходящий формат личной практики.</p></div></article>
       </div>
       <div class="extra-photos" id="extra-practice-photos" hidden>
-        <img src="images/IMG_3233.JPG" alt="Поза йоги в студии" loading="lazy">
-        <img src="images/IMG_3234.JPG" alt="Баланс и растяжка в практике йоги" loading="lazy">
-        <img src="images/IMG_4022.jpg" alt="Участницы на занятии йогой в парной асане" loading="lazy">
-        <img src="images/IMG_2969.jpg" alt="Практика баланса на занятии йогой" loading="lazy">
-        <img src="images/IMG_3028.jpg" alt="Асана в студии йоги" loading="lazy">
-        <img src="images/IMG_3038.jpg" alt="Практика йоги в студии с подсветкой" loading="lazy">
-        <img src="images/IMG_3686.jpg" alt="Растяжка на коврике в студии" loading="lazy">
-        <img src="images/IMG_5162.jpg" alt="Наклон вперёд с опорой на блок" loading="lazy">
-        <img src="images/IMG_4461.jpg" alt="Баланс в асане в студии йоги" loading="lazy">
+        <img src="images/IMG_4011-graded.jpg" alt="Групповая практика йоги у окна" loading="lazy">
+        <img src="images/IMG_5166-graded.jpg" alt="Практика на коврике" loading="lazy">
+        <img src="images/IMG_3233-graded.jpg" alt="Поза йоги в студии" loading="lazy">
+        <img src="images/IMG_3234-graded.jpg" alt="Баланс и растяжка в практике йоги" loading="lazy">
+        <img src="images/IMG_4022-graded.jpg" alt="Участницы на занятии йогой в парной асане" loading="lazy">
+        <img src="images/IMG_2969-graded.jpg" alt="Практика баланса на занятии йогой" loading="lazy">
+        <img src="images/IMG_3028-graded.jpg" alt="Асана в студии йоги" loading="lazy">
+        <img src="images/IMG_3038-graded.jpg" alt="Практика йоги в студии с подсветкой" loading="lazy">
+        <img src="images/IMG_3686-graded.jpg" alt="Растяжка на коврике в студии" loading="lazy">
+        <img src="images/IMG_5162-graded.jpg" alt="Наклон вперёд с опорой на блок" loading="lazy">
+        <img src="images/IMG_4461-graded.jpg" alt="Баланс в асане в студии йоги" loading="lazy">
       </div>
       <button class="more-photos" type="button" aria-expanded="false" aria-controls="extra-practice-photos">
         <span class="more-photos-label">Ещё фото</span><span class="more-photos-arrow" aria-hidden="true">→</span>
