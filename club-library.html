@@ -23,18 +23,10 @@
   </header>
   <main id="club-main">
     <p id="status" role="status">Проверяем доступ…</p>
-    <section id="subscription-panel" class="club-panel" aria-labelledby="subscription-title" hidden>
-      <h2 id="subscription-title">Подписка</h2>
+    <section id="subscription-panel" aria-label="Статус доступа" hidden>
       <section id="account" hidden aria-label="Подписка">
         <p class="club-expiry"><span id="subscription-check" aria-hidden="true" hidden>✓</span><span id="expiry"></span></p>
-        <div class="club-account-actions">
-          <a class="club-renew" href="https://t.me/yogalizza">Продлить подписку <span aria-hidden="true">→</span></a>
-        </div>
       </section>
-      <div class="club-support" id="club-support" hidden>
-        <p>Есть вопросы? Напишите или позвоните мне в Telegram.</p>
-        <a href="https://t.me/yogalizza" target="_blank" rel="noopener noreferrer">@yogalizza</a>
-      </div>
     </section>
     <h1><span>Личный кабинет</span><span class="club-title-rule" aria-hidden="true"></span></h1>
     <section id="library" class="club-panel club-library" aria-labelledby="videoteka" hidden>
@@ -44,6 +36,10 @@
       <div id="playlist-player" hidden></div>
       <video id="video" controls controlslist="nodownload noremoteplayback" disablepictureinpicture playsinline preload="metadata" hidden></video>
     </section>
+    <div class="club-support" id="club-support" hidden>
+      <p>Есть вопросы? Напишите или позвоните мне в Telegram.</p>
+      <a href="https://t.me/yogalizza" target="_blank" rel="noopener noreferrer">@yogalizza</a>
+    </div>
   </main>
 </body>
 </html>
