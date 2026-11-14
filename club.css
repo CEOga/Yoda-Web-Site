@@ -39,10 +39,12 @@
   text-underline-offset: 4px;
 }
 
+#club-main { --club-section-gap: 32px; }
+
 .club-layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: 32px;
+  gap: var(--club-section-gap);
   align-items: start;
 }
 
@@ -108,7 +110,7 @@
 
 @media (max-width: 900px) {
   #club-main { padding-block: 48px 64px; }
-  .club-layout { gap: 24px; }
+  #club-main { --club-section-gap: 24px; }
   .club-cover { min-height: 256px; }
 }
 
@@ -169,7 +171,7 @@
   border-color: var(--ink);
 }
 
-.club-library { margin-block-start: 48px; }
+.club-library { margin-block-start: var(--club-section-gap); }
 .club-library select {
   width: min(100%, 440px);
   min-height: 44px;
@@ -178,4 +180,15 @@
   border-radius: 8px;
   background: var(--paper);
   color: var(--ink);
+}
+
+.club-expiry {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+#subscription-check {
+  color: var(--rose);
+  font-weight: 700;
 }

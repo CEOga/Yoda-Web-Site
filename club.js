@@ -62,6 +62,7 @@ async function refreshAccount() {
   element("play").disabled = !practiceVideo.options.length;
   practiceVideo.disabled = !practiceVideo.options.length;
   element("renew").hidden = result.active;
+  element("subscription-check").hidden = !result.active;
   element("expiry").textContent = result.active
     ? "Доступ действует до " + new Date(result.expiresAt).toLocaleString("ru-RU", { dateStyle: "long", timeStyle: "short" })
     : "Сейчас у вас нет активной подписки.";
