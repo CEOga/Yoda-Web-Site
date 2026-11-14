@@ -7,40 +7,62 @@
   <meta name="robots" content="noindex">
   <title>Личный кабинет · Yoga Lizza</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap">
-  <link rel="stylesheet" href="/club.css">
+  <link rel="stylesheet" href="/styles.css?v=club-layout">
+  <link rel="stylesheet" href="/club.css?v=club-layout">
+  <script src="/script.js?v=review-cards" defer></script>
   <script type="module" src="/club.js"></script>
 </head>
-<body>
-  <header>
-    <a class="back-link" href="https://yoga-lizza.pages.dev/" aria-label="На главную Yoga Lizza">
-      <span aria-hidden="true">←</span> Yoga Lizza
-    </a>
+<body class="club-page">
+  <a class="skip-link" href="#club-main">Перейти к содержанию</a>
+  <header class="site-header" id="top">
+    <a class="wordmark" href="https://yoga-lizza.pages.dev/" aria-label="Yoga Lizza — на главную"><b class="header-back-arrow" aria-hidden="true">←</b> yoga <span>lizza</span><i>®</i></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Открыть меню"><span></span><span></span></button>
+    <nav class="primary-nav" id="primary-nav" aria-label="Главная навигация">
+      <a href="https://yoga-lizza.pages.dev/#about">Обо мне</a><a href="https://yoga-lizza.pages.dev/#groups">Группы</a><a href="https://yoga-lizza.pages.dev/#individual">Индивидуально</a><a href="https://yoga-lizza.pages.dev/#online">Онлайн</a><a href="https://yoga-lizza.pages.dev/#sample-videos">Примеры</a><a href="https://yoga-lizza.pages.dev/#reviews">Отзывы</a><a href="https://yoga-lizza.pages.dev/#faq">FAQ</a>
+      <a class="booking-menu-link" href="https://yoga-lizza.pages.dev/#booking">Записаться</a>
+    </nav>
+    <a class="club-login" href="/club" aria-current="page">Вход в личный кабинет</a>
+    <a class="button button-small" href="https://yoga-lizza.pages.dev/#booking">Записаться <span aria-hidden="true">→</span></a>
   </header>
-  <main>
-    <h1>Йога-клуб</h1>
-    <p id="status" role="status">Загрузка…</p>
-    <form id="login" hidden>
-      <label>Почта <input name="email" type="email" autocomplete="username" required></label>
-      <label>Пароль <input name="password" type="password" autocomplete="current-password" required></label>
-      <button type="submit">Войти</button>
-      <button type="button" id="google" class="secondary" hidden>Войти через Google</button>
-      <button type="button" id="reset" class="secondary">Восстановить пароль</button>
-    </form>
-    <form id="password" hidden>
-      <label>Новый пароль <input name="password" type="password" autocomplete="new-password" minlength="8" required></label>
-      <button type="submit">Сохранить пароль</button>
-    </form>
-    <section id="account" hidden aria-label="Подписка">
-      <p id="expiry"></p>
-      <a id="renew" href="/#online" hidden>Продлить подписку</a>
-      <div id="library" hidden>
-        <h2>Видеопрактики</h2>
-        <button id="play" type="button">Открыть практику</button>
-        <a id="playlist" target="_blank" rel="noopener noreferrer" hidden>Открыть плейлист на YouTube</a>
-        <video id="video" controls playsinline preload="metadata" hidden></video>
+  <main id="club-main">
+    <h1>Онлайн-практики</h1>
+    <nav class="club-path" aria-label="Путь к странице">
+      <a href="https://yoga-lizza.pages.dev/">Главная</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">Онлайн-практики</span>
+    </nav>
+    <div class="club-layout">
+      <div class="club-cover">
+        <p>Йога-клуб</p>
+        <a class="club-access" href="https://yoga-lizza.pages.dev/#online">Как получить доступ <span aria-hidden="true">→</span></a>
       </div>
-      <button id="logout" type="button" class="secondary">Выйти</button>
-    </section>
+      <section class="club-panel" aria-labelledby="club-panel-title">
+        <h2 id="club-panel-title">Личный кабинет</h2>
+        <p id="status" role="status">Загрузка…</p>
+        <form id="login" hidden>
+          <label>Почта <input name="email" type="email" autocomplete="username" required></label>
+          <label>Пароль <input name="password" type="password" autocomplete="current-password" required></label>
+          <button type="submit">Войти</button>
+          <button type="button" id="google" class="secondary" hidden>Войти через Google</button>
+          <button type="button" id="reset" class="secondary">Восстановить пароль</button>
+        </form>
+        <form id="password" hidden>
+          <label>Новый пароль <input name="password" type="password" autocomplete="new-password" minlength="8" required></label>
+          <button type="submit">Сохранить пароль</button>
+        </form>
+        <section id="account" hidden aria-label="Подписка">
+          <p id="expiry"></p>
+          <a id="renew" href="https://yoga-lizza.pages.dev/#online" hidden>Продлить подписку</a>
+          <div id="library" hidden>
+            <h2>Видеопрактики</h2>
+            <button id="play" type="button">Открыть практику</button>
+            <a id="playlist" target="_blank" rel="noopener noreferrer" hidden>Открыть плейлист на YouTube</a>
+            <video id="video" controls playsinline preload="metadata" hidden></video>
+          </div>
+          <button id="logout" type="button" class="secondary">Выйти</button>
+        </section>
+      </section>
+    </div>
   </main>
 </body>
 </html>
