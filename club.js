@@ -137,7 +137,20 @@ async function loadPlaylist(session) {
     if (practiceMinutes[entry.id]) {
       const duration = document.createElement("small");
       duration.className = "library-duration";
-      duration.textContent = practiceMinutes[entry.id] + " мин";
+      const clock = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      clock.setAttribute("viewBox", "0 0 20 20");
+      clock.setAttribute("aria-hidden", "true");
+      clock.classList.add("duration-clock");
+      const clockFace = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+      clockFace.setAttribute("cx", "10");
+      clockFace.setAttribute("cy", "10");
+      clockFace.setAttribute("r", "7");
+      const clockHands = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      clockHands.setAttribute("d", "M10 6v4l2.5 1.5");
+      clock.append(clockFace, clockHands);
+      const durationLabel = document.createElement("span");
+      durationLabel.textContent = practiceMinutes[entry.id] + " мин";
+      duration.append(clock, durationLabel);
       button.append(duration);
     }
     button.addEventListener("click", () => play(entry));
