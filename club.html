@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="/styles.css?v=club-layout">
   <link rel="stylesheet" href="/club.css?v=header-spacing">
   <script src="/script.js?v=review-cards" defer></script>
-  <script type="module" src="/club.js?v=club-support"></script>
+  <script type="module" src="/club.js?v=private-library"></script>
 </head>
 <body class="club-page">
   <a class="skip-link" href="#club-main">Перейти к содержанию</a>
@@ -54,9 +54,9 @@
           <a id="renew" href="https://yoga-lizza.pages.dev/#online" hidden>Продлить подписку</a>
           <div id="library" hidden>
             <h2>Видеопрактики</h2>
+            <label>Выберите практику <select id="practice-video"></select></label>
             <button id="play" type="button">Открыть практику</button>
-            <a id="playlist" target="_blank" rel="noopener noreferrer" hidden>Открыть плейлист на YouTube</a>
-            <video id="video" controls playsinline preload="metadata" hidden></video>
+            <video id="video" controls controlslist="nodownload noremoteplayback" disablepictureinpicture playsinline preload="metadata" hidden></video>
           </div>
           <button id="logout" type="button" class="secondary">Выйти</button>
         </section>

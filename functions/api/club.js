@@ -30,21 +30,19 @@ export async function onRequestPost({ env, request }) {
     const remainingSeconds = Math.floor((Date.parse(expiresAt) - Date.now()) / 1000);
     const active = remainingSeconds > 0;
 
-    const playlistId = env.CLUB_PREVIEW_YOUTUBE_PLAYLIST_ID ?? "";
-    const playlistPreview = env.CLUB_ENABLE_YOUTUBE_PREVIEW === "true"
-      && /^PL[A-Za-z0-9_-]{8,64}$/.test(playlistId);
-    if (new URL(request.url).searchParams.get("action") !== "play") {
-      return reply({ active, expiresAt, playlistPreview: active && playlistPreview });
+    const catalog = env.CLUB_VIDEOS
+      ? JSON.parse(env.CLUB_VIDEOS)
+      : CLUB_VIDEO_PATH ? [{ title: "Практика", path: CLUB_VIDEO_PATH }] : [];
+    const action = new URL(request.url).searchParams;
+    if (action.get("action") !== "play") {
+      return reply({ active, expiresAt, videos: active ? catalog.map(({ title }) => title) : [] });
     }
     if (!active) return reply({ error: "inactive" }, 403);
-    if (playlistPreview) {
-      const playlist = new URL("https://www.youtube.com/playlist");
-      playlist.searchParams.set("list", playlistId);
-      return reply({ kind: "youtube_playlist", url: playlist.href });
-    }
-    if (!CLUB_VIDEO_PATH || !SUPABASE_SECRET_KEY) return reply({ error: "video_unavailable" }, 503);
+    const index = action.get("video") ?? "0";
+    const entry = /^\d+$/.test(index) ? catalog[Number(index)] : undefined;
+    if (!entry?.path || !SUPABASE_SECRET_KEY) return reply({ error: "video_unavailable" }, 503);
 
-    const path = CLUB_VIDEO_PATH.split("/").map(encodeURIComponent).join("/");
+    const path = entry.path.split("/").map(encodeURIComponent).join("/");
     const signed = await fetch(url + "/storage/v1/object/sign/club-videos/" + path, {
       method: "POST",
       headers: { apikey: SUPABASE_SECRET_KEY, "Content-Type": "application/json" },

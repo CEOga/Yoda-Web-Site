@@ -7,7 +7,7 @@ const login = element("login");
 const password = element("password");
 const account = element("account");
 const video = element("video");
-const playlist = element("playlist");
+const practiceVideo = element("practice-video");
 const clubUrl = location.origin + "/club.html";
 const callback = new URLSearchParams(location.hash.slice(1));
 let settingPassword = false;
@@ -24,16 +24,14 @@ function show(screen, message = "", isError = false) {
 }
 
 function clearVideo() {
-  playlist.removeAttribute("href");
-  playlist.hidden = true;
   video.pause();
   video.removeAttribute("src");
   video.load();
   video.hidden = true;
 }
 
-async function clubRequest(session, action = "status") {
-  const response = await fetch("/api/club?action=" + action, {
+async function clubRequest(session, action = "status", videoIndex = "") {
+  const response = await fetch("/api/club?" + new URLSearchParams({ action, video: videoIndex }), {
     method: "POST",
     headers: { Authorization: "Bearer " + session.access_token },
   });
@@ -51,7 +49,9 @@ async function refreshAccount() {
   }
   if (!result.ok) throw new Error("Membership unavailable");
   element("library").hidden = !result.active;
-  element("play").textContent = result.playlistPreview ? "Показать плейлист" : "Открыть практику";
+  practiceVideo.replaceChildren(...(result.videos ?? []).map((title, index) => new Option(title, index)));
+  element("play").disabled = !practiceVideo.options.length;
+  practiceVideo.disabled = !practiceVideo.options.length;
   element("renew").hidden = result.active;
   element("expiry").textContent = result.active
     ? "Доступ действует до " + new Date(result.expiresAt).toLocaleString("ru-RU", { dateStyle: "long", timeStyle: "short" })
@@ -125,7 +125,7 @@ async function start() {
   bind("play", "click", async () => {
     const { data: { session } } = await client.auth.getSession();
     if (!session) return refreshAccount();
-    const result = await clubRequest(session, "play");
+    const result = await clubRequest(session, "play", practiceVideo.value);
     if (result.error === "inactive" || result.error === "login_required") {
       clearVideo();
       return refreshAccount();
@@ -134,12 +134,6 @@ async function start() {
       return showStatus("Не удалось открыть видео. Попробуйте ещё раз.", true);
     }
     showStatus("");
-    if (result.kind === "youtube_playlist") {
-      playlist.href = result.url;
-      playlist.hidden = false;
-      playlist.focus();
-      return;
-    }
     video.src = result.url;
     video.hidden = false;
     await video.play().catch(() => {});
