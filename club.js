@@ -95,7 +95,7 @@ async function start() {
       password: login.elements.password.value,
     });
     if (error) return show(login, "Не удалось войти. Проверьте почту и пароль.", true);
-    login.reset();
+    HTMLFormElement.prototype.reset.call(login);
     await refreshAccount();
   });
   bind("reset", "click", async () => {
