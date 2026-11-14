@@ -60,7 +60,12 @@
   color: var(--paper);
 }
 
-.club-cover p { margin: 0; font-size: 36px; line-height: 1.15; }
+#club-main .club-cover h2 {
+  margin: 0;
+  font-size: var(--type-subtitle) !important;
+  font-weight: 600;
+  line-height: 1.25;
+}
 
 .club-access {
   display: inline-flex;
