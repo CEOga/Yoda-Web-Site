@@ -1680,6 +1680,8 @@ main > section + section { margin-block-start: var(--section-space); }
 main > #highlights { margin-block-start: 48px; }
 
 #home.hero {
+  width: 100%;
+  background-color: var(--ink);
   min-height: clamp(640px, 100svh, 800px);
   padding: 112px max(var(--gutter), calc((100% - 1200px) / 2)) 72px;
 }
@@ -2529,13 +2531,14 @@ body .review-arrow { color: var(--paper); }
 }
 
 @media (max-width: 480px) {
+  body { overflow-x: hidden; }
   #top.site-header > .button[href="#booking"] { display: none; }
   #top .booking-menu-link { display: flex; }
   .site-header > .club-login { flex: 0 1 auto; }
 }
 
 html {
-  overflow-x: clip;
+  overflow-x: hidden;
   scrollbar-width: none;
 }
 
