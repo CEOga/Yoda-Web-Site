@@ -361,3 +361,24 @@
   margin-inline-start: auto;
 }
 .library-card .library-duration { padding-block: 12px; }
+
+/* Match the home page type scale on the club sign-in page. */
+.club-page:not(.library-page) #club-main h1 {
+  font-size: var(--type-hero) !important;
+  line-height: 1.1;
+}
+
+.club-page:not(.library-page) .club-panel {
+  font-size: var(--type-copy);
+  line-height: 1.55;
+}
+
+.club-page:not(.library-page) .club-panel h2 {
+  font-size: var(--type-title) !important;
+  line-height: 1.1;
+}
+
+.club-page:not(.library-page) .club-panel :is(label, input, button),
+.club-page:not(.library-page) .club-access {
+  font-size: var(--type-button) !important;
+}
