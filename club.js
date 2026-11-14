@@ -176,9 +176,8 @@ async function loadPlaylist(session) {
   }
 
   for (const entry of result.entries?.length ? result.entries : [{ title: practiceVideo.selectedOptions[0].text }]) {
-    const button = document.createElement("button");
-    button.type = "button";
-    button.className = "library-card";
+    const card = document.createElement("article");
+    card.className = "library-card";
     if (entry.id) {
       const thumbnail = document.createElement("img");
       const thumbnailBase = "https://i.ytimg.com/vi/" + entry.id + "/";
@@ -197,20 +196,20 @@ async function loadPlaylist(session) {
       thumbnail.src = thumbnailBase + thumbnailFiles[0];
       thumbnail.alt = "";
       thumbnail.loading = "lazy";
-      button.append(thumbnail);
+      card.append(thumbnail);
     } else {
       const placeholder = document.createElement("div");
       placeholder.className = "library-placeholder";
-      button.append(placeholder);
+      card.append(placeholder);
     }
     const title = document.createElement("span");
     title.className = "library-card-title";
     title.textContent = entry.title;
-    button.title = entry.title;
-    button.append(title);
+    card.title = entry.title;
+    card.append(title);
     let durationLabel;
     {
-      const duration = document.createElement("small");
+      const duration = document.createElement("div");
       duration.className = "library-duration";
       const clock = document.createElementNS("http://www.w3.org/2000/svg", "svg");
       clock.setAttribute("viewBox", "0 0 20 20");
@@ -232,16 +231,16 @@ async function loadPlaylist(session) {
       clock.append(clockFace, clockHands);
       durationLabel = document.createElement("span");
       durationLabel.textContent = practiceMinutes[entry.id] ? practiceMinutes[entry.id] + " мин" : "Время не указано";
-      const playIcon = document.createElement("span");
+      const playIcon = document.createElement("button");
+      playIcon.type = "button";
       playIcon.className = "library-play-icon";
-      playIcon.setAttribute("aria-hidden", "true");
+      playIcon.setAttribute("aria-label", "Смотреть: " + entry.title);
       playIcon.textContent = "Смотреть →";
+      playIcon.addEventListener("click", () => play(entry));
       duration.append(clock, durationLabel, playIcon);
-      button.append(duration);
+      card.append(duration);
     }
-    button.setAttribute("aria-label", "Смотреть: " + entry.title);
-    button.addEventListener("click", () => play(entry));
-    cards.append(button);
+    cards.append(card);
   }
   if (result.playlistId && !result.entries?.length) await play({});
 }
