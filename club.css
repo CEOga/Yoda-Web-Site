@@ -111,9 +111,9 @@
 .club-panel label, .club-panel input, .club-panel button { font: 600 16px/1.25 var(--sans); }
 .club-panel input, .club-panel button { min-height: 44px; padding: 8px 16px; color: inherit; }
 .club-panel input { width: 100%; border: 1px solid currentColor; border-radius: 8px; background: var(--paper); }
-.club-panel button { border: 1px solid transparent; border-radius: 999px; background: var(--rose); color: var(--paper); cursor: pointer; }
+.club-panel button, .club-panel .club-renew { border: 1px solid transparent; border-radius: 999px; background: var(--rose); color: var(--paper); cursor: pointer; }
 .club-panel button.secondary { background: transparent; color: var(--ink); border-color: currentColor; }
-.club-panel button:hover:not(:disabled) { text-decoration: underline; }
+.club-panel button:hover:not(:disabled), .club-panel .club-renew:hover { text-decoration: underline; }
 .club-panel button:disabled { opacity: .65; cursor: wait; }
 .club-panel :focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
 .club-panel video { display: block; width: 100%; margin-block: 16px; border-radius: 12px; }
@@ -124,7 +124,15 @@
   margin-top: 24px;
 }
 
-.club-panel .club-renew:disabled { opacity: 1; cursor: default; }
+.club-panel .club-renew {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 8px 16px;
+  font: 600 16px/1.25 var(--sans);
+  text-decoration: none;
+}
 
 @media (max-width: 900px) {
   #club-main { padding-block: 48px 64px; }
