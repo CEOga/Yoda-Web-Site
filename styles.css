@@ -1713,7 +1713,8 @@ main > #highlights { margin-block-start: 48px; }
   text-align: left;
 }
 #home .hero-copy h1 {
-  max-width: 576px;
+  width: fit-content;
+  max-width: min(576px, 100%);
   margin: 0;
   font-family: var(--sans) !important;
   font-size: var(--type-hero) !important;
@@ -2561,10 +2562,10 @@ html::-webkit-scrollbar {
   line-height: 1.2;
 }
 
-#home .hero-copy::before {
+#home .hero-copy h1::before {
   content: "";
   display: block;
-  width: 96px;
+  width: 100%;
   height: 1px;
   margin-bottom: 16px;
   background: linear-gradient(to right, var(--rose) 40%, transparent);
