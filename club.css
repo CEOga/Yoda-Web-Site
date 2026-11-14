@@ -235,3 +235,37 @@
   justify-self: end;
   margin-inline-start: auto;
 }
+
+.library-page #top.site-header { display:flex; justify-content:space-between; padding-inline:max(20px,calc((100% - 1200px)/2)); }
+.library-page .library-nav { position:relative; justify-content:flex-end; }
+.library-page #subscription-panel { position:absolute; z-index:2; inset:calc(100% + 12px) 0 auto auto; width:min(360px,calc(100vw - 40px)); color:var(--ink); padding:24px; box-shadow:0 12px 32px #39353026; }
+.library-page #subscription-panel h2 { font-size:24px; margin-bottom:12px; }
+.library-page #logout { margin-top:16px; background:transparent; color:var(--ink); border-color:currentColor; }
+.library-page #club-main { width:min(1200px, calc(100% - 40px)); padding-block:32px 64px; font-family:var(--sans); }
+.library-page #club-main h1 { margin-bottom:24px; font-size:48px; font-weight:600; }
+.library-page h1 em { color:inherit; font:italic 400 1em Georgia,serif; }
+.library-page #status:empty { display:none; }
+.library-page .club-library { margin:0; }
+.featured-practice { display:grid; grid-template-columns: 5fr 7fr; overflow:hidden; border-radius:20px; background:var(--ink); color:var(--paper); }
+.featured-copy { padding:32px 40px; align-self:center; }
+.library-page .featured-copy p { font-size:18px; margin:0 0 8px; }
+.library-page .featured-copy h2 { color:inherit; font-size:36px; font-weight:600; margin:0 0 8px; }
+.featured-copy button { margin-top:16px; min-height:48px; padding:8px 24px; border:0; border-radius:999px; background:var(--rose); color:var(--ink); font-size:16px; font-weight:700; cursor:pointer; }
+.featured-practice img { display:block; width:100%; height:100%; min-height:0; aspect-ratio:16/9; object-fit:cover; }
+.catalog-heading { display:flex; align-items:center; flex-wrap:wrap; gap:16px 32px; margin:28px 0 20px; }
+.library-page .catalog-heading h2 { margin:0; font-size:36px; font-weight:600; }
+.library-page .catalog-heading select { margin:0; width:min(100%,340px); font-size:16px; }
+.library-page .video-cards { grid-template-columns:repeat(3,minmax(0,1fr)); }
+.library-page .library-card { border:0; cursor:pointer; }
+.library-page .library-card .practice-caption { display:grid; gap:4px; padding:16px 20px; }
+.library-page .practice-caption > span { padding:0; font-size:24px; font-weight:600; line-height:1.2; }
+.library-page .practice-caption small { font-size:18px !important; }
+.library-page :is(button,select):focus-visible { outline:2px solid var(--rose); outline-offset:3px; }
+.library-page #club-main video { width:100%; margin-top:16px; }
+@media(max-width:760px) {
+  .library-page #club-main h1 { font-size:36px; }
+  .featured-practice { grid-template-columns:minmax(0,1fr); }
+  .featured-practice img { grid-row:1; height:auto; }
+  .featured-copy { padding:24px; }
+  .library-page .video-cards { grid-template-columns:minmax(0,1fr); }
+}
