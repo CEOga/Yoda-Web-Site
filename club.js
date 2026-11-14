@@ -131,7 +131,7 @@ async function loadPlaylist(session) {
   showStatus("");
 
   let playback = 0;
-  async function play(entry) {
+  async function play(entry, updateDuration = () => {}) {
     const attempt = ++playback;
     clearVideo();
     if (entry.id || result.playlistId) {
@@ -141,6 +141,8 @@ async function loadPlaylist(session) {
       const frame = document.createElement("iframe");
       frame.title = "Плеер YouTube";
       frame.allowFullscreen = true;
+      frame.allow = "autoplay; fullscreen; encrypted-media; picture-in-picture";
+      if (entry.id) url.searchParams.set("autoplay", "1");
       frame.referrerPolicy = "strict-origin-when-cross-origin";
       if (await loadYouTubeApi().catch(() => null)) {
         url.searchParams.set("enablejsapi", "1");
@@ -153,6 +155,12 @@ async function loadPlaylist(session) {
       if (url.searchParams.has("enablejsapi")) {
         youtubePlayer = new window.YT.Player(frame, {
           events: {
+            onStateChange({ target }) {
+              const seconds = target.getDuration();
+              if (request === playlistRequest && attempt === playback && seconds > 0) {
+                updateDuration(Math.floor(seconds / 60) + ":" + String(Math.floor(seconds % 60)).padStart(2, "0"));
+              }
+            },
             onError({ data }) {
               if (request !== playlistRequest || attempt !== playback || !option.isConnected) return;
               if (![100, 101, 150].includes(data)) return;
@@ -178,7 +186,7 @@ async function loadPlaylist(session) {
     button.className = "library-card";
     if (entry.id) {
       const thumbnail = document.createElement("img");
-      thumbnail.src = "https://i.ytimg.com/vi/" + entry.id + "/1.jpg";
+      thumbnail.src = "https://i.ytimg.com/vi/" + entry.id + "/2.jpg";
       thumbnail.alt = "";
       thumbnail.loading = "lazy";
       button.append(thumbnail);
@@ -192,7 +200,8 @@ async function loadPlaylist(session) {
     title.textContent = entry.title;
     button.title = entry.title;
     button.append(title);
-    if (practiceMinutes[entry.id]) {
+    let durationLabel;
+    {
       const duration = document.createElement("small");
       duration.className = "library-duration";
       const clock = document.createElementNS("http://www.w3.org/2000/svg", "svg");
@@ -213,12 +222,19 @@ async function loadPlaylist(session) {
       const clockHands = document.createElementNS("http://www.w3.org/2000/svg", "path");
       clockHands.setAttribute("d", "M10 6v4l2.5 1.5");
       clock.append(clockFace, clockHands);
-      const durationLabel = document.createElement("span");
-      durationLabel.textContent = practiceMinutes[entry.id] + " мин";
-      duration.append(clock, durationLabel);
+      durationLabel = document.createElement("span");
+      durationLabel.textContent = practiceMinutes[entry.id] ? practiceMinutes[entry.id] + " мин" : "Время при запуске";
+      const playIcon = document.createElement("span");
+      playIcon.className = "library-play-icon";
+      playIcon.setAttribute("aria-hidden", "true");
+      playIcon.textContent = "→";
+      duration.append(clock, durationLabel, playIcon);
       button.append(duration);
     }
-    button.addEventListener("click", () => play(entry));
+    button.setAttribute("aria-label", "Смотреть: " + entry.title);
+    button.addEventListener("click", () => play(entry, time => {
+      durationLabel.textContent = time;
+    }));
     cards.append(button);
   }
   if (result.playlistId && !result.entries?.length) await play({});
