@@ -237,11 +237,6 @@
   margin-inline-start: auto;
 }
 
-.library-page #subscription-toggle {
-  background: var(--rose);
-  border-color: var(--rose);
-  color: var(--paper);
-}
 
 #club-main h1 {
   display: flex;
@@ -498,4 +493,31 @@
   font-weight: 400;
   line-height: 1.55;
   overflow-wrap: anywhere;
+}
+
+.library-page #subscription-panel { margin-block-end: 24px; }
+.library-page #subscription-title { font-size: var(--type-subtitle) !important; }
+
+.library-page .library-card .library-duration {
+  flex-wrap: wrap;
+}
+
+.library-page .library-card .library-play-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  width: auto;
+  height: auto;
+  flex: 0 0 auto;
+  padding: 8px 16px;
+  border: 1px solid var(--rose);
+  border-radius: 999px;
+  background: var(--rose);
+  color: var(--paper);
+}
+
+.library-card:hover .library-play-icon,
+.library-card:focus-visible .library-play-icon {
+  border-color: var(--paper);
 }
