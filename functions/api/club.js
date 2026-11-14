@@ -1,3 +1,5 @@
+import playlistCatalog from "../../lib/playlist-catalog.js";
+
 const defaultPlaylists = [
   "PLHT5h37YL57A",
   "PLZWOVGEhE2Ao",
@@ -62,13 +64,13 @@ export async function onRequestPost({ env, request }) {
       : CLUB_VIDEO_PATH ? [{ title: "Практика", path: CLUB_VIDEO_PATH }] : defaultPlaylists;
     const action = new URL(request.url).searchParams;
     if (action.get("action") !== "play") {
-      return reply({ active, expiresAt, videos: active ? catalog.map(({ title }) => title) : [] });
+      return reply({ active, expiresAt, videos: active ? catalog.map(({ title, playlistId }) => playlistCatalog[playlistId]?.title ?? title) : [] });
     }
     if (!active) return reply({ error: "inactive" }, 403);
     const index = action.get("video") ?? "0";
     const entry = /^\d+$/.test(index) ? catalog[Number(index)] : undefined;
     if (entry?.playlistId && /^PL[A-Za-z0-9_-]+$/.test(entry.playlistId)) {
-      return reply({ playlistId: entry.playlistId });
+      return reply({ playlistId: entry.playlistId, entries: playlistCatalog[entry.playlistId]?.videos ?? [] });
     }
     if (!entry?.path || !SUPABASE_SECRET_KEY) return reply({ error: "video_unavailable" }, 503);
 

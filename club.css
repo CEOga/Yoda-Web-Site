@@ -221,3 +221,11 @@
   color: var(--rose);
   font-weight: 700;
 }
+
+.library-page #top { height: auto; min-height: 72px; flex-wrap: wrap; gap: 8px 24px; padding-block: 12px; }
+.library-nav { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; }
+.library-nav button { min-height: 44px; padding: 8px 12px; color: inherit; background: transparent; border: 1px solid currentColor; border-radius: 999px; cursor: pointer; }
+.video-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 16px; }
+.club-library .library-card { padding: 0; overflow: hidden; border-radius: 20px; background: var(--greige); color: var(--ink); text-align: left; }
+.library-card img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.library-card span { display: block; padding: 16px; }

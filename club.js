@@ -64,13 +64,15 @@ async function refreshAccount() {
   library.hidden = !result.active;
   if (!result.active) clearVideo();
   practiceVideo.replaceChildren(...(result.videos ?? []).map((title, index) => new Option(title, index)));
-  element("play").disabled = !practiceVideo.options.length;
+  element("logout").hidden = false;
+  element("subscription-toggle").hidden = false;
   practiceVideo.disabled = !practiceVideo.options.length;
   element("subscription-check").hidden = !result.active;
   element("expiry").textContent = result.active
     ? "Доступ действует до " + new Date(result.expiresAt).toLocaleString("ru-RU", { dateStyle: "long", timeStyle: "short" })
     : "Сейчас у вас нет активной подписки.";
   show(account);
+  if (result.active) await loadPlaylist(session);
 }
 
 function bind(id, event, action) {
@@ -86,6 +88,53 @@ function bind(id, event, action) {
       button.disabled = false;
     }
   });
+}
+
+let playlistRequest = 0;
+async function loadPlaylist(session) {
+  const request = ++playlistRequest;
+  const cards = element("video-cards");
+  cards.replaceChildren();
+  clearVideo();
+  if (!practiceVideo.options.length) return;
+  const result = await clubRequest(session, "play", practiceVideo.value);
+  if (request !== playlistRequest) return;
+  if (result.error === "inactive" || result.error === "login_required") return refreshAccount();
+  if (!result.ok) return showStatus("Не удалось открыть плейлист.", true);
+  showStatus("");
+
+  function play(entry) {
+    clearVideo();
+    if (entry.id || result.playlistId) {
+      playlistPlayer.src = entry.id
+        ? "https://www.youtube.com/embed/" + entry.id
+        : "https://www.youtube.com/embed/videoseries?list=" + result.playlistId;
+      playlistPlayer.hidden = false;
+      playlistPlayer.scrollIntoView({ block: "nearest" });
+    } else {
+      video.src = result.url;
+      video.hidden = false;
+      video.play().catch(() => {});
+    }
+  }
+
+  for (const entry of result.entries?.length ? result.entries : [{ title: practiceVideo.selectedOptions[0].text }]) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "library-card";
+    if (entry.id) {
+      const thumbnail = document.createElement("img");
+      thumbnail.src = "https://i.ytimg.com/vi/" + entry.id + "/hqdefault.jpg";
+      thumbnail.alt = "";
+      thumbnail.loading = "lazy";
+      button.append(thumbnail);
+    }
+    const title = document.createElement("span");
+    title.textContent = entry.title;
+    button.append(title);
+    button.addEventListener("click", () => play(entry));
+    cards.append(button);
+  }
 }
 
 async function start() {
@@ -109,7 +158,7 @@ async function start() {
       password: login.elements.password.value,
     });
     if (error) return show(login, "Не удалось войти. Проверьте почту и пароль.", true);
-    HTMLFormElement.prototype.reset.call(login);
+    login.reset();
     await refreshAccount();
   });
   bind("reset", "click", async () => {
@@ -136,28 +185,15 @@ async function start() {
     clearVideo();
     location.replace(clubUrl);
   });
-  bind("play", "click", async () => {
+  bind("subscription-toggle", "click", async () => {
+    const panel = element("subscription-panel");
+    panel.hidden = !panel.hidden;
+    element("subscription-toggle").setAttribute("aria-expanded", String(!panel.hidden));
+  });
+  practiceVideo?.addEventListener("change", async () => {
     const { data: { session } } = await client.auth.getSession();
     if (!session) return refreshAccount();
-    const result = await clubRequest(session, "play", practiceVideo.value);
-    if (result.error === "inactive" || result.error === "login_required") {
-      clearVideo();
-      return refreshAccount();
-    }
-    if (!result.ok) {
-      return showStatus("Не удалось открыть видео. Попробуйте ещё раз.", true);
-    }
-    showStatus("");
-    clearVideo();
-    if (result.playlistId) {
-      const params = new URLSearchParams({ listType: "playlist", list: result.playlistId, playsinline: "1" });
-      playlistPlayer.src = "https://www.youtube.com/embed?" + params;
-      playlistPlayer.hidden = false;
-      return;
-    }
-    video.src = result.url;
-    video.hidden = false;
-    await video.play().catch(() => {});
+    await loadPlaylist(session).catch(() => showStatus("Не удалось загрузить плейлист.", true));
   });
 
   const { data: { session }, error } = await client.auth.getSession();
