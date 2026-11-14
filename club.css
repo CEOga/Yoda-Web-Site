@@ -242,23 +242,21 @@
   color: var(--paper);
 }
 
-.library-page #club-main h1 {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-}
-.library-page #club-main h1::after {
+.library-page #club-main h1 { display: block; }
+.library-page #club-main h1::before {
   content: "";
-  flex: 1;
+  display: block;
+  width: 100%;
   height: 1px;
+  margin-bottom: 20px;
   background: var(--rose);
   transform-origin: left center;
   transform: scaleX(0);
 }
-.library-page #club-main:has(#library:not([hidden])) h1::after {
+.library-page #club-main:has(#library:not([hidden])) h1::before {
   animation: library-line-in 900ms ease-out both;
 }
-.library-page #club-main:has(#library[hidden]) h1::after { visibility: hidden; }
+.library-page #club-main:has(#library[hidden]) h1::before { visibility: hidden; }
 @keyframes library-line-in {
   from { opacity: 0; transform: scaleX(0); }
   to { opacity: 1; transform: scaleX(1); }
@@ -275,7 +273,7 @@
 }
 .library-card:has(.library-duration) > span { padding-bottom: 4px; }
 @media (prefers-reduced-motion: reduce) {
-  .library-page #club-main h1::after {
+  .library-page #club-main h1::before {
     animation: none;
     transform: scaleX(1);
   }
