@@ -8,6 +8,8 @@
 body { margin: 0; }
 header, main { width: min(600px, calc(100% - 40px)); margin-inline: auto; }
 header { padding-block: 24px; font-weight: 700; }
+.back-link { gap: 8px; text-decoration: none; }
+.back-link:hover { text-decoration: underline; }
 main { margin-block: 24px 64px; padding: clamp(20px, 5vw, 48px); background: #f5eee8; border-radius: 20px; }
 h1 { font-size: 36px; line-height: 1.15; margin: 0 0 16px; }
 h2 { font-size: 24px; }
