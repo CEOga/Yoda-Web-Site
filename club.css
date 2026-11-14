@@ -48,6 +48,8 @@
   align-items: start;
 }
 
+.club-layout > .club-panel { align-self: stretch; }
+
 .club-cover {
   display: flex;
   flex-direction: column;
