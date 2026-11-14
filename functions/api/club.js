@@ -1,3 +1,28 @@
+const defaultPlaylists = [
+  "PLHT5h37YL57A",
+  "PLZWOVGEhE2Ao",
+  "PLZ8QVZi6vCeU",
+  "PLEWtMtnshuiQ",
+  "PLIMMV_Tf5-WA",
+  "PLHdyZiCozWFc",
+  "PLayeb9nGBD0Q",
+  "PLZ7CxKISkDzM",
+  "PLDpYNawuUmNs",
+  "PLTxiT76g58LY",
+  "PLaPJMhvwUTz0",
+  "PLEP7UIFs0_e8",
+  "PLYeGsDPztRHY",
+  "PLJJGzv_t9Jb0",
+  "PLQvxqe6HvQO0",
+  "PLPma0pTH6rNA",
+  "PLWkNyS2_fYko",
+  "PLbdcq9hvleR0",
+  "PLeBe0AYLw-TY",
+  "PLGboohLX7qV8",
+  "PLOsnW64gRtB8",
+  "PLZK5iY3-WEWM",
+].map((playlistId, index) => ({ title: "Плейлист " + (index + 1), playlistId }));
+
 const headers = { "Cache-Control": "no-store" };
 const reply = (data, status = 200) => Response.json(data, { status, headers });
 
@@ -34,7 +59,7 @@ export async function onRequestPost({ env, request }) {
       ? JSON.parse(env.CLUB_YOUTUBE_PLAYLISTS)
       : env.CLUB_VIDEOS
       ? JSON.parse(env.CLUB_VIDEOS)
-      : CLUB_VIDEO_PATH ? [{ title: "Практика", path: CLUB_VIDEO_PATH }] : [{ title: "Плейлист 1", playlistId: "PLHT5h37YL57A" }];
+      : CLUB_VIDEO_PATH ? [{ title: "Практика", path: CLUB_VIDEO_PATH }] : defaultPlaylists;
     const action = new URL(request.url).searchParams;
     if (action.get("action") !== "play") {
       return reply({ active, expiresAt, videos: active ? catalog.map(({ title }) => title) : [] });
