@@ -72,7 +72,13 @@ async function refreshAccount() {
     ? "Доступ действует до " + new Date(result.expiresAt).toLocaleString("ru-RU", { dateStyle: "long", timeStyle: "short" })
     : "Сейчас у вас нет активной подписки.";
   show(account);
-  if (result.active) await loadPlaylist(session);
+  if (!result.active) {
+    element("subscription-panel").hidden = false;
+    element("subscription-toggle").setAttribute("aria-expanded", "true");
+    return;
+  }
+  await loadPlaylist(session);
+  await loadFeaturedPractice(session).catch(() => {});
 }
 
 function bind(id, event, action) {
@@ -90,6 +96,61 @@ function bind(id, event, action) {
   });
 }
 
+const armPractices = [
+  ["Сильные руки", "20 минут"],
+  ["Спина и плечи", "25 минут"],
+  ["Кор и плечи", "20 минут"],
+];
+
+function playPractice(entry, result) {
+  clearVideo();
+  if (entry.id || result.playlistId) {
+    playlistPlayer.src = entry.id
+      ? "https://www.youtube.com/embed/" + entry.id + "?autoplay=1"
+      : "https://www.youtube.com/embed/videoseries?list=" + result.playlistId + "&autoplay=1";
+    playlistPlayer.allow = "autoplay; fullscreen";
+    playlistPlayer.hidden = false;
+    playlistPlayer.scrollIntoView({ block: "nearest" });
+  } else {
+    video.src = result.url;
+    video.hidden = false;
+    video.scrollIntoView({ block: "nearest" });
+    video.play().catch(() => {});
+  }
+}
+
+function setPracticeImage(image, id, useFrame) {
+  const base = "https://i.ytimg.com/vi/" + id + "/";
+  if (useFrame) {
+    image.addEventListener("error", () => { image.src = base + "hqdefault.jpg"; }, { once: true });
+  }
+  image.src = base + (useFrame ? "1.jpg" : "hqdefault.jpg");
+}
+
+async function loadFeaturedPractice(session) {
+  const featured = element("featured-practice");
+  featured.hidden = true;
+  const option = [...practiceVideo.options].find(item => item.text === "Укрепляем руки");
+  if (!option) return;
+  const result = await clubRequest(session, "play", option.value);
+  const entry = result.entries?.[0];
+  if (!result.ok || !entry?.id) return;
+  setPracticeImage(element("featured-image"), entry.id, true);
+  element("featured-play").onclick = async () => {
+    try {
+      const { data: { session: current } } = await client.auth.getSession();
+      if (!current) return refreshAccount();
+      const fresh = await clubRequest(current, "play", option.value);
+      if (fresh.error === "inactive" || fresh.error === "login_required") return refreshAccount();
+      if (!fresh.ok || !fresh.entries?.[0]?.id) throw new Error("Practice unavailable");
+      playPractice(fresh.entries[0], fresh);
+    } catch {
+      showStatus("Не удалось открыть практику. Попробуйте ещё раз.", true);
+    }
+  };
+  featured.hidden = false;
+}
+
 let playlistRequest = 0;
 async function loadPlaylist(session) {
   const request = ++playlistRequest;
@@ -103,36 +164,33 @@ async function loadPlaylist(session) {
   if (!result.ok) return showStatus("Не удалось открыть плейлист.", true);
   showStatus("");
 
-  function play(entry) {
-    clearVideo();
-    if (entry.id || result.playlistId) {
-      playlistPlayer.src = entry.id
-        ? "https://www.youtube.com/embed/" + entry.id
-        : "https://www.youtube.com/embed/videoseries?list=" + result.playlistId;
-      playlistPlayer.hidden = false;
-      playlistPlayer.scrollIntoView({ block: "nearest" });
-    } else {
-      video.src = result.url;
-      video.hidden = false;
-      video.play().catch(() => {});
-    }
-  }
-
-  for (const entry of result.entries?.length ? result.entries : [{ title: practiceVideo.selectedOptions[0].text }]) {
+  const entries = result.entries?.length ? result.entries : [{ title: practiceVideo.selectedOptions[0].text }];
+  const isArms = practiceVideo.selectedOptions[0].text === "Укрепляем руки";
+  for (const [index, entry] of entries.entries()) {
     const button = document.createElement("button");
     button.type = "button";
     button.className = "library-card";
     if (entry.id) {
       const thumbnail = document.createElement("img");
-      thumbnail.src = "https://i.ytimg.com/vi/" + entry.id + "/hqdefault.jpg";
+      setPracticeImage(thumbnail, entry.id, isArms);
       thumbnail.alt = "";
       thumbnail.loading = "lazy";
       button.append(thumbnail);
     }
     const title = document.createElement("span");
-    title.textContent = entry.title;
-    button.append(title);
-    button.addEventListener("click", () => play(entry));
+    const details = isArms ? armPractices[index] : undefined;
+    const caption = document.createElement("span");
+    caption.className = "practice-caption";
+    title.textContent = details?.[0] ?? entry.title;
+    button.title = entry.title;
+    caption.append(title);
+    if (details) {
+      const duration = document.createElement("small");
+      duration.textContent = details[1];
+      caption.append(duration);
+    }
+    button.append(caption);
+    button.addEventListener("click", () => playPractice(entry, result));
     cards.append(button);
   }
 }
