@@ -140,6 +140,13 @@ async function loadPlaylist(session) {
       const clock = document.createElementNS("http://www.w3.org/2000/svg", "svg");
       clock.setAttribute("viewBox", "0 0 20 20");
       clock.setAttribute("aria-hidden", "true");
+      clock.setAttribute("width", "20");
+      clock.setAttribute("height", "20");
+      clock.setAttribute("fill", "none");
+      clock.setAttribute("stroke", "currentColor");
+      clock.setAttribute("stroke-width", "1.6");
+      clock.setAttribute("stroke-linecap", "round");
+      clock.setAttribute("stroke-linejoin", "round");
       clock.classList.add("duration-clock");
       const clockFace = document.createElementNS("http://www.w3.org/2000/svg", "circle");
       clockFace.setAttribute("cx", "10");
