@@ -6,6 +6,8 @@ const login = element("login");
 const password = element("password");
 const account = element("account");
 const video = element("video");
+const playlist = element("playlist");
+const clubUrl = location.origin + "/club.html";
 const callback = new URLSearchParams(location.hash.slice(1));
 let settingPassword = false;
 let client;
@@ -16,6 +18,8 @@ function show(screen, message = "") {
 }
 
 function clearVideo() {
+  playlist.removeAttribute("href");
+  playlist.hidden = true;
   video.pause();
   video.removeAttribute("src");
   video.load();
@@ -41,6 +45,7 @@ async function refreshAccount() {
   }
   if (!result.ok) throw new Error("Membership unavailable");
   element("library").hidden = !result.active;
+  element("play").textContent = result.playlistPreview ? "Показать плейлист" : "Открыть практику";
   element("renew").hidden = result.active;
   element("expiry").textContent = result.active
     ? "Доступ действует до " + new Date(result.expiresAt).toLocaleString("ru-RU", { dateStyle: "long", timeStyle: "short" })
@@ -66,8 +71,17 @@ function bind(id, event, action) {
 async function start() {
   const config = await fetch("/api/club");
   if (!config.ok) return show(null, "Вход в клуб пока недоступен.");
-  const { url, key } = await config.json();
+  const { url, key, googleEnabled } = await config.json();
   client = createClient(url, key);
+
+  element("google").hidden = !googleEnabled;
+  bind("google", "click", async () => {
+    const { error } = await client.auth.signInWithOAuth({
+      provider: "google",
+      options: { redirectTo: clubUrl },
+    });
+    if (error) throw error;
+  });
 
   bind("login", "submit", async () => {
     const { error } = await client.auth.signInWithPassword({
@@ -82,7 +96,7 @@ async function start() {
     const email = login.elements.email;
     if (!email.reportValidity()) return;
     const { error } = await client.auth.resetPasswordForEmail(email.value.trim(), {
-      redirectTo: location.origin + "/club.html",
+      redirectTo: clubUrl,
     });
     status.textContent = error ? "Не удалось запросить письмо. Попробуйте позже." : "Если эта почта есть в клубе, на неё придёт ссылка для восстановления.";
   });
@@ -112,6 +126,12 @@ async function start() {
       return;
     }
     status.textContent = "";
+    if (result.kind === "youtube_playlist") {
+      playlist.href = result.url;
+      playlist.hidden = false;
+      playlist.focus();
+      return;
+    }
     video.src = result.url;
     video.hidden = false;
     await video.play().catch(() => {});
@@ -120,7 +140,7 @@ async function start() {
   const { data: { session }, error } = await client.auth.getSession();
   if (callback.has("error") || (callback.has("access_token") && (!session || error))) {
     history.replaceState(null, "", location.pathname);
-    return show(login, "Ссылка недействительна или истекла. Запросите новую ссылку.");
+    return show(login, "Не удалось завершить вход. Попробуйте снова или запросите новую ссылку.");
   }
   if (session && ["invite", "recovery"].includes(callback.get("type"))) {
     settingPassword = true;
