@@ -58,9 +58,9 @@
 .club-cover img {
   display: block;
   width: 100%;
-  aspect-ratio: 2.4;
+  aspect-ratio: 4.8;
   object-fit: cover;
-  object-position: center 33%;
+  object-position: center 38%;
 }
 
 .club-cover-caption {
@@ -126,7 +126,7 @@
 @media (max-width: 480px) {
   #club-main h1 { font-size: 36px; }
   .club-panel, .club-cover-caption { padding: 24px; }
-  .club-cover img { aspect-ratio: 1.7; }
+  .club-cover img { aspect-ratio: 3.4; }
   .club-page #top .button[href$="#booking"] { display: none; }
   .club-page #top .booking-menu-link { display: flex; }
 }
