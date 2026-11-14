@@ -1690,6 +1690,15 @@ main > #highlights { margin-block-start: 48px; }
   background: var(--front-ink) url("images/IMG_4011.jpg") 68% center / cover no-repeat;
 }
 #home .hero-video { object-position: 68% 48%; filter: none; }
+
+@media (max-width: 768px) {
+  /* Keep fractional video edges outside the visible crop on mobile. */
+  #home .hero-video {
+    inset-inline: -8px;
+    width: calc(100% + 16px);
+    max-width: none;
+  }
+}
 #home .hero-visual::after {
   background:
     linear-gradient(180deg, color-mix(in srgb, var(--front-ink) 72%, transparent), transparent 26%, transparent 76%, color-mix(in srgb, var(--front-ink) 2%, transparent)),
