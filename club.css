@@ -140,3 +140,31 @@
 .club-support p { margin: 0; }
 .club-support .club-support-note { font-size: 16px; }
 .club-support button:disabled { cursor: default; }
+
+#club-main .club-cover h2 { color: var(--paper); }
+.club-layout { align-items: stretch; }
+
+.club-page #top .menu-toggle {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  flex-direction: column;
+  gap: 6px;
+  padding: 0;
+}
+
+.club-page #top .menu-toggle span {
+  display: block;
+  width: 22px;
+  height: 1px;
+  background: var(--paper);
+}
+
+.club-panel input {
+  border-color: color-mix(in srgb, var(--ink) 55%, transparent);
+}
+
+.club-panel input:focus {
+  outline: none;
+  border-color: var(--ink);
+}
