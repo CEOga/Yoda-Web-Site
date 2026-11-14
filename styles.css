@@ -2605,3 +2605,14 @@ html::-webkit-scrollbar {
   border: 0;
   clip-path: polygon(50% 0, 100% 44%, 89% 44%, 89% 100%, 60% 100%, 60% 65%, 40% 65%, 40% 100%, 11% 100%, 11% 44%, 0 44%);
 }
+
+
+/* Extend the hero through the safe area while keeping controls inside it. */
+@media (max-width: 1200px) {
+  #home.hero, #top.site-header {
+    padding-left: max(var(--gutter), calc(env(safe-area-inset-left) + 12px));
+    padding-right: max(var(--gutter), calc(env(safe-area-inset-right) + 12px));
+  }
+}
+
+html { overscroll-behavior-x: none; }
