@@ -180,7 +180,20 @@ async function loadPlaylist(session) {
     button.className = "library-card";
     if (entry.id) {
       const thumbnail = document.createElement("img");
-      thumbnail.src = "https://i.ytimg.com/vi/" + entry.id + "/2.jpg";
+      const thumbnailBase = "https://i.ytimg.com/vi/" + entry.id + "/";
+      const thumbnailFiles = ["maxresdefault.jpg", "hqdefault.jpg", "2.jpg"];
+      let thumbnailIndex = 0;
+      const useNextThumbnail = () => {
+        if (thumbnailIndex < thumbnailFiles.length - 1) {
+          thumbnail.src = thumbnailBase + thumbnailFiles[++thumbnailIndex];
+        }
+      };
+      thumbnail.addEventListener("error", useNextThumbnail);
+      thumbnail.addEventListener("load", () => {
+        if (thumbnail.naturalWidth < 320) useNextThumbnail();
+      });
+      thumbnail.decoding = "async";
+      thumbnail.src = thumbnailBase + thumbnailFiles[0];
       thumbnail.alt = "";
       thumbnail.loading = "lazy";
       button.append(thumbnail);
