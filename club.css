@@ -120,7 +120,6 @@
 }
 
 @media (min-width: 1101px) {
-  .club-page #top.site-header > .primary-nav { gap: 8px; }
   .club-page #top.site-header > .wordmark { white-space: nowrap; }
 }
 
