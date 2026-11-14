@@ -49,17 +49,27 @@
 }
 
 .club-cover {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-end;
-  gap: 16px;
-  min-height: 384px;
-  padding: 32px;
+  overflow: hidden;
   border-radius: 20px;
-  background: linear-gradient(0deg, rgb(57 53 48 / 96%), transparent 80%), url("images/IMG_4011-graded.jpg") center top / cover;
-  background-color: var(--ink);
+  background: var(--ink);
   color: var(--paper);
+}
+
+.club-cover img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 2.4;
+  object-fit: cover;
+  object-position: center 33%;
+}
+
+.club-cover-caption {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 24px 32px;
 }
 
 #club-main .club-cover h2 {
@@ -111,12 +121,12 @@
 @media (max-width: 900px) {
   #club-main { padding-block: 48px 64px; }
   #club-main { --club-section-gap: 24px; }
-  .club-cover { min-height: 320px; }
 }
 
 @media (max-width: 480px) {
   #club-main h1 { font-size: 36px; }
-  .club-panel, .club-cover { padding: 24px; }
+  .club-panel, .club-cover-caption { padding: 24px; }
+  .club-cover img { aspect-ratio: 1.7; }
   .club-page #top .button[href$="#booking"] { display: none; }
   .club-page #top .booking-menu-link { display: flex; }
 }
