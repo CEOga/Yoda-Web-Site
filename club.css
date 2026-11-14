@@ -146,7 +146,7 @@
 }
 
 @media (max-width: 480px) {
-  #club-main h1 { font-size: 36px; gap: 10px; }
+  #club-main h1 { font-size: 36px !important; gap: 10px; }
   .library-page #club-main .club-title-rule { min-width: 8px; }
   .club-panel, .club-cover-caption { padding: 24px; }
   .club-page #top .button[href$="#booking"] { display: none; }
@@ -246,6 +246,7 @@
 #club-main h1 {
   display: flex;
   align-items: center;
+  font-size: 48px !important;
   gap: 24px;
 }
 #club-main h1 > span:first-child {
