@@ -337,3 +337,12 @@
 @media (forced-colors: active) {
   .club-library select { appearance: auto; background-image: none; }
 }
+
+#videoteka em {
+  font-family: Georgia, "Times New Roman", serif !important;
+  font-size: inherit !important;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -.02em;
+  text-decoration: none;
+}
