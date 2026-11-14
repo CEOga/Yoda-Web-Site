@@ -139,8 +139,6 @@
   border-block-start: 1px solid var(--line);
 }
 .club-support p { margin: 0; }
-.club-support .club-support-note { font-size: 16px; }
-.club-support button:disabled { cursor: default; }
 
 #club-main .club-cover h2 { color: var(--paper); }
 .club-layout { align-items: stretch; }

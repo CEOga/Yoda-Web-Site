@@ -17,7 +17,7 @@ let client;
 
 function showStatus(message, isError = false) {
   status.textContent = message;
-  support.hidden = !isError;
+  support.hidden = !isError && account.hidden;
 }
 
 function show(screen, message = "", isError = false) {
