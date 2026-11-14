@@ -8,7 +8,6 @@
 }
 
 .club-page #top .header-back-arrow { margin-inline-end: 8px; }
-.club-page #top .club-login[aria-current="page"] { border-color: var(--paper); }
 
 #club-main {
   width: var(--page);
@@ -111,18 +110,28 @@
 @media (max-width: 480px) {
   #club-main h1 { font-size: 36px; }
   .club-panel, .club-cover { padding: 24px; }
-  .club-page #top .club-login { display: none; }
   .club-page #top .button[href$="#booking"] { display: none; }
   .club-page #top .booking-menu-link { display: flex; }
 }
 
 @media (min-width: 1101px) {
   .club-page #top.site-header > .primary-nav { gap: 8px; }
-  .club-page #top.site-header > .wordmark,
-  .club-page #top.site-header > .club-login { white-space: nowrap; }
+  .club-page #top.site-header > .wordmark { white-space: nowrap; }
 }
 
 @media (max-width: 1100px) {
   .club-page #top .button[href$="#booking"] { display: none; }
   .club-page #top .booking-menu-link { display: flex; }
 }
+
+.club-support {
+  display: grid;
+  justify-items: start;
+  gap: 8px;
+  margin-block-start: 24px;
+  padding-block-start: 16px;
+  border-block-start: 1px solid var(--line);
+}
+.club-support p { margin: 0; }
+.club-support .club-support-note { font-size: 16px; }
+.club-support button:disabled { cursor: default; }
