@@ -8,9 +8,9 @@
   <title>Подписка и видеотека · Yoga Lizza</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap">
   <link rel="stylesheet" href="/styles.css?v=club-layout">
-  <link rel="stylesheet" href="/club.css?v=duration-body">
+  <link rel="stylesheet" href="/club.css?v=uniform-practices">
   <script src="/script.js?v=review-cards" defer></script>
-  <script type="module" src="/club.js?v=duration-clock-title-rule"></script>
+  <script type="module" src="/club.js?v=youtube-availability"></script>
 </head>
 <body class="club-page library-page">
   <a class="skip-link" href="#club-main">Перейти к содержанию</a>
@@ -42,7 +42,7 @@
       <h2 id="videoteka" tabindex="-1">Практики клуба</h2>
       <label>Выберите плейлист <select id="practice-video"></select></label>
       <div id="video-cards" class="video-cards"></div>
-      <iframe id="playlist-player" title="Плеер плейлиста" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen hidden style="display:block;width:100%;min-height:200px;aspect-ratio:16/9;border:0;margin-top:16px"></iframe>
+      <div id="playlist-player" hidden></div>
       <video id="video" controls controlslist="nodownload noremoteplayback" disablepictureinpicture playsinline preload="metadata" hidden></video>
     </section>
   </main>
