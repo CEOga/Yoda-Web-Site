@@ -9,7 +9,6 @@ const account = element("account");
 const video = element("video");
 const playlistPlayer = element("playlist-player");
 const library = element("library");
-const libraryLink = element("library-link");
 const practiceVideo = element("practice-video");
 const clubUrl = location.origin + "/club.html";
 const callback = new URLSearchParams(location.hash.slice(1));
@@ -25,7 +24,6 @@ function show(screen, message = "", isError = false) {
   for (const panel of [login, password, account]) panel.hidden = panel !== screen;
   if (screen !== account) {
     library.hidden = true;
-    libraryLink.hidden = true;
     clearVideo();
   }
   showStatus(message, isError);
@@ -58,7 +56,6 @@ async function refreshAccount() {
     return show(login, "Сеанс завершён. Войдите снова.", true);
   }
   if (!result.ok) throw new Error("Membership unavailable");
-  libraryLink.hidden = !result.active;
   library.hidden = !result.active;
   if (!result.active) clearVideo();
   practiceVideo.replaceChildren(...(result.videos ?? []).map((title, index) => new Option(title, index)));

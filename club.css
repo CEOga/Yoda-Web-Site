@@ -159,18 +159,14 @@
   background: var(--paper);
 }
 
-.club-panel input {
+.club-panel input, .club-library select {
+  border: 1px solid;
   border-color: color-mix(in srgb, var(--ink) 55%, transparent);
 }
 
-.club-panel input:focus {
+.club-panel input:focus, .club-library select:focus {
   outline: none;
   border-color: var(--ink);
-}
-
-.club-layout > .club-panel {
-  width: min(100%, 600px);
-  justify-self: center;
 }
 
 .club-library { margin-block-start: 48px; }
@@ -179,4 +175,7 @@
   min-height: 44px;
   padding: 8px 12px;
   margin-block-end: 16px;
+  border-radius: 8px;
+  background: var(--paper);
+  color: var(--ink);
 }
