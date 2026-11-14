@@ -281,7 +281,7 @@
 
   background: var(--ink);
   color: var(--paper);
-  font-size: var(--type-subtitle) !important;
+  font-size: inherit !important;
   font-weight: 600;
   line-height: 1.25;
 }
