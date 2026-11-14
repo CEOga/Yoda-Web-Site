@@ -131,7 +131,7 @@ async function loadPlaylist(session) {
   showStatus("");
 
   let playback = 0;
-  async function play(entry, updateDuration = () => {}) {
+  async function play(entry) {
     const attempt = ++playback;
     clearVideo();
     if (entry.id || result.playlistId) {
@@ -155,12 +155,6 @@ async function loadPlaylist(session) {
       if (url.searchParams.has("enablejsapi")) {
         youtubePlayer = new window.YT.Player(frame, {
           events: {
-            onStateChange({ target }) {
-              const seconds = target.getDuration();
-              if (request === playlistRequest && attempt === playback && seconds > 0) {
-                updateDuration(Math.floor(seconds / 60) + ":" + String(Math.floor(seconds % 60)).padStart(2, "0"));
-              }
-            },
             onError({ data }) {
               if (request !== playlistRequest || attempt !== playback || !option.isConnected) return;
               if (![100, 101, 150].includes(data)) return;
@@ -223,7 +217,7 @@ async function loadPlaylist(session) {
       clockHands.setAttribute("d", "M10 6v4l2.5 1.5");
       clock.append(clockFace, clockHands);
       durationLabel = document.createElement("span");
-      durationLabel.textContent = practiceMinutes[entry.id] ? practiceMinutes[entry.id] + " мин" : "Время при запуске";
+      durationLabel.textContent = practiceMinutes[entry.id] ? practiceMinutes[entry.id] + " мин" : "Время не указано";
       const playIcon = document.createElement("span");
       playIcon.className = "library-play-icon";
       playIcon.setAttribute("aria-hidden", "true");
@@ -232,9 +226,7 @@ async function loadPlaylist(session) {
       button.append(duration);
     }
     button.setAttribute("aria-label", "Смотреть: " + entry.title);
-    button.addEventListener("click", () => play(entry, time => {
-      durationLabel.textContent = time;
-    }));
+    button.addEventListener("click", () => play(entry));
     cards.append(button);
   }
   if (result.playlistId && !result.entries?.length) await play({});
