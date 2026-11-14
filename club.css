@@ -248,6 +248,10 @@
   align-items: center;
   gap: 24px;
 }
+#club-main h1 > span:first-child {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
 .library-page #club-main .club-title-rule {
   display: block;
   flex: 1;
