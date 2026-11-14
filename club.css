@@ -229,3 +229,9 @@
 .club-library .library-card { padding: 0; overflow: hidden; border-radius: 20px; background: var(--greige); color: var(--ink); text-align: left; }
 .library-card img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
 .library-card span { display: block; padding: 16px; }
+
+.library-page #top .library-nav {
+  grid-column: 3 / -1;
+  justify-self: end;
+  margin-inline-start: auto;
+}
