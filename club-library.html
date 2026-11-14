@@ -8,16 +8,23 @@
   <title>Подписка и видеотека · Yoga Lizza</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap">
   <link rel="stylesheet" href="/styles.css?v=club-layout">
-  <link rel="stylesheet" href="/club.css?v=library-redesign">
+  <link rel="stylesheet" href="/club.css?v=library-right-nav">
   <script src="/script.js?v=review-cards" defer></script>
-  <script type="module" src="/club.js?v=library-redesign"></script>
+  <script type="module" src="/club.js?v=library-cards-2"></script>
 </head>
 <body class="club-page library-page">
   <a class="skip-link" href="#club-main">Перейти к содержанию</a>
   <header class="site-header" id="top">
     <a class="wordmark" href="https://yoga-lizza.pages.dev/" aria-label="Yoga Lizza — на главную"><b class="header-back-arrow" aria-hidden="true">←</b> yoga <span>lizza</span><i>®</i></a>
     <nav class="library-nav" aria-label="Видеотека">
+      <span aria-current="page">Видеотека</span>
       <button id="subscription-toggle" type="button" aria-expanded="false" aria-controls="subscription-panel" hidden>Моя подписка</button>
+      <button id="logout" type="button" hidden>Выйти</button>
+    </nav>
+  </header>
+  <main id="club-main">
+    <h1>Личный кабинет</h1>
+    <p id="status" role="status">Проверяем доступ…</p>
     <section id="subscription-panel" class="club-panel" aria-labelledby="subscription-title" hidden>
       <h2 id="subscription-title">Подписка</h2>
       <section id="account" hidden aria-label="Подписка">
@@ -30,27 +37,10 @@
         <p>Есть вопросы? Напишите или позвоните мне в Telegram.</p>
         <a href="https://t.me/yogalizza" target="_blank" rel="noopener noreferrer">@yogalizza</a>
       </div>
-      <button id="logout" type="button" hidden>Выйти</button>
     </section>
-    </nav>
-  </header>
-  <main id="club-main">
-    <h1 id="videoteka" tabindex="-1">Практики <em>клуба</em></h1>
-    <p id="status" role="status">Проверяем доступ…</p>
-    <section id="library" class="club-library" aria-labelledby="videoteka" hidden>
-      <section class="featured-practice" id="featured-practice" hidden>
-        <div class="featured-copy">
-          <p>Начните с этой практики</p>
-          <h2>Сильные руки</h2>
-          <p>20 минут</p>
-          <button id="featured-play" type="button">Начать практику</button>
-        </div>
-        <img id="featured-image" alt="">
-      </section>
-      <div class="catalog-heading">
-        <h2>Все практики</h2>
-        <select id="practice-video" aria-label="Выберите плейлист"></select>
-      </div>
+    <section id="library" class="club-panel club-library" aria-labelledby="videoteka" hidden>
+      <h2 id="videoteka" tabindex="-1">Практики клуба</h2>
+      <label>Выберите плейлист <select id="practice-video"></select></label>
       <div id="video-cards" class="video-cards"></div>
       <iframe id="playlist-player" title="Плеер плейлиста" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen hidden style="display:block;width:100%;min-height:200px;aspect-ratio:16/9;border:0;margin-top:16px"></iframe>
       <video id="video" controls controlslist="nodownload noremoteplayback" disablepictureinpicture playsinline preload="metadata" hidden></video>
