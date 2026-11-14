@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="/styles.css?v=club-layout">
   <link rel="stylesheet" href="/club.css?v=header-spacing">
   <script src="/script.js?v=review-cards" defer></script>
-  <script type="module" src="/club.js?v=private-library"></script>
+  <script type="module" src="/club.js?v=playlist-library"></script>
 </head>
 <body class="club-page">
   <a class="skip-link" href="#club-main">Перейти к содержанию</a>
@@ -52,10 +52,12 @@
         <section id="account" hidden aria-label="Подписка">
           <p id="expiry"></p>
           <a id="renew" href="https://yoga-lizza.pages.dev/#online" hidden>Продлить подписку</a>
+          <a id="library-link" href="#videoteka" hidden>Открыть видеотеку</a>
           <div id="library" hidden>
-            <h2>Видеопрактики</h2>
-            <label>Выберите практику <select id="practice-video"></select></label>
-            <button id="play" type="button">Открыть практику</button>
+            <h2>Видеотека</h2>
+            <label>Выберите плейлист <select id="practice-video"></select></label>
+            <button id="play" type="button">Открыть плейлист</button>
+            <iframe id="playlist-player" title="Плеер плейлиста" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen hidden style="display:block;width:100%;min-height:200px;aspect-ratio:16/9;border:0;margin-top:16px"></iframe>
             <video id="video" controls controlslist="nodownload noremoteplayback" disablepictureinpicture playsinline preload="metadata" hidden></video>
           </div>
           <button id="logout" type="button" class="secondary">Выйти</button>

@@ -30,9 +30,11 @@ export async function onRequestPost({ env, request }) {
     const remainingSeconds = Math.floor((Date.parse(expiresAt) - Date.now()) / 1000);
     const active = remainingSeconds > 0;
 
-    const catalog = env.CLUB_VIDEOS
+    const catalog = env.CLUB_YOUTUBE_PLAYLISTS
+      ? JSON.parse(env.CLUB_YOUTUBE_PLAYLISTS)
+      : env.CLUB_VIDEOS
       ? JSON.parse(env.CLUB_VIDEOS)
-      : CLUB_VIDEO_PATH ? [{ title: "Практика", path: CLUB_VIDEO_PATH }] : [];
+      : CLUB_VIDEO_PATH ? [{ title: "Практика", path: CLUB_VIDEO_PATH }] : [{ title: "Плейлист 1", playlistId: "PLHT5h37YL57A" }];
     const action = new URL(request.url).searchParams;
     if (action.get("action") !== "play") {
       return reply({ active, expiresAt, videos: active ? catalog.map(({ title }) => title) : [] });
@@ -40,6 +42,9 @@ export async function onRequestPost({ env, request }) {
     if (!active) return reply({ error: "inactive" }, 403);
     const index = action.get("video") ?? "0";
     const entry = /^\d+$/.test(index) ? catalog[Number(index)] : undefined;
+    if (entry?.playlistId && /^PL[A-Za-z0-9_-]+$/.test(entry.playlistId)) {
+      return reply({ playlistId: entry.playlistId });
+    }
     if (!entry?.path || !SUPABASE_SECRET_KEY) return reply({ error: "video_unavailable" }, 503);
 
     const path = entry.path.split("/").map(encodeURIComponent).join("/");

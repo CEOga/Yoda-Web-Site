@@ -7,6 +7,9 @@ const login = element("login");
 const password = element("password");
 const account = element("account");
 const video = element("video");
+const playlistPlayer = element("playlist-player");
+const library = element("library");
+const libraryLink = element("library-link");
 const practiceVideo = element("practice-video");
 const clubUrl = location.origin + "/club.html";
 const callback = new URLSearchParams(location.hash.slice(1));
@@ -24,6 +27,8 @@ function show(screen, message = "", isError = false) {
 }
 
 function clearVideo() {
+  playlistPlayer.removeAttribute("src");
+  playlistPlayer.hidden = true;
   video.pause();
   video.removeAttribute("src");
   video.load();
@@ -48,7 +53,9 @@ async function refreshAccount() {
     return show(login, "Сеанс завершён. Войдите снова.", true);
   }
   if (!result.ok) throw new Error("Membership unavailable");
-  element("library").hidden = !result.active;
+  libraryLink.hidden = !result.active;
+  library.hidden = !result.active || location.hash !== "#videoteka";
+  if (!result.active) clearVideo();
   practiceVideo.replaceChildren(...(result.videos ?? []).map((title, index) => new Option(title, index)));
   element("play").disabled = !practiceVideo.options.length;
   practiceVideo.disabled = !practiceVideo.options.length;
@@ -134,6 +141,13 @@ async function start() {
       return showStatus("Не удалось открыть видео. Попробуйте ещё раз.", true);
     }
     showStatus("");
+    clearVideo();
+    if (result.playlistId) {
+      const params = new URLSearchParams({ listType: "playlist", list: result.playlistId, playsinline: "1" });
+      playlistPlayer.src = "https://www.youtube.com/embed?" + params;
+      playlistPlayer.hidden = false;
+      return;
+    }
     video.src = result.url;
     video.hidden = false;
     await video.play().catch(() => {});
@@ -158,3 +172,8 @@ async function start() {
 }
 
 start().catch(() => show(null, "Не удалось открыть кабинет. Обновите страницу.", true));
+
+addEventListener("hashchange", () => {
+  clearVideo();
+  library.hidden = account.hidden || libraryLink.hidden || location.hash !== "#videoteka";
+});
