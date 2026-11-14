@@ -57,7 +57,7 @@
   min-height: 384px;
   padding: 32px;
   border-radius: 20px;
-  background: linear-gradient(0deg, rgb(57 53 48 / 96%), transparent 80%), url("images/IMG_4011-graded.jpg") center 58% / cover;
+  background: linear-gradient(0deg, rgb(57 53 48 / 96%), transparent 80%), url("images/IMG_4011-graded.jpg") center top / cover;
   background-color: var(--ink);
   color: var(--paper);
 }
@@ -111,7 +111,7 @@
 @media (max-width: 900px) {
   #club-main { padding-block: 48px 64px; }
   #club-main { --club-section-gap: 24px; }
-  .club-cover { min-height: 256px; }
+  .club-cover { min-height: 320px; }
 }
 
 @media (max-width: 480px) {
