@@ -116,7 +116,14 @@
 .club-panel button:disabled { opacity: .65; cursor: wait; }
 .club-panel :focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
 .club-panel video { display: block; width: 100%; margin-block: 16px; border-radius: 12px; }
-.club-panel #logout { display: block; margin-top: 24px; }
+.club-account-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.club-panel .club-renew:disabled { opacity: 1; cursor: default; }
 
 @media (max-width: 900px) {
   #club-main { padding-block: 48px 64px; }

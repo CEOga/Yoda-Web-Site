@@ -61,7 +61,6 @@ async function refreshAccount() {
   practiceVideo.replaceChildren(...(result.videos ?? []).map((title, index) => new Option(title, index)));
   element("play").disabled = !practiceVideo.options.length;
   practiceVideo.disabled = !practiceVideo.options.length;
-  element("renew").hidden = result.active;
   element("subscription-check").hidden = !result.active;
   element("expiry").textContent = result.active
     ? "Доступ действует до " + new Date(result.expiresAt).toLocaleString("ru-RU", { dateStyle: "long", timeStyle: "short" })
