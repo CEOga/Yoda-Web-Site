@@ -382,3 +382,30 @@
 .club-page:not(.library-page) .club-access {
   font-size: var(--type-button) !important;
 }
+
+.library-page #club-main {
+  width: min(1200px, calc(100% - 2 * var(--gutter, 24px)));
+}
+
+.library-page #club-main h1 {
+  font-size: clamp(36px, 4.2vw, var(--type-hero)) !important;
+  letter-spacing: -.02em;
+}
+
+.library-page #club-main h1 > span:first-child {
+  flex: 0 1 auto;
+  white-space: normal;
+  overflow-wrap: normal;
+}
+
+.library-card .library-card-title {
+  height: 3.75em;
+  -webkit-line-clamp: 3;
+}
+
+@media (min-width: 901px) and (max-width: 1050px) {
+  .library-card .library-card-title {
+    height: 5em;
+    -webkit-line-clamp: 4;
+  }
+}
