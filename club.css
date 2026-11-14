@@ -537,8 +537,16 @@
 }
 
 .library-page #account .club-expiry { justify-content: flex-end; text-align: end; }
-.library-page #club-support { text-align: start; }
+.library-page #club-support { text-align: end; }
 .library-page .library-card .library-duration > button.library-play-icon {
   cursor: pointer;
   font: inherit;
+}
+
+.library-page .library-play-icon {
+  gap: 8px;
+}
+
+.library-page .library-play-icon > span {
+  padding: 0;
 }
