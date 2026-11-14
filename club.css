@@ -521,3 +521,17 @@
 .library-card:focus-visible .library-play-icon {
   border-color: var(--paper);
 }
+
+.library-page .library-card .library-duration > .library-play-icon {
+  padding-inline: 22px;
+}
+
+@media (min-width: 901px) {
+  .library-page #library {
+    padding-inline: 24px;
+  }
+
+  .library-page .library-card .library-duration {
+    padding-inline: 12px;
+  }
+}
