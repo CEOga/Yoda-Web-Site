@@ -252,6 +252,9 @@
 #club-main h1 > span:first-child {
   flex: 0 0 auto;
   white-space: nowrap;
+  font-size: inherit !important;
+  line-height: inherit;
+  font-weight: inherit;
 }
 .library-page #club-main .club-title-rule {
   display: block;
