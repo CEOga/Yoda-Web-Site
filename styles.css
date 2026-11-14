@@ -2534,7 +2534,14 @@ body .review-arrow { color: var(--paper); }
   .site-header > .club-login { flex: 0 1 auto; }
 }
 
-html { overflow-x: clip; }
+html {
+  overflow-x: clip;
+  scrollbar-width: none;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+}
 #practice .info-card > div { border-top: 0; }
 
 #groups .lesson-tariffs a > span:first-child {
