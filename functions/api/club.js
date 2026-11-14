@@ -4,7 +4,7 @@ const reply = (data, status = 200) => Response.json(data, { status, headers });
 export async function onRequestGet({ env }) {
   const { SUPABASE_URL: url, SUPABASE_PUBLISHABLE_KEY: key } = env;
   if (!url || !key) return reply({ error: "not_configured" }, 503);
-  return reply({ url, key });
+  return reply({ url, key, googleEnabled: env.CLUB_GOOGLE_ENABLED === "true" });
 }
 
 export async function onRequestPost({ env, request }) {
@@ -30,8 +30,18 @@ export async function onRequestPost({ env, request }) {
     const remainingSeconds = Math.floor((Date.parse(expiresAt) - Date.now()) / 1000);
     const active = remainingSeconds > 0;
 
-    if (new URL(request.url).searchParams.get("action") !== "play") return reply({ active, expiresAt });
+    const playlistId = env.CLUB_PREVIEW_YOUTUBE_PLAYLIST_ID ?? "";
+    const playlistPreview = env.CLUB_ENABLE_YOUTUBE_PREVIEW === "true"
+      && /^PL[A-Za-z0-9_-]{8,64}$/.test(playlistId);
+    if (new URL(request.url).searchParams.get("action") !== "play") {
+      return reply({ active, expiresAt, playlistPreview: active && playlistPreview });
+    }
     if (!active) return reply({ error: "inactive" }, 403);
+    if (playlistPreview) {
+      const playlist = new URL("https://www.youtube.com/playlist");
+      playlist.searchParams.set("list", playlistId);
+      return reply({ kind: "youtube_playlist", url: playlist.href });
+    }
     if (!CLUB_VIDEO_PATH || !SUPABASE_SECRET_KEY) return reply({ error: "video_unavailable" }, 503);
 
     const path = CLUB_VIDEO_PATH.split("/").map(encodeURIComponent).join("/");
