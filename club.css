@@ -264,9 +264,13 @@
   to { opacity: 1; transform: scaleX(1); }
 }
 .library-card .library-duration {
-  display: block;
-  padding: 0 16px 16px;
-  color: var(--ink);
+  display: inline-block;
+  width: fit-content;
+  margin: 0 16px 16px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--paper);
   font-size: 16px !important;
 }
 .library-card:has(.library-duration) > span { padding-bottom: 4px; }
