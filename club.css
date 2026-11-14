@@ -344,5 +344,8 @@
   font-style: italic;
   font-weight: 400;
   letter-spacing: -.02em;
-  text-decoration: none;
+  text-decoration: underline;
+  text-decoration-color: var(--rose);
+  text-decoration-thickness: 3px;
+  text-underline-offset: .14em;
 }
