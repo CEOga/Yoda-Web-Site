@@ -41,7 +41,7 @@
 
 .club-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr);
   gap: 32px;
   align-items: start;
 }
@@ -108,7 +108,7 @@
 
 @media (max-width: 900px) {
   #club-main { padding-block: 48px 64px; }
-  .club-layout { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .club-layout { gap: 24px; }
   .club-cover { min-height: 256px; }
 }
 
@@ -166,4 +166,17 @@
 .club-panel input:focus {
   outline: none;
   border-color: var(--ink);
+}
+
+.club-layout > .club-panel {
+  width: min(100%, 600px);
+  justify-self: center;
+}
+
+.club-library { margin-block-start: 48px; }
+.club-library select {
+  width: min(100%, 440px);
+  min-height: 44px;
+  padding: 8px 12px;
+  margin-block-end: 16px;
 }

@@ -23,6 +23,11 @@ function showStatus(message, isError = false) {
 
 function show(screen, message = "", isError = false) {
   for (const panel of [login, password, account]) panel.hidden = panel !== screen;
+  if (screen !== account) {
+    library.hidden = true;
+    libraryLink.hidden = true;
+    clearVideo();
+  }
   showStatus(message, isError);
 }
 
@@ -54,7 +59,7 @@ async function refreshAccount() {
   }
   if (!result.ok) throw new Error("Membership unavailable");
   libraryLink.hidden = !result.active;
-  library.hidden = !result.active || location.hash !== "#videoteka";
+  library.hidden = !result.active;
   if (!result.active) clearVideo();
   practiceVideo.replaceChildren(...(result.videos ?? []).map((title, index) => new Option(title, index)));
   element("play").disabled = !practiceVideo.options.length;
@@ -174,6 +179,5 @@ async function start() {
 start().catch(() => show(null, "Не удалось открыть кабинет. Обновите страницу.", true));
 
 addEventListener("hashchange", () => {
-  clearVideo();
-  library.hidden = account.hidden || libraryLink.hidden || location.hash !== "#videoteka";
+  if (location.hash === "#videoteka" && !library.hidden) element("videoteka").focus();
 });
