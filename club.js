@@ -234,7 +234,7 @@ async function loadPlaylist(session) {
       const playIcon = document.createElement("span");
       playIcon.className = "library-play-icon";
       playIcon.setAttribute("aria-hidden", "true");
-      playIcon.textContent = "→";
+      playIcon.textContent = "Смотреть →";
       duration.append(clock, durationLabel, playIcon);
       button.append(duration);
     }
