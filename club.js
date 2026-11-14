@@ -90,6 +90,8 @@ function bind(id, event, action) {
   });
 }
 
+const practiceMinutes = {"tk264qJxWEA":20,"6Ja_pWyun_k":25,"sOuvkqGpQIA":20};
+
 let playlistRequest = 0;
 async function loadPlaylist(session) {
   const request = ++playlistRequest;
@@ -124,7 +126,7 @@ async function loadPlaylist(session) {
     button.className = "library-card";
     if (entry.id) {
       const thumbnail = document.createElement("img");
-      thumbnail.src = "https://i.ytimg.com/vi/" + entry.id + "/hqdefault.jpg";
+      thumbnail.src = "https://i.ytimg.com/vi/" + entry.id + "/1.jpg";
       thumbnail.alt = "";
       thumbnail.loading = "lazy";
       button.append(thumbnail);
@@ -132,6 +134,12 @@ async function loadPlaylist(session) {
     const title = document.createElement("span");
     title.textContent = entry.title;
     button.append(title);
+    if (practiceMinutes[entry.id]) {
+      const duration = document.createElement("small");
+      duration.className = "library-duration";
+      duration.textContent = practiceMinutes[entry.id] + " мин";
+      button.append(duration);
+    }
     button.addEventListener("click", () => play(entry));
     cards.append(button);
   }
