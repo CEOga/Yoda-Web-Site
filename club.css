@@ -290,7 +290,7 @@
 }
 .library-card:has(.library-duration) > span { padding-bottom: 4px; }
 @media (prefers-reduced-motion: reduce) {
-  .library-page #club-main .club-title-rule {
+  .library-page #club-main h1::after {
     animation: none;
     opacity: 1;
   }
