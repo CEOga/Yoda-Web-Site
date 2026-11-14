@@ -30,8 +30,32 @@ function show(screen, message = "", isError = false) {
   showStatus(message, isError);
 }
 
+let youtubePlayer;
+let youtubeApi;
+const unavailablePlaylists = new Set();
+
+function loadYouTubeApi() {
+  if (window.YT?.Player) return Promise.resolve(window.YT);
+  youtubeApi ??= new Promise((resolve, reject) => {
+    const script = document.createElement("script");
+    script.src = "https://www.youtube.com/iframe_api";
+    window.onYouTubeIframeAPIReady = () => resolve(window.YT);
+    script.onerror = () => {
+      youtubeApi = undefined;
+      script.remove();
+      reject(new Error("YouTube player API unavailable"));
+    };
+    document.head.append(script);
+  });
+  return youtubeApi;
+}
+
 function clearVideo() {
-  playlistPlayer.removeAttribute("src");
+  if (youtubePlayer) {
+    youtubePlayer.destroy();
+    youtubePlayer = undefined;
+  }
+  playlistPlayer.replaceChildren();
   playlistPlayer.hidden = true;
   video.pause();
   video.removeAttribute("src");
@@ -63,7 +87,7 @@ async function refreshAccount() {
   if (!result.ok) throw new Error("Membership unavailable");
   library.hidden = !result.active;
   if (!result.active) clearVideo();
-  practiceVideo.replaceChildren(...(result.videos ?? []).map((title, index) => new Option(title, index)));
+  practiceVideo.replaceChildren(...(result.videos ?? []).map((title, index) => new Option(title, index)).filter(option => !unavailablePlaylists.has(option.value)));
   element("logout").hidden = false;
   element("subscription-toggle").hidden = false;
   practiceVideo.disabled = !practiceVideo.options.length;
@@ -98,21 +122,49 @@ async function loadPlaylist(session) {
   const cards = element("video-cards");
   cards.replaceChildren();
   clearVideo();
-  if (!practiceVideo.options.length) return;
-  const result = await clubRequest(session, "play", practiceVideo.value);
+  if (!practiceVideo.options.length) return showStatus("Нет доступных плейлистов.");
+  const option = practiceVideo.selectedOptions[0];
+  const result = await clubRequest(session, "play", option.value);
   if (request !== playlistRequest) return;
   if (result.error === "inactive" || result.error === "login_required") return refreshAccount();
   if (!result.ok) return showStatus("Не удалось открыть плейлист.", true);
   showStatus("");
 
-  function play(entry) {
+  let playback = 0;
+  async function play(entry) {
+    const attempt = ++playback;
     clearVideo();
     if (entry.id || result.playlistId) {
-      playlistPlayer.src = entry.id
+      const url = new URL(entry.id
         ? "https://www.youtube.com/embed/" + entry.id
-        : "https://www.youtube.com/embed/videoseries?list=" + result.playlistId;
+        : "https://www.youtube.com/embed/videoseries?list=" + result.playlistId);
+      const frame = document.createElement("iframe");
+      frame.title = "Плеер YouTube";
+      frame.allowFullscreen = true;
+      frame.referrerPolicy = "strict-origin-when-cross-origin";
+      if (await loadYouTubeApi().catch(() => null)) {
+        url.searchParams.set("enablejsapi", "1");
+        url.searchParams.set("origin", location.origin);
+      }
+      if (request !== playlistRequest || attempt !== playback || library.hidden) return;
+      frame.src = url.href;
+      playlistPlayer.replaceChildren(frame);
       playlistPlayer.hidden = false;
-      playlistPlayer.scrollIntoView({ block: "nearest" });
+      if (url.searchParams.has("enablejsapi")) {
+        youtubePlayer = new window.YT.Player(frame, {
+          events: {
+            onError({ data }) {
+              if (request !== playlistRequest || attempt !== playback || !option.isConnected) return;
+              if (![100, 101, 150].includes(data)) return;
+              unavailablePlaylists.add(option.value);
+              option.remove();
+              practiceVideo.disabled = !practiceVideo.options.length;
+              loadPlaylist(session).catch(() => showStatus("Не удалось загрузить плейлист.", true));
+            },
+          },
+        });
+      }
+      if (entry.id) playlistPlayer.scrollIntoView({ block: "nearest" });
     } else {
       video.src = result.url;
       video.hidden = false;
@@ -130,9 +182,15 @@ async function loadPlaylist(session) {
       thumbnail.alt = "";
       thumbnail.loading = "lazy";
       button.append(thumbnail);
+    } else {
+      const placeholder = document.createElement("div");
+      placeholder.className = "library-placeholder";
+      button.append(placeholder);
     }
     const title = document.createElement("span");
+    title.className = "library-card-title";
     title.textContent = entry.title;
+    button.title = entry.title;
     button.append(title);
     if (practiceMinutes[entry.id]) {
       const duration = document.createElement("small");
@@ -163,6 +221,7 @@ async function loadPlaylist(session) {
     button.addEventListener("click", () => play(entry));
     cards.append(button);
   }
+  if (result.playlistId && !result.entries?.length) await play({});
 }
 
 async function start() {
