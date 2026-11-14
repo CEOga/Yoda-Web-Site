@@ -8,9 +8,9 @@
   <title>Подписка и видеотека · Yoga Lizza</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap">
   <link rel="stylesheet" href="/styles.css?v=club-layout">
-  <link rel="stylesheet" href="/club.css?v=watch-label">
+  <link rel="stylesheet" href="/club.css?v=subscription-inline-v1">
   <script src="/script.js?v=review-cards" defer></script>
-  <script type="module" src="/club.js?v=watch-label"></script>
+  <script type="module" src="/club.js?v=subscription-inline-v1"></script>
 </head>
 <body class="club-page library-page">
   <a class="skip-link" href="#club-main">Перейти к содержанию</a>
@@ -18,12 +18,10 @@
     <a class="wordmark" href="https://yoga-lizza.pages.dev/" aria-label="Yoga Lizza — на главную"><b class="header-back-arrow" aria-hidden="true">←</b> yoga <span>lizza</span><i>®</i></a>
     <nav class="library-nav" aria-label="Видеотека">
       <span aria-current="page">Видеотека</span>
-      <button id="subscription-toggle" type="button" aria-expanded="false" aria-controls="subscription-panel" hidden>Моя подписка</button>
       <button id="logout" type="button" hidden>Выйти</button>
     </nav>
   </header>
   <main id="club-main">
-    <h1><span>Личный кабинет</span><span class="club-title-rule" aria-hidden="true"></span></h1>
     <p id="status" role="status">Проверяем доступ…</p>
     <section id="subscription-panel" class="club-panel" aria-labelledby="subscription-title" hidden>
       <h2 id="subscription-title">Подписка</h2>
@@ -38,6 +36,7 @@
         <a href="https://t.me/yogalizza" target="_blank" rel="noopener noreferrer">@yogalizza</a>
       </div>
     </section>
+    <h1><span>Личный кабинет</span><span class="club-title-rule" aria-hidden="true"></span></h1>
     <section id="library" class="club-panel club-library" aria-labelledby="videoteka" hidden>
       <h2 id="videoteka" tabindex="-1">Практики <em>клуба</em></h2>
       <label>Выберите плейлист <select id="practice-video"></select></label>
