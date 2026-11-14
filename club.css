@@ -403,6 +403,71 @@
   -webkit-line-clamp: 3;
 }
 
+/* One typography system for sign-in and library pages. */
+.club-page {
+  font-family: var(--front-interface);
+  font-size: var(--type-copy);
+  font-weight: 400;
+}
+
+.club-page :is(h1, h2, h3) {
+  font-family: var(--front-interface) !important;
+  font-weight: 600;
+}
+
+.club-page #club-main h1 {
+  font-size: var(--type-hero) !important;
+  line-height: 1.1;
+  letter-spacing: -.02em;
+}
+
+.club-page.library-page #club-main h1 {
+  font-size: clamp(36px, 4.2vw, var(--type-hero)) !important;
+}
+
+.club-page .club-panel {
+  font-family: var(--front-interface);
+  font-size: var(--type-copy);
+  line-height: 1.55;
+}
+
+.club-page .club-panel h2 {
+  font-size: var(--type-title) !important;
+  line-height: 1.1;
+}
+
+.club-page .club-panel :is(label, input, select, button),
+.club-page .club-access,
+.library-page .library-nav {
+  font-family: var(--front-interface) !important;
+  font-size: var(--type-button) !important;
+  line-height: 1.25;
+}
+
+.club-page .club-panel label,
+.club-page .club-panel input,
+.library-page .library-nav {
+  font-weight: 500;
+}
+
+.club-page .club-panel button,
+.club-page .club-access,
+.library-page .library-nav button {
+  font-weight: 600;
+}
+
+.library-page #video-cards .library-card .library-card-title {
+  font-family: var(--front-interface) !important;
+  font-size: var(--type-subtitle) !important;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+#videoteka em {
+  text-decoration-thickness: 2px;
+  text-underline-offset: 5px;
+}
+
 @media (min-width: 901px) and (max-width: 1050px) {
   .library-card .library-card-title {
     height: 5em;
