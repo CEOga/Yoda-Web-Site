@@ -517,8 +517,8 @@
   color: var(--paper);
 }
 
-.library-card:hover .library-play-icon,
-.library-card:focus-visible .library-play-icon {
+.library-card .library-play-icon:hover,
+.library-card .library-play-icon:focus-visible {
   border-color: var(--paper);
 }
 
@@ -534,4 +534,11 @@
   .library-page .library-card .library-duration {
     padding-inline: 12px;
   }
+}
+
+.library-page #account .club-expiry { justify-content: flex-end; text-align: end; }
+.library-page #club-support { text-align: start; }
+.library-page .library-card .library-duration > button.library-play-icon {
+  cursor: pointer;
+  font: inherit;
 }
