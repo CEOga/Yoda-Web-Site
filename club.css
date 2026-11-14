@@ -226,9 +226,9 @@
 .library-page #top { height: auto; min-height: 72px; flex-wrap: wrap; gap: 8px 24px; padding-block: 12px; }
 .library-nav { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; }
 .library-nav button { min-height: 44px; padding: 8px 12px; color: inherit; background: transparent; border: 1px solid currentColor; border-radius: 999px; cursor: pointer; }
-.video-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 16px; }
+.video-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
 .club-library .library-card { padding: 0; overflow: hidden; border-radius: 20px; background: var(--greige); color: var(--ink); text-align: left; }
-.library-card img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.library-card img, .library-placeholder { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
 .library-card span { display: block; padding: 16px; }
 
 .library-page #top .library-nav {
@@ -301,4 +301,26 @@
     animation: none;
     opacity: 1;
   }
+}
+
+.club-library .library-card { display: flex; flex-direction: column; }
+.library-card .library-card-title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+  box-sizing: content-box;
+  height: 5em;
+  line-height: 1.25;
+  padding-block: 12px;
+}
+.library-card .library-duration { box-sizing: border-box; width: 100%; min-height: 52px; }
+.library-card:not(:has(.library-duration)) { padding-bottom: 52px; }
+.library-placeholder { background: var(--line); }
+#playlist-player iframe { display: block; width: 100%; aspect-ratio: 16 / 9; min-height: 200px; border: 0; margin-top: 16px; }
+@media (max-width: 900px) {
+  .video-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 580px) {
+  .video-cards { grid-template-columns: minmax(0, 1fr); }
 }
